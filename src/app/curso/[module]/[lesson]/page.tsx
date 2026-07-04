@@ -9,6 +9,7 @@ import Footer from "@/components/layout/Footer";
 import CourseSidebar from "@/components/course/CourseSidebar";
 import LessonContent from "@/components/course/LessonContent";
 import LessonNavigation from "@/components/course/LessonNavigation";
+import ExerciseEditor from "@/components/course/ExerciseEditor";
 import { getModuloBySlug, modulos } from "@/data/modules";
 import { getLeccionById, getLeccionesByModulo } from "@/data/lessons";
 import { useProgress } from "@/hooks/useProgress";
@@ -119,16 +120,15 @@ export default function LessonPage({ params }: { params: Promise<{ module: strin
 
             {/* Exercise */}
             {leccion.ejercicio && (
-              <div className="mt-12 p-6 rounded-2xl border border-zinc-700/30 bg-dark-800/50">
+              <div className="mt-12">
                 <h2 className="text-xl font-bold text-zinc-100 mb-4">
                   Ejercicio pratico
                 </h2>
                 <p className="text-zinc-400 mb-6">{leccion.ejercicio.descripcion}</p>
-                <div className="bg-[#0d1117] rounded-xl p-4 border border-zinc-800">
-                  <pre className="text-sm font-mono text-zinc-300 overflow-x-auto">
-                    <code>{leccion.ejercicio.codigoInicial}</code>
-                  </pre>
-                </div>
+                <ExerciseEditor
+                  exercise={leccion.ejercicio}
+                  onComplete={() => completarLeccion(lesId, leccion.recompensa?.insignia)}
+                />
               </div>
             )}
 
