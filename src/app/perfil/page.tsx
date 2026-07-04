@@ -12,7 +12,6 @@ import Link from "next/link";
 export default function PerfilPage() {
   const { user, refreshUser } = useAuth();
   const router = useRouter();
-  const supabase = createClient();
 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -34,6 +33,8 @@ export default function PerfilPage() {
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !user) return;
+
+    const supabase = createClient();
 
     // Preview local inmediato
     const reader = new FileReader();
@@ -71,6 +72,8 @@ export default function PerfilPage() {
     setError("");
     setSuccess("");
 
+    const supabase = createClient();
+
     // Update name
     const { error: nameError } = await supabase.auth.updateUser({
       data: { nombre },
@@ -104,6 +107,8 @@ export default function PerfilPage() {
     setLoading(true);
     setError("");
     setSuccess("");
+
+    const supabase = createClient();
 
     if (newPassword !== confirmPassword) {
       setError("Las contrasenas no coinciden");
