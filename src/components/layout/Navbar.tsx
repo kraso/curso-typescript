@@ -47,6 +47,7 @@ export default function Navbar() {
 
   const userName = user?.user_metadata?.nombre || user?.email?.split("@")[0] || "Usuario";
   const userInitial = userName.charAt(0).toUpperCase();
+  const userAvatar = user?.user_metadata?.avatar_url || null;
   const totalLecciones = progreso?.leccionesCompletadas?.length || 0;
 
   const navLinks = [
@@ -105,8 +106,12 @@ export default function Navbar() {
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                       className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-700/50 border border-zinc-700/50 hover:border-zinc-600 transition-colors"
                     >
-                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-bold">
-                        {userInitial}
+                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-bold overflow-hidden">
+                        {userAvatar ? (
+                          <img src={userAvatar} alt={userName} className="w-full h-full object-cover" />
+                        ) : (
+                          userInitial
+                        )}
                       </div>
                       <ChevronDown size={14} className="text-zinc-400" />
                     </button>
