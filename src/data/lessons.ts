@@ -1,11 +1,11 @@
-import { Lesson } from "@/types/course";
+﻿import { Lesson } from "@/types/course";
 
 export const lecciones: Lesson[] = [
   // ===== MODULO 1: FUNDAMENTOS =====
   {
     id: "que-es-typescript",
-    titulo: "Qué es TypeScript",
-    descripcion: "Introduccion, historia, motores y por qué usarlo.",
+    titulo: "¿Qué es TypeScript?",
+    descripcion: "Introducción, historia, motores y por qué usarlo.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 1,
@@ -13,25 +13,25 @@ export const lecciones: Lesson[] = [
     icono: "BookOpen",
     contenido: `## Introduccion
 
-TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que cualquier codigo JavaScript valido es tambien codigo TypeScript valido.
+TypeScript es un lenguaje de programación de **código abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que cualquier código JavaScript válido es también código TypeScript válido.
 
 > **Dato clave:** TypeScript no reemplaza a JavaScript, lo potencia. Se convierte en JavaScript antes de ejecutarse.
 
-## Por qué TypeScript?
+## ¿Por qué TypeScript?
 
-| Ventaja | Descripcion |
+| Ventaja | Descripción |
 
 |---------|-------------|
 
-| **Deteccion de errores** | Encuentra errores en tiempo de compilación, no en runtime |
+| **Detección de errores** | Encuentra errores en tiempo de compilación, no en runtime |
 
-| **Mejor IDE** | Autocompletado, navegación, refactoring automatico |
+| **Mejor IDE** | Autocompletado, navegación, refactoring automático |
 
-| **Documentación** | Los tipos actuan cómo documentación viva |
+| **Documentación** | Los tipos actúan cómo documentación viva |
 
-| **Escalabilidad** | Mantiene el codigo limpio en proyectos grandes |
+| **Escalabilidad** | Mantiene el código limpio en proyectos grandes |
 
-| **Adopcion** | Usado por Angular, Vue, Deno, y miles de empresas |
+| **Adopción** | Usado por Angular, Vue, Deno, y miles de empresas |
 
 ## Historia
 
@@ -43,17 +43,17 @@ TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por
 
 - **2016** — Angular 2 adopta TypeScript
 
-- **2020** — Deno lo usa cómo lenguaje principal
+- **2020** — Deno lo usa como lenguaje principal
 
 - **2023** — TypeScript 5.x con mejoras de rendimiento
 
-## Cómo funciona TypeScript
+## ¿Cómo funciona TypeScript?
 
 \`\`\`
 TypeScript (.ts) --> Compilador (tsc) --> JavaScript (.js) --> Ejecución
 \`\`\`
 
-1. Escribes codigo con tipos
+1. Escribes código con tipos
 2. El compilador verifica los tipos
 3. Genera JavaScript limpio
 4. Se ejecuta en cualquier navegador/Node
@@ -65,7 +65,7 @@ TypeScript (.ts) --> Compilador (tsc) --> JavaScript (.js) --> Ejecución
 function sumar(a, b) {
   return a + b;
 }
-sumar("5", 3); // "53" — Error logico no detectado
+sumar("5", 3); // "53" — Error lógico no detectado
 \`\`\`
 
 **TypeScript:**
@@ -127,7 +127,7 @@ console.log(\`Mi nombre es \${nombre} y tengo \${edad} años\`);`,
 npm install -g typescript
 \`\`\`
 
-### Verificar instalacion
+### Verificar instalación
 
 \`\`\`bash
 tsc --version
@@ -142,7 +142,7 @@ const mensaje: string = "Hola, TypeScript!";
 console.log(mensaje);
 \`\`\`
 
-Compilalo:
+Compílalo:
 
 \`\`\`bash
 tsc hola.ts
@@ -173,7 +173,7 @@ El archivo de configuración de TypeScript:
 
 ### Opciones importantes
 
-| Opcion | Qué hace | Recomendado |
+| Opción | Qué hace | Recomendado |
 
 |--------|----------|-------------|
 
@@ -230,11 +230,11 @@ console.log(saludar("Mundo"));`,
     icono: "Code2",
     contenido: `## Los tipos primitivos de TypeScript
 
-TypeScript tiene los mismos tipos primitivos que JavaScript, pero te permite declararlos explicitamente.
+TypeScript tiene los mismos tipos primitivos que JavaScript, pero te permite declararlos explícitamente.
 
 ## number
 
-Para enteros y decimales. Tambien incluye \`Infinity\`, \`NaN\` y \`-Infinity\`.
+Para enteros y decimales. También incluye \`Infinity\`, \`NaN\` y \`-Infinity\`.
 
 \`\`\`typescript
 let entero: number = 42;
@@ -250,7 +250,7 @@ Para texto. Funciona con comillas simples, dobles o backticks.
 
 \`\`\`typescript
 let nombre: string = "Ana";
-let apellido: string = 'Garcia';
+let apellido: string = 'García';
 let saludo: string = \`Hola, \${nombre}\`;
 \`\`\`
 
@@ -354,7 +354,7 @@ console.log(miString, miNumber, miBoolean, miNull, miUndefined);`,
   {
     id: "variables-const-let",
     titulo: "const, let y Tipado",
-    descripcion: "Declara variables con tipos explicitos en TypeScript.",
+    descripcion: "Declara variables con tipos explícitos en TypeScript.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 4,
@@ -386,7 +386,7 @@ contador = 1; // OK
 contador = contador + 1; // OK
 
 let mensaje: string = "hola";
-mensaje = "adios"; // OK
+mensaje = "adiós"; // OK
 \`\`\`
 
 ## Inferencia de tipos
@@ -407,7 +407,7 @@ let activo = true;
 ## Cuando ser explicito
 
 \`\`\`typescript
-// Implicito (OK)
+// Implícito (OK)
 let x = 5;
 
 // Explicito (mejor para parámetros y retornos)
@@ -416,16 +416,16 @@ function sumar(a: number, b: number): number {
 }
 \`\`\`
 
-> **Regla:** En variables locales, infiere. En funciones, se explicito.`,
+> **Regla:** En variables locales, infiere. En funciones, se explicitó.`,
     ejercicio: {
-      descripcion: "Declara una constante 'PI' con valor 3.14 y una variable 'radio' con valor 5. Calcula el area de un circulo.",
+      descripcion: "Declara una constante 'PI' con valor 3.14 y una variable 'radio' con valor 5. Calcula el área de un círculo.",
       codigoInicial: `// Declara PI cómo constante
 const PI: 
 
 // Declara radio cómo variable
 let radio: 
 
-// Calcula el area (PI * radio^2)
+// Calcula el área (PI * radio^2)
 const area = 
 
 console.log(\`El area es: \${area}\`);
@@ -445,7 +445,7 @@ console.log(\`El area es: \${area}\`);`,
           codigo: `__code.includes("radio") && __code.includes(": number") && radio === 5`,
         },
         {
-          descripcion: "area se calculo correctamente",
+          descripcion: "area se calculó correctamente",
           codigo: `__code.includes("area") && __code.includes(": number") && area === 78.5`,
         },
         {
@@ -504,7 +504,7 @@ let html = \`
 \`\`\`typescript
 let n: number = 42;
 
-// Métodos utiles
+// Métodos útiles
 Number.isInteger(n);     // true
 Number.isFinite(n);      // true
 Number.isNaN(NaN);       // true
@@ -527,7 +527,7 @@ Math.random();      // 0-1
 let a: boolean = true;
 let b: boolean = false;
 
-// Operaciones logicas
+// Operaciones lógicas
 a && b;   // AND
 a || b;   // OR
 !a;       // NOT
@@ -538,7 +538,7 @@ a || b;   // OR
 5 !== "5"; // true
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una función que reciba un nombre y retorne: el nombre en mayusculas, la cantidad de letras, y si empieza con la letra 'A'.",
+      descripcion: "Crea una función que reciba un nombre y retorne: el nombre en mayúsculas, la cantidad de letras, y si empieza con la letra 'A'.",
       codigoInicial: `function analizarNombre(nombre: string): string {
   // Implementa la función
 }
@@ -622,7 +622,7 @@ let mixto: (string | number)[] = [1, "dos", 3, "cuatro"];
 
 ## Tuples
 
-Una tuple es un array con tipos fijos en cada posicion.
+Una tuple es un array con tipos fijos en cada posición.
 
 \`\`\`typescript
 let persona: [string, number] = ["Ana", 25];
@@ -786,7 +786,7 @@ interface Perro extends Animal {
   raza: string;
 }
 
-// Type - mas flexible
+// Type - más flexible
 type Color = "rojo" | "azul" | "verde";
 type Punto = { x: number; y: number };
 \`\`\``,
@@ -840,7 +840,7 @@ console.log(miCoche);`,
   {
     id: "union-types",
     titulo: "Union Types",
-    descripcion: "Permite que una variable tenga multiples tipos.",
+    descripcion: "Permite que una variable tenga múltiples tipos.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 8,
@@ -880,15 +880,15 @@ formatId(123);   // "123"
 
 ## Type narrowing
 
-TypeScript automaticamente sabe que tipo es despues de una condicion.
+TypeScript automáticamente sabe que tipo es después de una condición.
 
 \`\`\`typescript
 function procesar(valor: string | number) {
   if (__code.includes("valor") && __code.includes(": string")) {
-    // Aqui TypeScript sabe que valor es string
+    // Aquí TypeScript sabe que valor es string
     valor.toUpperCase();
   } else {
-    // Aqui TypeScript sabe que valor es number
+    // Aquí TypeScript sabe que valor es number
     valor.toFixed(2);
   }
 }
@@ -1014,13 +1014,13 @@ const miComparador: Comparador<number> = (a, b) => a - b;
 
 ## Type vs Interface
 
-| Caracteristica | type | interface |
+| Característica | type | interface |
 
 |---------------|------|-----------|
 
-| Extension | \`&\` (intersection) | \`extends\` |
+| Extensión | \`&\` (intersection) | \`extends\` |
 
-| Declaración multiple | No | Si (se mergean) |
+| Declaración múltiple | No | Si (se mergean) |
 
 | Primitivos | Si | No |
 
@@ -1033,7 +1033,7 @@ type Animal = "perro" | "gato";
 // Type: intersection
 type Entidad = Persona & { id: number };
 
-// Interface: extension
+// Interface: extensión
 interface Perro extends Animal {
   raza: string;
 }
@@ -1050,7 +1050,7 @@ function calcularTotal(productos: Producto[]): number {
 
 const carrito: Producto[] = [
   { nombre: "Libro", precio: 25 },
-  { nombre: "Lapiz", precio: 2 },
+  { nombre: "Lápiz", precio: 2 },
   { nombre: "Cuaderno", precio: 8 },
 ];
 
@@ -1093,7 +1093,7 @@ console.log(calcularTotal(carrito));`,
   {
     id: "type-inference",
     titulo: "Type Inference",
-    descripcion: "Cómo TypeScript adivina los tipos automaticamente.",
+    descripcion: "Cómo TypeScript adivina los tipos automáticamente.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 10,
@@ -1159,7 +1159,7 @@ let persona = {
 
 \`\`\`typescript
 // Mejor ser explicito en:
-// 1. Variables vacias
+// 1. Variables vacías
 let resultado: string;
 
 // 2. Parámetros de función
@@ -1187,7 +1187,7 @@ const colorLiteral = "rojo" as const;
 let punto = [10, 20] as const; // readonly [10, 20]
 \`\`\``,
     ejercicio: {
-      descripcion: "Sin usar tipos explicitos, deja que TypeScript infiere los tipos. Luego verifica con typeof.",
+      descripcion: "Sin usar tipos explícitos, deja que TypeScript infiere los tipos. Luego verifica con typeof.",
       codigoInicial: `// Declara estas variables SIN tipo explicito
 let nombre = "Ana";
 let edad = 25;
@@ -1262,7 +1262,7 @@ function saludar(nombre: string): string {
 }
 \`\`\`
 
-## Multiples parámetros
+## Múltiples parámetros
 
 \`\`\`typescript
 function crearUsuario(nombre: string, edad: number, activo: boolean): string {
@@ -1491,7 +1491,7 @@ function saludar(nombre: string, saludo?: string): string {
 }
 
 saludar("Ana");          // "Hola, Ana!"
-saludar("Ana", "Buenos dias"); // "Buenos dias, Ana!"
+saludar("Ana", "Buenos días"); // "Buenos días, Ana!"
 \`\`\`
 
 > **Regla:** Los opcionales siempre van al final.
@@ -1596,7 +1596,7 @@ console.log(crearMensaje("Pedro", "Info", "alta"));`,
     icono: "Code2",
     contenido: `## Rest parameters
 
-Usa \`...\` para recibir multiples argumentos cómo un array.
+Usa \`...\` para recibir múltiples argumentos cómo un array.
 
 \`\`\`typescript
 function sumar(...numeros: number[]): number {
@@ -1700,7 +1700,7 @@ console.log(promedio(5, 5, 5, 5));`,
     icono: "Code2",
     contenido: `## Function Overloads
 
-Permite definir multiples firmas para una función, con diferentes tipos de parámetros y retorno.
+Permite definir múltiples firmas para una función, con diferentes tipos de parámetros y retorno.
 
 \`\`\`typescript
 // Firmas de overload
@@ -1815,7 +1815,7 @@ console.log(obtener("Ana"));`,
   {
     id: "interfaces-basicas",
     titulo: "Interfaces Basicas (Repaso Profundo)",
-    descripcion: "Propiedades opcionales, readonly, indices y firmas de llamada.",
+    descripcion: "Propiedades opcionales, readonly, índices y firmas de llamada.",
     modulo: 3,
     moduloNombre: "Interfaces y Clases",
     orden: 1,
@@ -1855,7 +1855,7 @@ const perfil: Perfil = { nombre: "Ana" }; // OK
 
 ## Propiedades readonly
 
-No pueden ser modificadas despues de la creación.
+No pueden ser modificadas después de la creación.
 
 \`\`\`typescript
 interface Config {
@@ -1869,7 +1869,7 @@ const config: Config = { apiUrl: "https://api.com", version: 1 };
 
 ## Index signatures
 
-Para objetos con propiedades dinamicas.
+Para objetos con propiedades dinámicas.
 
 \`\`\`typescript
 interface Diccionario {
@@ -1878,10 +1878,10 @@ interface Diccionario {
 
 const traducciones: Diccionario = {
   hello: "hola",
-  goodbye: "adios",
+  goodbye: "adiós",
 };
 
-// Puedes agregar mas claves
+// Puedes agregar más claves
 traducciones["thanks"] = "gracias";
 \`\`\`
 
@@ -1924,7 +1924,7 @@ interface Empleado {
     ejercicio: {
       descripcion: "Crea una interface 'Producto' con id (readonly), nombre, precio y opciones (diccionario).",
       codigoInicial: `// Crea la interface
-interface Producto {
+ Producto {
   // Implementa
 }
 
@@ -2078,18 +2078,18 @@ class Rectangulo extends Forma {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una interface Vehiculo y una interface Electrica que extienda de ella.",
-      codigoInicial: `// Crea Vehiculo
+      descripcion: "Crea una interface Vehículo y una interface Eléctrica que extienda de ella.",
+      codigoInicial: `// Crea Vehículo
 interface Vehiculo {
   // marca, modelo, anio
 }
 
-// Crea Electrica que extienda de Vehiculo
+// Crea Eléctrica que extienda de Vehiculo
 interface Electrica extends Vehiculo {
   // bateria (number), autonomia (number)
 }
 
-// Crea un coche electrico
+// Crea un coche eléctrico
 const tesla: Electrica = 
 
 console.log(tesla);
@@ -2204,7 +2204,7 @@ calc.sumar(5).sumar(3).restar(2);
 calc.obtener(); // 6
 \`\`\`
 
-## Propiedades estaticas y métodos
+## Propiedades estáticas y métodos
 
 \`\`\`typescript
 class Contador {
@@ -2477,7 +2477,7 @@ console.log(banco.consultar());`,
     icono: "Layers",
     contenido: `## Clases abstractas
 
-Una clase abstracta no se puede instanciar directamente. Sirve cómo base para otras clases.
+Una clase abstracta no se puede instanciar directamente. Sirve como base para otras clases.
 
 \`\`\`typescript
 abstract class Forma {
@@ -2490,7 +2490,7 @@ abstract class Forma {
 
 // const f = new Forma(); // Error: Cannot create instance of abstract class
 
-class Circulo extends Forma {
+ Circulo extends Forma {
   constructor(private radio: number) {
     super();
   }
@@ -2532,7 +2532,7 @@ class Pato extends Animal {
 }
 \`\`\`
 
-## Quando usar abstract vs interface
+## Cuando usar abstract vs interface
 
 \`\`\`typescript
 // Interface: solo define la forma
@@ -2668,7 +2668,7 @@ console.log(triangulo.describir());`,
     icono: "Zap",
     contenido: `## Qué son los Generics?
 
-Los generics permiten crear funcioness, clases e interfaces que funcionan con **cualquier tipo** sin perder la seguridad de tipos.
+Los generics permiten crear funciones, clases e interfaces que funcionan con **cualquier tipo** sin perder la seguridad de tipos.
 
 \`\`\`typescript
 // Sin generics: perdes tipo
@@ -2828,7 +2828,7 @@ type Config = Required<ConfigOpcional>;
 
 ## Pick<T, K>
 
-Selecciona propiedades especificas.
+Selecciona propiedades específicas.
 
 \`\`\`typescript
 interface Usuario {
@@ -2844,7 +2844,7 @@ type UsuarioBasico = Pick<Usuario, "nombre" | "email">;
 
 ## Omit<T, K>
 
-Excluye propiedades especificas.
+Excluye propiedades específicas.
 
 \`\`\`typescript
 type UsuarioSinPassword = Omit<Usuario, "password">;
@@ -2895,7 +2895,7 @@ Obtiene los tipos de los parámetros.
 type ParamsSumar = Parameters<typeof sumar>; // [number, number]
 \`\`\`
 
-## Resumen rapido
+## Resumen rápido
 
 | Utility | Qué hace |
 
@@ -3462,7 +3462,7 @@ export interface Usuario {
 }
 
 // Default export
-export default class Animal {
+ default class Animal {
   nombre: string;
   constructor(nombre: string) {
     this.nombre = nombre;
@@ -3496,7 +3496,7 @@ export { Usuario } from "./tipos";
 export * from "./utilidades";
 \`\`\`
 
-## Organizacion
+## Organización
 
 \`\`\`typescript
 // types.ts - Solo tipos
@@ -3507,12 +3507,12 @@ export type Config = ...;
 export function formatDate(date: Date): string { ... }
 export function capitalize(str: string): string { ... }
 
-// api.ts - Logica de negocio
+// api.ts - Lógica de negocio
 import { Usuario } from "./types";
 export async function getUsuario(id: number): Promise<Usuario> { ... }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea un módulo que exporte una función para calcular el area de un circulo.",
+      descripcion: "Crea un módulo que exporte una función para calcular el area de un círculo.",
       codigoInicial: `// Exporta una función que calcule el area de un circulo
 export 
 
@@ -3611,15 +3611,15 @@ Config.timeout; // 5000
 
 ## Namespaces vs Módulos
 
-| Caracteristica | Módulos | Namespaces |
+| Característica | Módulos | Namespaces |
 
 |----------------|---------|------------|
 
-| Separacion | Archivos separados | Un archivo |
+| Separación | Archivos separados | Un archivo |
 
 | Scope | Global | Namespace |
 
-| Bundling | Manual | Automatico |
+| Bundling | Manual | Automático |
 
 | Uso moderno | Si | No |
 
@@ -3774,22 +3774,22 @@ async function getData() {
   },
   {
     id: "dynamic-imports",
-    titulo: "Imports Dinamicos",
+    titulo: "Imports Dinámicos",
     descripcion: "Carga módulos bajo demanda con lazy loading.",
     modulo: 5,
     moduloNombre: "Módulos y Namespaces",
     orden: 4,
     duracion: "15 min",
     icono: "Zap",
-    contenido: `## Imports Dinamicos
+    contenido: `## Imports Dinámicos
 
 Permiten cargar módulos en tiempo de ejecución, mejorando el rendimiento.
 
 \`\`\`typescript
-// Import estatico (se carga siempre)
+// Import estático (se carga siempre)
 import { sumar } from "./matematicas";
 
-// Import dinamico (se carga bajo demanda)
+// Import dinámico (se carga bajo demanda)
 const modulo = await import("./matematicas");
 modulo.sumar(1, 2);
 \`\`\`
@@ -3835,17 +3835,17 @@ function App() {
 ## Webpack code splitting
 
 \`\`\`typescript
-// Crea chunks separados automaticamente
+// Crea chunks separados automáticamente
 const modulo = await import(
   /* webpackChunkName: "math" */
   "./matematicas"
 );
 \`\`\``,
     ejercicio: {
-      descripcion: "Usa import dinamico para cargar un módulo solo cuando se llama la función.",
-      codigoInicial: `// Crea una función que use import dinamico
+      descripcion: "Usa import dinámico para cargar un módulo solo cuando se llama la función.",
+      codigoInicial: `// Crea una función que use import dinámico
 async function cargarModulo() {
-  // Implementa import dinamico
+  // Implementa import dinámico
 }
 
 cargarModulo().then(mod => {
@@ -3875,18 +3875,18 @@ cargarModulo().then(mod => {
   },
   {
     id: "module-resolution",
-    titulo: "Resolucion de Módulos",
+    titulo: "Resolución de Módulos",
     descripcion: "Entiende cómo TypeScript resuelve las importaciones.",
     modulo: 5,
     moduloNombre: "Módulos y Namespaces",
     orden: 5,
     duracion: "15 min",
     icono: "Zap",
-    contenido: `## Resolucion de Módulos
+    contenido: `## Resolución de Módulos
 
 TypeScript busca archivos basado en la importación.
 
-## Tipos de resolucion
+## Tipos de resolución
 
 \`\`\`typescript
 // Relative - rutas relativas
@@ -3936,13 +3936,13 @@ import { Button } from "../../../components/Button";
 import { Button } from "@components/Button";
 \`\`\`
 
-## Resolucion de nodos
+## Resolución de nodos
 
 \`\`\`typescript
-// Para librerias con tipos
+// Para librerías con tipos
 npm install --save-dev @types/lodash
 
-// Para librerias sin tipos
+// Para librerías sin tipos
 // Crear: src/types/lodash.d.ts
 declare module "lodash" {
   export function chunk<T>(array: T[], size: number): T[][];
@@ -3993,7 +3993,7 @@ import { Usuario } from "@types/usuario";`,
   {
     id: "promesas",
     titulo: "Promesas",
-    descripcion: "Maneja operaciones asincronas con Promises.",
+    descripcion: "Maneja operaciones asíncronas con Promises.",
     modulo: 6,
     moduloNombre: "Asincronía",
     orden: 1,
@@ -4112,7 +4112,7 @@ esperarSaludo().then(mensaje => console.log(mensaje));`,
     icono: "Zap",
     contenido: `## Async/Await
 
-\`async/await\` es azucar sintáctico sobre Promises.
+\`async/await\` es azúcar sintáctico sobre Promises.
 
 \`\`\`typescript
 async function obtenerUsuario(id: number) {
@@ -4455,14 +4455,14 @@ console.log(numeros);`,
   },
   {
     id: "iteradores",
-    titulo: "Iteradores y Iterables",
-    descripcion: "Implementa el protocolo de iteracion en tus objetos.",
+    titulo: "Iteradores e Iterables",
+    descripcion: "Implementa el protocolo de iteración en tus objetos.",
     modulo: 6,
     moduloNombre: "Asincronía",
     orden: 5,
     duracion: "15 min",
     icono: "Zap",
-    contenido: `## Protocolo de Iteracion
+    contenido: `## Protocolo de Iteración
 
 Cualquier objeto con \`[Symbol.iterator]\` es iterable.
 
@@ -4595,7 +4595,7 @@ console.log(resultado);`,
   {
     id: "singleton",
     titulo: "Patrón Singleton",
-    descripcion: "Asegura una unica instancia de una clase.",
+    descripcion: "Asegura una única instancia de una clase.",
     modulo: 7,
     moduloNombre: "Patrones y Buenas Prácticas",
     orden: 1,
@@ -4641,7 +4641,7 @@ console.log(db1 === db2); // true
 ## Alternativa moderna
 
 \`\`\`typescript
-// Module-level singleton (mas simple)
+// Module-level singleton (más simple)
 const database = new Database("mongodb://localhost");
 export default database;
 
@@ -4712,7 +4712,7 @@ console.log(config1 === config2);`,
     icono: "Zap",
     contenido: `## Factory
 
-El patrón Factory crea objetos sin exponer la logica de creación.
+El patrón Factory crea objetos sin exponer la lógica de creación.
 
 \`\`\`typescript
 interface Transporte {
@@ -4727,22 +4727,22 @@ class Auto implements Transporte {
 
 class Avion implements Transporte {
   entregar() {
-    return "Entregando por aire en avion";
+    return "Entregando por aire en avión";
   }
 }
 
 class TransporteFactory {
-  static crear(tipo: "auto" | "avion"): Transporte {
+  static crear(tipo: "auto" | "avión"): Transporte {
     switch (tipo) {
       case "auto": return new Auto();
-      case "avion": return new Avion();
+      case "avión": return new Avion();
       default: throw new Error("Tipo desconocido");
     }
   }
 }
 
 const t1 = TransporteFactory.crear("auto");
-const t2 = TransporteFactory.crear("avion");
+const t2 = TransporteFactory.crear("avión");
 \`\`\`
 
 ## Factory con objetos
@@ -4821,7 +4821,7 @@ console.log(email.enviar());`,
   {
     id: "observer",
     titulo: "Patrón Observer",
-    descripcion: "Notifica automaticamente cuando cambia el estado.",
+    descripcion: "Notifica automáticamente cuando cambia el estado.",
     modulo: 7,
     moduloNombre: "Patrones y Buenas Prácticas",
     orden: 3,
@@ -4829,7 +4829,7 @@ console.log(email.enviar());`,
     icono: "Zap",
     contenido: `## Observer
 
-Permite que objetos notifiquen automaticamente a sus observadores cuando cambian.
+Permite que objetos notifiquen automáticamente a sus observadores cuando cambian.
 
 \`\`\`typescript
 type Listener<T> = (data: T) => void;
@@ -5158,7 +5158,7 @@ function parsearJSON(json: string) {
 
 | use | useAuth() | Hooks |
 
-## Organizacion
+## Organización
 
 \`\`\`typescript
 // 1. Imports externos
@@ -5230,7 +5230,7 @@ function obtenerUsuario(id: number) {
   {
     id: "diseno-api",
     titulo: "Diseno de API Tipada",
-    descripcion: "Disena una API completa con tipos seguros.",
+    descripcion: "Diseña una API completa con tipos seguros.",
     modulo: 8,
     moduloNombre: "Proyecto Final",
     orden: 1,
@@ -5238,7 +5238,7 @@ function obtenerUsuario(id: number) {
     icono: "Zap",
     contenido: `## Diseno de una API Tipada
 
-Vamos a disenar una API de gestion de tareas con tipos completos.
+Vamos a diseñar una API de gestión de tareas con tipos completos.
 
 ## Definir tipos base
 
@@ -5376,9 +5376,9 @@ function esUsuario(datos: unknown): datos is Usuario {
 
 function procesarSeguro(datos: unknown) {
   if (!esUsuario(datos)) {
-    throw new Error("Datos invalidos");
+    throw new Error("Datos inválidos");
   }
-  // Aqui TypeScript sabe qué es Usuario
+  // Aquí TypeScript sabe qué es Usuario
 }
 \`\`\`
 
@@ -5640,7 +5640,7 @@ console.log(usuario.email === "a@b.com" ? "PASS email" : "FAIL email");`,
 \`\`\`
 src/
   types/          # Tipos e interfaces
-  services/       # Logica de negocio
+  services/       # Lógica de negocio
   utils/          # Funciones utilitarias
   validators/     # Validaciones runtime
   index.ts        # Punto de entrada
@@ -5713,7 +5713,7 @@ jobs:
     icono: "Zap",
     contenido: `## Felicitaciones!
 
-Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido.
+Has completado el curso de TypeScript. Aquí está un resumen de todo lo aprendido.
 
 ## Módulo 1: Fundamentos
 
@@ -5755,7 +5755,7 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Ambient declarations (.d.ts)
 
-- Imports dinamicos
+- Imports dinámicos
 
 - Module resolution
 
@@ -5783,7 +5783,7 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Testing y deploy
 
-## Proximo paso
+## Próximo paso
 
 Aplica lo aprendido en proyectos reales. Crea tu propia libreria o contribuye a open source.`,
     ejercicio: {
@@ -5840,3 +5840,4 @@ export function getProgresoTotal(completadas: string[]) {
   if (lecciones.length === 0) return 0;
   return Math.round((completadas.length / lecciones.length) * 100);
 }
+
