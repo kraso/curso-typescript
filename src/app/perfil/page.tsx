@@ -33,12 +33,37 @@ export default function PerfilPage() {
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file || !user) return;
 
-    // Preview
+    // Preview local inmediato
     const reader = new FileReader();
     reader.onload = (ev) => setAvatar(ev.target?.result as string);
     reader.readAsDataURL(file);
+
+    // Subir a Supabase Storage
+    const fileExt = file.name.split(".").pop();
+    const fileName = `${user.id}.${fileExt}`;
+    const filePath = `avatars/${fileName}`;
+
+    const { error } = await supabase.storage
+      .from("avatars")
+      .upload(filePath, file, { upsert: true });
+
+    if (error) {
+      setError("Error al subir imagen: " + error.message);
+      return;
+    }
+
+    // Obtener URL publica
+    const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
+
+    if (data?.publicUrl) {
+      // Guardar en metadata del usuario
+      await supabase.auth.updateUser({
+        data: { avatar_url: data.publicUrl },
+      });
+      setAvatar(data.publicUrl);
+    }
   };
 
   const handleUpdateProfile = async (e: React.FormEvent) => {
