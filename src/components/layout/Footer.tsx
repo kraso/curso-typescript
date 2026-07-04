@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-800 bg-dark-900/50">
+    <footer className="border-t" style={{ background: "var(--bg-surface)", borderColor: "var(--border-color)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
@@ -11,11 +11,11 @@ export default function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm">
                 TS
               </div>
-              <span className="text-zinc-100 font-semibold text-lg">
+              <span className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>
                 Curso TypeScript
               </span>
             </Link>
-            <p className="text-zinc-500 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
               Aprende TypeScript desde cero de forma interactiva.
               Ejercicios praticos, proyectos reales.
             </p>
@@ -23,20 +23,20 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="text-zinc-100 font-semibold mb-4">Curso</h3>
+            <h3 className="font-semibold mb-4" style={{ color: "var(--text-primary)" }}>Curso</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/curso" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+                <Link href="/curso" className="text-sm transition-colors hover:opacity-80" style={{ color: "var(--text-muted)" }}>
                   Todas las lecciones
                 </Link>
               </li>
               <li>
-                <Link href="/curso" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+                <Link href="/curso" className="text-sm transition-colors hover:opacity-80" style={{ color: "var(--text-muted)" }}>
                   Ejercicios
                 </Link>
               </li>
               <li>
-                <Link href="/playground" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+                <Link href="/playground" className="text-sm transition-colors hover:opacity-80" style={{ color: "var(--text-muted)" }}>
                   Playground
                 </Link>
               </li>
@@ -45,14 +45,15 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-zinc-100 font-semibold mb-4">Recursos</h3>
+            <h3 className="font-semibold mb-4" style={{ color: "var(--text-primary)" }}>Recursos</h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="https://typescriptlang.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   TypeScript Official
                 </a>
@@ -62,7 +63,8 @@ export default function Footer() {
                   href="https://github.com/microsoft/TypeScript"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   GitHub
                 </a>
@@ -72,14 +74,15 @@ export default function Footer() {
 
           {/* Proyectos */}
           <div>
-            <h3 className="text-zinc-100 font-semibold mb-4">Proyectos</h3>
+            <h3 className="font-semibold mb-4" style={{ color: "var(--text-primary)" }}>Proyectos</h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="https://javascript-learning-app.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="flex items-center gap-2.5 text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   <img
                     src="https://javascript-learning-app.dev/favicon.svg"
@@ -94,7 +97,8 @@ export default function Footer() {
                   href="https://react-learning-app.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="flex items-center gap-2.5 text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   <img
                     src="https://react-learning-app.dev/favicon.svg"
@@ -109,12 +113,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-zinc-100 font-semibold mb-4">Contacto</h3>
+            <h3 className="font-semibold mb-4" style={{ color: "var(--text-primary)" }}>Contacto</h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="mailto:marcoscalabresibaniez@gmail.com"
-                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   marcoscalabresibaniez@gmail.com
                 </a>
@@ -124,7 +129,8 @@ export default function Footer() {
                   href="https://github.com/kraso"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                  className="text-sm transition-colors hover:opacity-80"
+                  style={{ color: "var(--text-muted)" }}
                 >
                   GitHub
                 </a>
@@ -133,16 +139,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-zinc-600 text-sm">
+        <div className="border-t mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderColor: "var(--border-color)" }}>
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             &copy; {new Date().getFullYear()} Curso TypeScript. Aprende programando.
           </p>
-          <div className="flex items-center gap-3 text-xs text-zinc-600">
-            <Link href="/legal/privacidad" className="hover:text-zinc-400 transition-colors">
+          <div className="flex items-center gap-3 text-xs" style={{ color: "var(--text-muted)" }}>
+            <Link href="/legal/privacidad" className="hover:opacity-80 transition-opacity">
               Política de Privacidad
             </Link>
             <span>·</span>
-            <Link href="/legal/terminos" className="hover:text-zinc-400 transition-colors">
+            <Link href="/legal/terminos" className="hover:opacity-80 transition-opacity">
               Términos y Condiciones
             </Link>
           </div>

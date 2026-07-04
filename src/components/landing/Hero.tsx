@@ -10,22 +10,22 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-sm font-medium mb-8 animate-fade-in">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium mb-8 animate-fade-in" style={{ background: "var(--bg-elevated)", borderColor: "var(--border-color)", color: "var(--text-secondary)" }}>
           <Sparkles size={14} className="text-primary" />
           Curso 100% interactivo y gratuito
         </div>
 
         {/* Headline */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-[1.05] tracking-tight animate-slide-up text-balance">
-          <span className="text-zinc-100">TypeScript</span>
+          <span style={{ color: "var(--text-primary)" }}>TypeScript</span>
           <br />
           <span className="text-gradient">domina el tipado</span>
         </h1>
 
         {/* Code preview */}
         <div className="max-w-3xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: "0.05s" }}>
-          <div className="relative rounded-2xl overflow-hidden border border-zinc-700/50 shadow-2xl shadow-primary/5">
-            <div className="bg-[#0d1117] p-6 text-left">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/5" style={{ border: "1px solid var(--border-color)" }}>
+            <div className="p-6 text-left" style={{ background: "#0d1117" }}>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -59,7 +59,7 @@ export default function Hero() {
         </div>
 
         {/* Subtitle */}
-        <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up text-balance" style={{ animationDelay: "0.1s" }}>
+        <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up text-balance" style={{ animationDelay: "0.1s", color: "var(--text-secondary)" }}>
           Aprende el lenguaje que potencia JavaScript.
           Escribe codigo seguro, resuelve ejercicios y avanza a tu ritmo.
         </p>
@@ -83,18 +83,18 @@ export default function Hero() {
         {/* Stats */}
         <div className="flex items-center justify-center gap-8 mt-16 animate-slide-up" style={{ animationDelay: "0.3s" }}>
           <div className="text-center">
-            <p className="text-2xl font-bold text-zinc-100">40+</p>
-            <p className="text-sm text-zinc-500">Lecciones</p>
+            <p className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>40+</p>
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>Lecciones</p>
           </div>
-          <div className="w-px h-10 bg-zinc-800" />
+          <div className="w-px h-10" style={{ background: "var(--border-color)" }} />
           <div className="text-center">
-            <p className="text-2xl font-bold text-zinc-100">8</p>
-            <p className="text-sm text-zinc-500">Modulos</p>
+            <p className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>8</p>
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>Modulos</p>
           </div>
-          <div className="w-px h-10 bg-zinc-800" />
+          <div className="w-px h-10" style={{ background: "var(--border-color)" }} />
           <div className="text-center">
-            <p className="text-2xl font-bold text-zinc-100">100%</p>
-            <p className="text-sm text-zinc-500">Gratis</p>
+            <p className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>100%</p>
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>Gratis</p>
           </div>
         </div>
       </div>
