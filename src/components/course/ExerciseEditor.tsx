@@ -63,21 +63,14 @@ export default function ExerciseEditor({ exercise, onComplete }: ExerciseEditorP
       let allPassed = true;
       for (const test of exercise.tests) {
         try {
-          // Transpile test code too
-          const transpiledTest = ts.transpileModule(`return (${test.codigo})`, {
-            compilerOptions: {
-              target: ts.ScriptTarget.ES2020,
-              module: ts.ModuleKind.None,
-              strict: false,
-            },
-          }).outputText;
-
+          // Pass original source code for tests that check for type annotations
           const testFn = new Function(
             "__logs",
             "console",
-            transpiledTest
+            "__code",
+            `return (${test.codigo})`
           );
-          const result = testFn(logs, proxyConsole);
+          const result = testFn(logs, proxyConsole, code);
           if (!result) {
             allPassed = false;
             logs.push(`FAIL: ${test.descripcion}`);

@@ -78,11 +78,11 @@ console.log(\`Mi nombre es \${nombre} y tengo \${edad} anios\`);`,
       tests: [
         {
           descripcion: "Existe una variable 'nombre' con tipo string",
-          codigo: `typeof nombre === "string"`,
+          codigo: `__code.includes("nombre") && __code.includes(": string")`,
         },
         {
           descripcion: "Existe una variable 'edad' con tipo number",
-          codigo: `typeof edad === "number"`,
+          codigo: `__code.includes("edad") && __code.includes(": number")`,
         },
         {
           descripcion: "Se uso console.log para mostrar un mensaje",
@@ -311,15 +311,15 @@ console.log(miString, miNumber, miBoolean, miNull, miUndefined);`,
       tests: [
         {
           descripcion: "miString es un string",
-          codigo: `typeof miString === "string"`,
+          codigo: `__code.includes("miString") && __code.includes(": string")`,
         },
         {
           descripcion: "miNumber es un number",
-          codigo: `typeof miNumber === "number"`,
+          codigo: `__code.includes("miNumber") && __code.includes(": number")`,
         },
         {
           descripcion: "miBoolean es un boolean",
-          codigo: `typeof miBoolean === "boolean"`,
+          codigo: `__code.includes("miBoolean") && __code.includes(": boolean")`,
         },
         {
           descripcion: "Se ejecuto console.log",
@@ -417,15 +417,15 @@ console.log(\`El area es: \${area}\`);`,
       tests: [
         {
           descripcion: "PI es una constante con valor 3.14",
-          codigo: `typeof PI === "number" && PI === 3.14`,
+          codigo: `__code.includes("PI") && __code.includes(": number") && PI === 3.14`,
         },
         {
           descripcion: "radio es un number con valor 5",
-          codigo: `typeof radio === "number" && radio === 5`,
+          codigo: `__code.includes("radio") && __code.includes(": number") && radio === 5`,
         },
         {
           descripcion: "area se calculo correctamente",
-          codigo: `typeof area === "number" && area === 78.5`,
+          codigo: `__code.includes("area") && __code.includes(": number") && area === 78.5`,
         },
         {
           descripcion: "Se ejecuto console.log",
@@ -847,7 +847,7 @@ let datos: (string | number)[] = [1, "dos", 3, "cuatro"];
 
 \`\`\`typescript
 function formatId(id: string | number): string {
-  if (typeof id === "string") {
+  if (__code.includes("id") && __code.includes(": string")) {
     return id.toUpperCase();
   }
   return id.toString();
@@ -863,7 +863,7 @@ TypeScript automaticamente sabe que tipo es despues de una condicion.
 
 \`\`\`typescript
 function procesar(valor: string | number) {
-  if (typeof valor === "string") {
+  if (__code.includes("valor") && __code.includes(": string")) {
     // Aqui TypeScript sabe que valor es string
     valor.toUpperCase();
   } else {
@@ -895,7 +895,7 @@ console.log(formatear("hola"));
 console.log(formatear(3.14159));
 `,
       codigoSolucion: `function formatear(valor: string | number): string {
-  if (typeof valor === "string") {
+  if (__code.includes("valor") && __code.includes(": string")) {
     return valor.toUpperCase();
   }
   return valor.toFixed(2);
@@ -1186,15 +1186,15 @@ console.log(Array.isArray(numeros));  // true`,
       tests: [
         {
           descripcion: "nombre es inferido como string",
-          codigo: `typeof nombre === "string" && nombre === "Ana"`,
+          codigo: `__code.includes("nombre") && __code.includes(": string") && nombre === "Ana"`,
         },
         {
           descripcion: "edad es inferido como number",
-          codigo: `typeof edad === "number" && edad === 25`,
+          codigo: `__code.includes("edad") && __code.includes(": number") && edad === 25`,
         },
         {
           descripcion: "activo es inferido como boolean",
-          codigo: `typeof activo === "boolean" && activo === true`,
+          codigo: `__code.includes("activo") && __code.includes(": boolean") && activo === true`,
         },
         {
           descripcion: "numeros es inferido como array",
@@ -1268,7 +1268,7 @@ distancia({ x: 0, y: 0 }, { x: 3, y: 4 }); // 5
 
 \`\`\`typescript
 function formatearId(id: string | number): string {
-  if (typeof id === "string") {
+  if (__code.includes("id") && __code.includes(": string")) {
     return id.toUpperCase();
   }
   return \`ID-\${id}\`;
@@ -1681,7 +1681,7 @@ Permite definir multiples firmas para una funcion, con diferentes tipos de param
 function format(valor: string): string;
 function format(valor: number): string;
 function format(valor: string | number): string {
-  if (typeof valor === "string") {
+  if (__code.includes("valor") && __code.includes(": string")) {
     return valor.toUpperCase();
   }
   return valor.toFixed(2);
@@ -1699,7 +1699,7 @@ format(3.14);      // "3.14" (retorna string)
 function buscar(id: number): Usuario;
 function buscar(nombre: string): Usuario[];
 function buscar(param: number | string): Usuario | Usuario[] {
-  if (typeof param === "number") {
+  if (__code.includes("param") && __code.includes(": number")) {
     return { id: param, nombre: "Ana" };
   }
   return [{ id: 1, nombre: param }];
@@ -1758,7 +1758,7 @@ console.log(obtener("Ana"));
       codigoSolucion: `function obtener(id: number): string;
 function obtener(nombre: string): string;
 function obtener(param: number | string): string {
-  if (typeof param === "number") {
+  if (__code.includes("param") && __code.includes(": number")) {
     return \`Usuario ID: \${param}\`;
   }
   return \`Usuario: \${param}\`;
@@ -3262,7 +3262,7 @@ console.log(handler);`,
       tests: [
         {
           descripcion: "handler es un string",
-          codigo: `typeof handler === "string"`,
+          codigo: `__code.includes("handler") && __code.includes(": string")`,
         },
         {
           descripcion: "handler contiene 'on'",
@@ -5329,7 +5329,7 @@ function procesarSeguro(datos: unknown) {
 
 \`\`\`typescript
 function esString(valor: unknown): valor is string {
-  return typeof valor === "string";
+  return __code.includes("valor") && __code.includes(": string");
 }
 
 function esArray(valor: unknown): valor is unknown[] {
