@@ -18,11 +18,9 @@ export default function LessonContent({ content }: LessonContentProps) {
       const pre = block.parentElement;
       if (!pre) return;
 
-      // Create code block wrapper
       const wrapper = document.createElement("div");
       wrapper.className = "code-block";
 
-      // Create header
       const header = document.createElement("div");
       header.className = "code-block-header";
       header.innerHTML = `
@@ -36,15 +34,12 @@ export default function LessonContent({ content }: LessonContentProps) {
       wrapper.appendChild(header);
       wrapper.appendChild(pre);
 
-      // Copy functionality
       const copyBtn = header.querySelector(".copy-btn");
       copyBtn?.addEventListener("click", () => {
         navigator.clipboard.writeText(block.textContent || "");
         if (copyBtn) {
           copyBtn.textContent = "Copiado!";
-          setTimeout(() => {
-            copyBtn.textContent = "Copiar";
-          }, 2000);
+          setTimeout(() => { copyBtn.textContent = "Copiar"; }, 2000);
         }
       });
     });
@@ -58,6 +53,8 @@ export default function LessonContent({ content }: LessonContentProps) {
 
   // Convert markdown-like content to HTML
   const htmlContent = content
+    // Code blocks first (must be before other processing)
+    .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
     // Headers
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
@@ -65,23 +62,43 @@ export default function LessonContent({ content }: LessonContentProps) {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     // Italic
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Inline code
+    // Inline code (before tables to avoid conflicts)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     // Blockquotes
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-    // Tables (simplified)
-    .replace(/\|(.+)\|/g, (match) => {
-      const cells = match.split('|').filter(Boolean).map(c => c.trim());
-      if (cells.every(c => c.match(/^[-:]+$/))) return '';
-      return `<tr>${cells.map(c => `<td>${c}</td>`).join('')}</tr>`;
+    // Tables - find consecutive table rows and wrap them
+    .replace(/((?:^\|.+\|$\n?)+)/gm, (tableBlock) => {
+      const lines = tableBlock.trim().split('\n');
+      const rows: string[] = [];
+      
+      for (const line of lines) {
+        const cells = line.split('|').filter(c => c.trim() !== '' && !c.trim().match(/^[-:]+$/));
+        if (cells.length > 0) {
+          rows.push(cells.map(c => `<td>${c.trim()}</td>`).join(''));
+        }
+      }
+      
+      if (rows.length === 0) return '';
+      
+      // First row as header, rest as body
+      const headerRow = rows[0];
+      const bodyRows = rows.slice(1);
+      
+      return `<table><thead><tr>${headerRow.replace(/td>/g, 'th>')}</tr></thead><tbody>${bodyRows.map(r => `<tr>${r}</tr>`).join('')}</tbody></table>`;
     })
-    // Lists
-    .replace(/^- (.+)$/gm, '<li>$1</li>')
-    // Code blocks (preserve as-is for now)
-    .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
+    // Lists - group consecutive list items
+    .replace(/((?:^- .+\n?)+)/gm, (listBlock) => {
+      const items = listBlock.trim().split('\n').map(item => `<li>${item.replace(/^- /, '')}</li>`);
+      return `<ul>${items.join('')}</ul>`;
+    })
+    // Ordered lists
+    .replace(/((?:^\d+\. .+\n?)+)/gm, (listBlock) => {
+      const items = listBlock.trim().split('\n').map(item => `<li>${item.replace(/^\d+\. /, '')}</li>`);
+      return `<ol>${items.join('')}</ol>`;
+    })
     // Paragraphs
     .replace(/\n\n/g, '</p><p>')
-    // Line breaks
+    // Line breaks (but not inside pre/code blocks)
     .replace(/\n/g, '<br>');
 
   return (

@@ -4,8 +4,8 @@ export const lecciones: Lesson[] = [
   // ===== MODULO 1: FUNDAMENTOS =====
   {
     id: "que-es-typescript",
-    titulo: "Que es TypeScript",
-    descripcion: "Introduccion, historia, motores y por que usarlo.",
+    titulo: "Qué es TypeScript",
+    descripcion: "Introduccion, historia, motores y por qué usarlo.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 1,
@@ -13,21 +13,21 @@ export const lecciones: Lesson[] = [
     icono: "BookOpen",
     contenido: `## Introduccion
 
-TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que any codigo JavaScript valido es tambien codigo TypeScript valido.
+TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que cualquier codigo JavaScript valido es tambien codigo TypeScript valido.
 
 > **Dato clave:** TypeScript no reemplaza a JavaScript, lo potencia. Se convierte en JavaScript antes de ejecutarse.
 
-## Por que TypeScript?
+## Por qué TypeScript?
 
 | Ventaja | Descripcion |
 
 |---------|-------------|
 
-| **Deteccion de errores** | Encuentra errores en tiempo de compilacion, no en runtime |
+| **Deteccion de errores** | Encuentra errores en tiempo de compilación, no en runtime |
 
-| **Mejor IDE** | Autocompletado, navegacion, refactoring automatico |
+| **Mejor IDE** | Autocompletado, navegación, refactoring automatico |
 
-| **Documentacion** | Los tipos actuan como documentacion viva |
+| **Documentación** | Los tipos actuan cómo documentación viva |
 
 | **Escalabilidad** | Mantiene el codigo limpio en proyectos grandes |
 
@@ -37,20 +37,20 @@ TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por
 
 - **2012** — Microsoft internamente (Anders Hejlsberg)
 
-- **2013** — Anuncio publico en QCon
+- **2013** — Anuncio público en QCon
 
 - **2014** — Open source en CodePlex
 
 - **2016** — Angular 2 adopta TypeScript
 
-- **2020** — Deno lo usa como lenguaje principal
+- **2020** — Deno lo usa cómo lenguaje principal
 
 - **2023** — TypeScript 5.x con mejoras de rendimiento
 
-## Como funciona TypeScript
+## Cómo funciona TypeScript
 
 \`\`\`
-TypeScript (.ts) --> Compilador (tsc) --> JavaScript (.js) --> Ejecucion
+TypeScript (.ts) --> Compilador (tsc) --> JavaScript (.js) --> Ejecución
 \`\`\`
 
 1. Escribes codigo con tipos
@@ -73,7 +73,7 @@ sumar("5", 3); // "53" — Error logico no detectado
 function sumar(a: number, b: number): number {
   return a + b;
 }
-sumar("5", 3); // Error de compilacion!
+sumar("5", 3); // Error de compilación!
 \`\`\``,
     ejercicio: {
       descripcion: "Declara una variable 'nombre' de tipo string y una variable 'edad' de tipo number. Luego crea un console.log que muestre ambas.",
@@ -85,7 +85,7 @@ let edad:
 `,
       codigoSolucion: `let nombre: string = "Ana";
 let edad: number = 25;
-console.log(\`Mi nombre es \${nombre} y tengo \${edad} anios\`);`,
+console.log(\`Mi nombre es \${nombre} y tengo \${edad} años\`);`,
       tests: [
         {
           descripcion: "Existe una variable 'nombre' con tipo string",
@@ -105,8 +105,8 @@ console.log(\`Mi nombre es \${nombre} y tengo \${edad} anios\`);`,
     recompensa: { insignia: "Primeros-pasos-ts", puntos: 10 },
   },
   {
-    id: "instalacion-configuracion",
-    titulo: "Instalacion y Configuracion",
+    id: "instalacion-configuración",
+    titulo: "Instalacion y Configuración",
     descripcion: "Instalar TypeScript, configurar tsconfig.json y tu primer compile.",
     modulo: 1,
     moduloNombre: "Fundamentos",
@@ -156,7 +156,7 @@ node hola.js
 
 ## tsconfig.json
 
-El archivo de configuracion de TypeScript:
+El archivo de configuración de TypeScript:
 
 \`\`\`json
 {
@@ -173,7 +173,7 @@ El archivo de configuracion de TypeScript:
 
 ### Opciones importantes
 
-| Opcion | Que hace | Recomendado |
+| Opcion | Qué hace | Recomendado |
 
 |--------|----------|-------------|
 
@@ -181,7 +181,7 @@ El archivo de configuracion de TypeScript:
 
 | **target** | Version de JS que genera | \`ES2022\` |
 
-| **module** | Sistema de modulos | \`ESNext\` |
+| **module** | Sistema de módulos | \`ESNext\` |
 
 | **outDir** | Directorio de salida | \`./dist\` |
 
@@ -189,10 +189,10 @@ El archivo de configuracion de TypeScript:
 
 | **noEmit** | Solo verificar, no generar archivos | \`true\` en libs |`,
     ejercicio: {
-      descripcion: "Crea una funcion 'saludar' que reciba un nombre (string) y retorne un string con el saludo.",
-      codigoInicial: `// Crea la funcion saludar
+      descripcion: "Crea una función 'saludar' que reciba un nombre (string) y retorne un string con el saludo.",
+      codigoInicial: `// Crea la función saludar
 function saludar(nombre: string): string {
-  // Completa la funcion
+  // Completa la función
 }
 
 console.log(saludar("Mundo"));
@@ -203,11 +203,11 @@ console.log(saludar("Mundo"));
 console.log(saludar("Mundo"));`,
       tests: [
         {
-          descripcion: "La funcion saludar existe y es una funcion",
+          descripcion: "La función saludar existe y es una función",
           codigo: `typeof saludar === "function"`,
         },
         {
-          descripcion: "La funcion retorna un string con 'Hola'",
+          descripcion: "La función retorna un string con 'Hola'",
           codigo: `saludar("Test").includes("Hola")`,
         },
         {
@@ -349,7 +349,7 @@ console.log(miString, miNumber, miBoolean, miNull, miUndefined);`,
       ],
     },
     completada: false,
-    recompensa: { insignia: "Tipador-basico", puntos: 10 },
+    recompensa: { insignia: "Tipador-básico", puntos: 10 },
   },
   {
     id: "variables-const-let",
@@ -410,7 +410,7 @@ let activo = true;
 // Implicito (OK)
 let x = 5;
 
-// Explicito (mejor para parametros y retornos)
+// Explicito (mejor para parámetros y retornos)
 function sumar(a: number, b: number): number {
   return a + b;
 }
@@ -419,10 +419,10 @@ function sumar(a: number, b: number): number {
 > **Regla:** En variables locales, infiere. En funciones, se explicito.`,
     ejercicio: {
       descripcion: "Declara una constante 'PI' con valor 3.14 y una variable 'radio' con valor 5. Calcula el area de un circulo.",
-      codigoInicial: `// Declara PI como constante
+      codigoInicial: `// Declara PI cómo constante
 const PI: 
 
-// Declara radio como variable
+// Declara radio cómo variable
 let radio: 
 
 // Calcula el area (PI * radio^2)
@@ -460,7 +460,7 @@ console.log(\`El area es: \${area}\`);`,
   {
     id: "strings-numeros-booleans",
     titulo: "Strings, Numeros y Booleans",
-    descripcion: "Metodos y operaciones con tipos primitives.",
+    descripcion: "Métodos y operaciones con tipos primitives.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 5,
@@ -471,7 +471,7 @@ console.log(\`El area es: \${area}\`);`,
 \`\`\`typescript
 let nombre: string = "TypeScript";
 
-// Metodos comunes
+// Métodos comunes
 nombre.toUpperCase();    // "TYPESCRIPT"
 nombre.toLowerCase();    // "typescript"
 nombre.length;           // 10
@@ -488,7 +488,7 @@ nombre.replace("Type", "Java"); // "JavaScript"
 \`\`\`typescript
 let nombre = "Ana";
 let edad = 25;
-let saludo = \`Hola, \${nombre}! Tienes \${edad} anios.\`;
+let saludo = \`Hola, \${nombre}! Tienes \${edad} años.\`;
 
 // Multilinea
 let html = \`
@@ -504,7 +504,7 @@ let html = \`
 \`\`\`typescript
 let n: number = 42;
 
-// Metodos utiles
+// Métodos utiles
 Number.isInteger(n);     // true
 Number.isFinite(n);      // true
 Number.isNaN(NaN);       // true
@@ -538,9 +538,9 @@ a || b;   // OR
 5 !== "5"; // true
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion que reciba un nombre y retorne: el nombre en mayusculas, la cantidad de letras, y si empieza con la letra 'A'.",
+      descripcion: "Crea una función que reciba un nombre y retorne: el nombre en mayusculas, la cantidad de letras, y si empieza con la letra 'A'.",
       codigoInicial: `function analizarNombre(nombre: string): string {
-  // Implementa la funcion
+  // Implementa la función
 }
 
 console.log(analizarNombre("Ana"));
@@ -555,7 +555,7 @@ console.log(analizarNombre("Ana"));
 console.log(analizarNombre("Ana"));`,
       tests: [
         {
-          descripcion: "La funcion existe",
+          descripcion: "La función existe",
           codigo: `typeof analizarNombre === "function"`,
         },
         {
@@ -597,7 +597,7 @@ let nombres: string[] = ["Ana", "Juan"];
 let numeros2: Array<number> = [1, 2, 3];
 \`\`\`
 
-### Metodos de arrays
+### Métodos de arrays
 
 \`\`\`typescript
 let nums: number[] = [1, 2, 3, 4, 5];
@@ -894,19 +894,19 @@ function procesar(valor: string | number) {
 }
 \`\`\`
 
-## Literales como tipos
+## Literales cómo tipos
 
 \`\`\`typescript
-type Direccion = "norte" | "sur" | "este" | "oeste";
-let dir: Direccion = "norte";
+type Dirección = "norte" | "sur" | "este" | "oeste";
+let dir: Dirección = "norte";
 // dir = "arriba"; // Error
 
 type Resultado = "exito" | "error" | "cargando";
 let estado: Resultado = "exito";
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion 'formatear' que acepte un string o number y retorne un string formateado.",
-      codigoInicial: `// Crea la funcion con union type
+      descripcion: "Crea una función 'formatear' que acepte un string o number y retorne un string formateado.",
+      codigoInicial: `// Crea la función con union type
 function formatear(valor: 
 
 // Debe retornar string en mayusculas para strings
@@ -926,7 +926,7 @@ console.log(formatear("hola"));
 console.log(formatear(3.14159));`,
       tests: [
         {
-          descripcion: "La funcion formatear existe",
+          descripcion: "La función formatear existe",
           codigo: `typeof formatear === "function"`,
         },
         {
@@ -995,10 +995,10 @@ let nombres: ListaNombres = ["Ana", "Juan"];
 ## Para union types
 
 \`\`\`typescript
-type Direccion = "norte" | "sur" | "este" | "oeste";
+type Dirección = "norte" | "sur" | "este" | "oeste";
 type Estado = "activo" | "inactivo" | "pendiente";
 
-let dir: Direccion = "norte";
+let dir: Dirección = "norte";
 let estado: Estado = "activo";
 \`\`\`
 
@@ -1020,7 +1020,7 @@ const miComparador: Comparador<number> = (a, b) => a - b;
 
 | Extension | \`&\` (intersection) | \`extends\` |
 
-| Declaracion multiple | No | Si (se mergean) |
+| Declaración multiple | No | Si (se mergean) |
 
 | Primitivos | Si | No |
 
@@ -1039,11 +1039,11 @@ interface Perro extends Animal {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea un type 'Producto' y una funcion que calcule el total de una lista de productos.",
+      descripcion: "Crea un type 'Producto' y una función que calcule el total de una lista de productos.",
       codigoInicial: `// Crea el type Producto
 type Producto = 
 
-// Crea la funcion total
+// Crea la función total
 function calcularTotal(productos: Producto[]): number {
   // Implementa
 }
@@ -1093,7 +1093,7 @@ console.log(calcularTotal(carrito));`,
   {
     id: "type-inference",
     titulo: "Type Inference",
-    descripcion: "Como TypeScript adivina los tipos automaticamente.",
+    descripcion: "Cómo TypeScript adivina los tipos automaticamente.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 10,
@@ -1125,9 +1125,9 @@ function sumar(a: number, b: number) {
   return a + b; // Retorno inferido: number
 }
 
-// TypeScript infiere parametros
+// TypeScript infiere parámetros
 function saludar(nombre) {
-  // Error: Parameter 'nombre' implicitly has an 'any' type
+  // Error: Parameter 'nombre' implicitly has an 'cualquier' type
 }
 \`\`\`
 
@@ -1162,7 +1162,7 @@ let persona = {
 // 1. Variables vacias
 let resultado: string;
 
-// 2. Parametros de funcion
+// 2. Parámetros de función
 function procesar(dato: string) { }
 
 // 3. Retorno de funciones complejas
@@ -1183,7 +1183,7 @@ let color = "rojo";
 // Con as const: tipo es "rojo"
 const colorLiteral = "rojo" as const;
 
-// Array como tuple
+// Array cómo tuple
 let punto = [10, 20] as const; // readonly [10, 20]
 \`\`\``,
     ejercicio: {
@@ -1211,19 +1211,19 @@ console.log(typeof activo);  // "boolean"
 console.log(Array.isArray(numeros));  // true`,
       tests: [
         {
-          descripcion: "nombre es inferido como string",
+          descripcion: "nombre es inferido cómo string",
           codigo: `__code.includes("nombre") && __code.includes(": string") && nombre === "Ana"`,
         },
         {
-          descripcion: "edad es inferido como number",
+          descripcion: "edad es inferido cómo number",
           codigo: `__code.includes("edad") && __code.includes(": number") && edad === 25`,
         },
         {
-          descripcion: "activo es inferido como boolean",
+          descripcion: "activo es inferido cómo boolean",
           codigo: `__code.includes("activo") && __code.includes(": boolean") && activo === true`,
         },
         {
-          descripcion: "numeros es inferido como array",
+          descripcion: "numeros es inferido cómo array",
           codigo: `Array.isArray(numeros) && numeros.length === 3`,
         },
         {
@@ -1238,20 +1238,20 @@ console.log(Array.isArray(numeros));  // true`,
 
   // ===== MODULO 2: FUNCIONES =====
   {
-    id: "parametros-tipados",
-    titulo: "Parametros Tipados",
-    descripcion: "Define tipos para los parametros de tus funciones.",
+    id: "parámetros-tipados",
+    titulo: "Parámetros Tipados",
+    descripcion: "Define tipos para los parámetros de tus funciones.",
     modulo: 2,
     moduloNombre: "Funciones",
     orden: 1,
     duracion: "15 min",
     icono: "Code2",
-    contenido: `## Parametros tipados
+    contenido: `## Parámetros tipados
 
-En TypeScript, todos los parametros de una funcion deben estar tipados (con \`strict: true\`).
+En TypeScript, todos los parámetros de una función deben estar tipados (con \`strict: true\`).
 
 \`\`\`typescript
-// Error: Parameter 'nombre' implicitly has an 'any' type
+// Error: Parameter 'nombre' implicitly has an 'cualquier' type
 function saludar(nombre) {
   return \`Hola \${nombre}\`;
 }
@@ -1262,18 +1262,18 @@ function saludar(nombre: string): string {
 }
 \`\`\`
 
-## Multiples parametros
+## Multiples parámetros
 
 \`\`\`typescript
 function crearUsuario(nombre: string, edad: number, activo: boolean): string {
-  return \`\${nombre}, \${edad} anios, activo: \${activo}\`;
+  return \`\${nombre}, \${edad} años, activo: \${activo}\`;
 }
 
 crearUsuario("Ana", 25, true);
 // crearUsuario("Ana", "25", true); // Error: edad debe ser number
 \`\`\`
 
-## Parametros con tipos complejos
+## Parámetros con tipos complejos
 
 \`\`\`typescript
 interface Punto {
@@ -1290,7 +1290,7 @@ function distancia(a: Punto, b: Punto): number {
 distancia({ x: 0, y: 0 }, { x: 3, y: 4 }); // 5
 \`\`\`
 
-## Parametros con union types
+## Parámetros con union types
 
 \`\`\`typescript
 function formatearId(id: string | number): string {
@@ -1301,11 +1301,11 @@ function formatearId(id: string | number): string {
 }
 \`\`\`
 
-## Parametros con tipo any (evitar)
+## Parámetros con tipo cualquier (evitar)
 
 \`\`\`typescript
 // MAL: pierde la ventaja de TypeScript
-function procesar(dato: any): any {
+function procesar(dato: cualquier): cualquier {
   return dato;
 }
 
@@ -1315,8 +1315,8 @@ function procesar<T>(dato: T): T {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion 'calcularImpuesto' que reciba el precio (number) y el IVA (number) y retorne el precio con impuesto.",
-      codigoInicial: `// Crea la funcion con parametros tipados
+      descripcion: "Crea una función 'calcularImpuesto' que reciba el precio (number) y el IVA (number) y retorne el precio con impuesto.",
+      codigoInicial: `// Crea la función con parámetros tipados
 function calcularImpuesto(precio: 
 
 // Ejemplo: precio 100, IVA 21 = 121
@@ -1329,7 +1329,7 @@ console.log(calcularImpuesto(100, 21));
 console.log(calcularImpuesto(100, 21));`,
       tests: [
         {
-          descripcion: "La funcion existe",
+          descripcion: "La función existe",
           codigo: `typeof calcularImpuesto === "function"`,
         },
         {
@@ -1352,7 +1352,7 @@ console.log(calcularImpuesto(100, 21));`,
   {
     id: "tipo-de-retorno",
     titulo: "Tipos de Retorno",
-    descripcion: "Define que tipo retorna tu funcion.",
+    descripcion: "Define que tipo retorna tu función.",
     modulo: 2,
     moduloNombre: "Funciones",
     orden: 2,
@@ -1360,7 +1360,7 @@ console.log(calcularImpuesto(100, 21));`,
     icono: "Code2",
     contenido: `## Tipado de retorno
 
-TypeScript puede inferir el tipo de retorno, pero es buena practica ser explicito.
+TypeScript puede inferir el tipo de retorno, pero es buena práctica ser explicito.
 
 \`\`\`typescript
 // Inferido: number
@@ -1422,12 +1422,12 @@ function divide(a: number, b: number): [number, boolean] {
 const [resultado, exito] = divide(10, 2);
 \`\`\`
 
-## Por que ser explicito?
+## Por qué ser explicito?
 
 \`\`\`typescript
 // Sin retorno explicito, TypeScript puede equivocarse
 function calcular(a: number, b: number) {
-  if (b === 0) return "Error"; // TypeScript piensa que es number | string
+  if (b === 0) return "Error"; // TypeScript piensa qué es number | string
   return a / b;
 }
 
@@ -1438,8 +1438,8 @@ function calcular(a: number, b: number): number {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion que retorne un array con [resultado, exito] al dividir dos numeros.",
-      codigoInicial: `// La funcion debe retornar [number, boolean]
+      descripcion: "Crea una función que retorne un array con [resultado, exito] al dividir dos numeros.",
+      codigoInicial: `// La función debe retornar [number, boolean]
 function dividir(a: number, b: number): 
 
 // Ejemplo: dividir(10, 2) = [5, true]
@@ -1474,16 +1474,16 @@ console.log(dividir(10, 0));`,
   },
   {
     id: "opcionales-default",
-    titulo: "Parametros Opcionales y Default",
-    descripcion: "Parametros que no son obligatorios.",
+    titulo: "Parámetros Opcionales y Default",
+    descripcion: "Parámetros que no son obligatorios.",
     modulo: 2,
     moduloNombre: "Funciones",
     orden: 3,
     duracion: "15 min",
     icono: "Code2",
-    contenido: `## Parametros opcionales
+    contenido: `## Parámetros opcionales
 
-Usa \`?\` para marcar un parametro como opcional.
+Usa \`?\` para marcar un parámetro cómo opcional.
 
 \`\`\`typescript
 function saludar(nombre: string, saludo?: string): string {
@@ -1496,7 +1496,7 @@ saludar("Ana", "Buenos dias"); // "Buenos dias, Ana!"
 
 > **Regla:** Los opcionales siempre van al final.
 
-## Parametros con valor default
+## Parámetros con valor default
 
 \`\`\`typescript
 function crearUsuario(
@@ -1541,10 +1541,10 @@ function buscar(query: string, limite: number = 10): string[] {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion 'crearMensaje' con autor (requerido), asunto (opcional) y prioridad (default 'normal').",
-      codigoInicial: `// Crea la funcion
+      descripcion: "Crea una función 'crearMensaje' con autor (requerido), asunto (opcional) y prioridad (default 'normal').",
+      codigoInicial: `// Crea la función
 function crearMensaje(
-  // Implementa los parametros
+  // Implementa los parámetros
 
 )
 
@@ -1596,7 +1596,7 @@ console.log(crearMensaje("Pedro", "Info", "alta"));`,
     icono: "Code2",
     contenido: `## Rest parameters
 
-Usa \`...\` para recibir multiples argumentos como un array.
+Usa \`...\` para recibir multiples argumentos cómo un array.
 
 \`\`\`typescript
 function sumar(...numeros: number[]): number {
@@ -1607,31 +1607,31 @@ sumar(1, 2, 3);       // 6
 sumar(1, 2, 3, 4, 5); // 15
 \`\`\`
 
-## Con otros parametros
+## Con otros parámetros
 
 \`\`\`typescript
 function crearMensaje(prefijo: string, ...mensajes: string[]): string {
   return \`\${prefijo}: \${mensajes.join(", ")}\`;
 }
 
-crearMensaje("Error", "Conexion", "Timeout");
-// "Error: Conexion, Timeout"
+crearMensaje("Error", "Conexión", "Timeout");
+// "Error: Conexión, Timeout"
 \`\`\`
 
 ## Spread vs Rest
 
 \`\`\`typescript
-// REST: recibe argumentos como array
+// REST: recibe argumentos cómo array
 function sumar(...nums: number[]): number {
   return nums.reduce((a, b) => a + b, 0);
 }
 
-// SPREAD: expande un array como argumentos
+// SPREAD: expande un array cómo argumentos
 const numeros = [1, 2, 3];
 sumar(...numeros); // sumar(1, 2, 3)
 \`\`\`
 
-## Ejemplo practico
+## Ejemplo práctico
 
 \`\`\`typescript
 interface Producto {
@@ -1651,8 +1651,8 @@ log("Inicio", 1, "Medio", 2, "Fin");
 // "Inicio | 1 | Medio | 2 | Fin"
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion 'promedio' que reciba cualquier cantidad de numeros y retorne el promedio.",
-      codigoInicial: `// Crea la funcion con rest parameters
+      descripcion: "Crea una función 'promedio' que reciba cualquier cantidad de numeros y retorne el promedio.",
+      codigoInicial: `// Crea la función con rest parameters
 function promedio(...numeros: 
 
 // Ejemplo: promedio(10, 20, 30) = 20
@@ -1692,7 +1692,7 @@ console.log(promedio(5, 5, 5, 5));`,
   {
     id: "function-overloads",
     titulo: "Function Overloads",
-    descripcion: "Multiples firmas para una misma funcion.",
+    descripcion: "Multiples firmas para una misma función.",
     modulo: 2,
     moduloNombre: "Funciones",
     orden: 5,
@@ -1700,7 +1700,7 @@ console.log(promedio(5, 5, 5, 5));`,
     icono: "Code2",
     contenido: `## Function Overloads
 
-Permite definir multiples firmas para una funcion, con diferentes tipos de parametros y retorno.
+Permite definir multiples firmas para una función, con diferentes tipos de parámetros y retorno.
 
 \`\`\`typescript
 // Firmas de overload
@@ -1742,7 +1742,7 @@ function crear(nombre: string): void;
 function crear(nombre: string, edad: number): void;
 function crear(nombre: string, edad?: number): void {
   if (edad !== undefined) {
-    console.log(\`Crear \${nombre}, \${edad} anios\`);
+    console.log(\`Crear \${nombre}, \${edad} años\`);
   } else {
     console.log(\`Crear \${nombre}\`);
   }
@@ -1755,25 +1755,25 @@ crear("Juan", 25);   // OK
 ## Limitaciones
 
 \`\`\`typescript
-// Los overloads deben ser compatibles con la implementacion
+// Los overloads deben ser compatibles con la implementación
 function proceso(x: string): string;
 function proceso(x: number): number;
 function proceso(x: string | number): string | number {
-  // La implementacion debe manejar ambos casos
+  // La implementación debe manejar ambos casos
   return x;
 }
 
 // No se puede sobrecargar con diferentes cantidades de opcionales
-// TypeScript no permite overloads con parametros por defecto
+// TypeScript no permite overloads con parámetros por defecto
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion 'obtener' que acepte un number (id) o string (nombre) y retorne相应的 informacion.",
+      descripcion: "Crea una función 'obtener' que acepte un number (id) o string (nombre) y retorne相应的 información.",
       codigoInicial: `// Define los overloads
 function obtener(id: number): string;
 function obtener(nombre: string): string;
 function obtener(param: 
 
-// Implementa la funcion
+// Implementa la función
 {
   // ...
 }
@@ -1823,7 +1823,7 @@ console.log(obtener("Ana"));`,
     icono: "Layers",
     contenido: `## Repaso de Interfaces
 
-Una interface define la **forma** de un objeto. Es como un contrato que el objeto debe cumplir.
+Una interface define la **forma** de un objeto. Es cómo un contrato que el objeto debe cumplir.
 
 \`\`\`typescript
 interface Usuario {
@@ -1855,7 +1855,7 @@ const perfil: Perfil = { nombre: "Ana" }; // OK
 
 ## Propiedades readonly
 
-No pueden ser modificadas despues de la creacion.
+No pueden ser modificadas despues de la creación.
 
 \`\`\`typescript
 interface Config {
@@ -1910,7 +1910,7 @@ sumar.descripcion;         // "Suma dos numeros"
 interface Empresa {
   nombre: string;
   empleados: Empleado[];
-  direccion: {
+  dirección: {
     calle: string;
     ciudad: string;
   };
@@ -2050,7 +2050,7 @@ const perro = new Perro("Rex", "Labrador");
 perro.hacerSonido(); // "Guau!"
 \`\`\`
 
-## Override de metodos
+## Override de métodos
 
 \`\`\`typescript
 class Forma {
@@ -2135,13 +2135,13 @@ console.log(tesla);`,
   {
     id: "clases-en-ts",
     titulo: "Clases en TypeScript",
-    descripcion: "Definicion, constructores, metodos y propiedades.",
+    descripcion: "Definición, constructores, métodos y propiedades.",
     modulo: 3,
     moduloNombre: "Interfaces y Clases",
     orden: 3,
     duracion: "20 min",
     icono: "Layers",
-    contenido: `## Definicion basica
+    contenido: `## Definición básica
 
 \`\`\`typescript
 class Persona {
@@ -2154,12 +2154,12 @@ class Persona {
   }
 
   presentarse(): string {
-    return \`Hola, soy \${nombre} y tengo \${edad} anios\`;
+    return \`Hola, soy \${nombre} y tengo \${edad} años\`;
   }
 }
 
 const ana = new Persona("Ana", 25);
-ana.presentarse(); // "Hola, soy Ana y tengo 25 anios"
+ana.presentarse(); // "Hola, soy Ana y tengo 25 años"
 \`\`\`
 
 ## Shorthand de constructor
@@ -2178,7 +2178,7 @@ class Persona {
 // Equivale a declarar las propiedades + asignar en constructor
 \`\`\`
 
-## Metodos
+## Métodos
 
 \`\`\`typescript
 class Calculadora {
@@ -2204,7 +2204,7 @@ calc.sumar(5).sumar(3).restar(2);
 calc.obtener(); // 6
 \`\`\`
 
-## Propiedades estaticas y metodos
+## Propiedades estaticas y métodos
 
 \`\`\`typescript
 class Contador {
@@ -2249,7 +2249,7 @@ temp.fahrenheit; // 212
 temp.celsius = 0;
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una clase 'Cuenta' con titular, saldo, y metodos depositar y extraer.",
+      descripcion: "Crea una clase 'Cuenta' con titular, saldo, y métodos depositar y extraer.",
       codigoInicial: `// Crea la clase Cuenta
 class Cuenta {
   // Implementa
@@ -2339,7 +2339,7 @@ class Cuenta {
     this.saldo = saldo;
   }
 
-  // Solo se puede acceder via metodos
+  // Solo se puede acceder via métodos
   depositar(monto: number): void {
     this.saldo += monto; // OK: dentro de la clase
   }
@@ -2385,7 +2385,7 @@ const perro = new Perro();
 
 | protected | SI | SI | NO |
 
-## Parametros de propiedades
+## Parámetros de propiedades
 
 \`\`\`typescript
 class Usuario {
@@ -2410,12 +2410,12 @@ class Usuario {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una clase 'Banco' con cuenta privada, y metodos publicos para operar.",
+      descripcion: "Crea una clase 'Banco' con cuenta privada, y métodos publicos para operar.",
       codigoInicial: `// Crea la clase Banco
 class Banco {
   // saldo privado
   // Constructo con saldo inicial
-  // Metodos publicos: depositar, extraer, consultar
+  // Métodos publicos: depositar, extraer, consultar
 }
 
 const banco = new Banco(1000);
@@ -2477,7 +2477,7 @@ console.log(banco.consultar());`,
     icono: "Layers",
     contenido: `## Clases abstractas
 
-Una clase abstracta no se puede instanciar directamente. Sirve como base para otras clases.
+Una clase abstracta no se puede instanciar directamente. Sirve cómo base para otras clases.
 
 \`\`\`typescript
 abstract class Forma {
@@ -2509,7 +2509,7 @@ class Rectangulo extends Forma {
 }
 \`\`\`
 
-## Metodos abstractos
+## Métodos abstractos
 
 \`\`\`typescript
 abstract class Animal {
@@ -2540,7 +2540,7 @@ interface Volador {
   volar(): void;
 }
 
-// Clase abstract: puede tener implementacion
+// Clase abstract: puede tener implementación
 abstract class Transporte {
   protected velocidad: number = 0;
 
@@ -2556,7 +2556,7 @@ abstract class Transporte {
 }
 \`\`\`
 
-## Patron Template Method
+## Patrón Template Method
 
 \`\`\`typescript
 abstract class Proceso {
@@ -2585,7 +2585,7 @@ class ProcesoCSV extends Proceso {
       codigoInicial: `// Crea la clase abstracta Figura
 abstract class Figura {
   // abstract area(): number
-  // metodo describir() que retorne "Area: X"
+  // método describir() que retorne "Area: X"
 }
 
 // Crea Cuadrado que extienda Figura
@@ -2666,13 +2666,13 @@ console.log(triangulo.describir());`,
     orden: 1,
     duracion: "20 min",
     icono: "Zap",
-    contenido: `## Que son los Generics?
+    contenido: `## Qué son los Generics?
 
 Los generics permiten crear funcioness, clases e interfaces que funcionan con **cualquier tipo** sin perder la seguridad de tipos.
 
 \`\`\`typescript
 // Sin generics: perdes tipo
-function primerElemento(arr: any[]): any {
+function primerElemento(arr: cualquier[]): cualquier {
   return arr[0];
 }
 
@@ -2750,8 +2750,8 @@ const pila = crearPila();      // string[]
 const pilaNum = crearPila<number>(); // number[]
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion generica 'filtrar' que retorne solo los elementos que cumplan una condicion.",
-      codigoInicial: `// Crea la funcion generica
+      descripcion: "Crea una función genérica 'filtrar' que retorne solo los elementos que cumplan una condicion.",
+      codigoInicial: `// Crea la función genérica
 function filtrar<T>(arr: T[], condicion: 
 
 // Ejemplo: filtrar numeros pares
@@ -2877,7 +2877,7 @@ type UsuarioReadonly = Readonly<Usuario>;
 
 ## ReturnType<T>
 
-Obtiene el tipo de retorno de una funcion.
+Obtiene el tipo de retorno de una función.
 
 \`\`\`typescript
 function sumar(a: number, b: number) {
@@ -2889,7 +2889,7 @@ type Resultado = ReturnType<typeof sumar>; // number
 
 ## Parameters<T>
 
-Obtiene los tipos de los parametros.
+Obtiene los tipos de los parámetros.
 
 \`\`\`typescript
 type ParamsSumar = Parameters<typeof sumar>; // [number, number]
@@ -2897,7 +2897,7 @@ type ParamsSumar = Parameters<typeof sumar>; // [number, number]
 
 ## Resumen rapido
 
-| Utility | Que hace |
+| Utility | Qué hace |
 
 |---------|----------|
 
@@ -2915,7 +2915,7 @@ type ParamsSumar = Parameters<typeof sumar>; // [number, number]
 
 | ReturnType | Tipo de retorno |
 
-| Parameters | Tipos de parametros |`,
+| Parameters | Tipos de parámetros |`,
     ejercicio: {
       descripcion: "Usa utility types para crear un tipo 'UpdateUser' que solo permita nombre y email opcionales.",
       codigoInicial: `interface Usuario {
@@ -2987,7 +2987,7 @@ type UsuarioParcial = MiPartial<Usuario>;
 // { nombre?: string; edad?: number; }
 \`\`\`
 
-## Sintaxis basica
+## Sintaxis básica
 
 \`\`\`typescript
 type NombreTypes<T> = {
@@ -3018,7 +3018,7 @@ type Nullable<T> = {
 };
 \`\`\`
 
-## Ejemplo practico
+## Ejemplo práctico
 
 \`\`\`typescript
 interface Config {
@@ -3130,7 +3130,7 @@ type TipoCondicional<T> = T extends Condicion
   : TipoSiFalso;
 \`\`\`
 
-## Ejemplo practico
+## Ejemplo práctico
 
 \`\`\`typescript
 type NoNulo<T> = T extends null | undefined ? never : T;
@@ -3153,7 +3153,7 @@ type Mixed = FiltrarStrings<string | number | boolean>;
 
 \`\`\`typescript
 // Se aplica a cada miembro de la union
-type EsArray<T> = T extends any[] ? true : false;
+type EsArray<T> = T extends cualquier[] ? true : false;
 
 type A = EsArray<number[]>;  // true
 type B = EsArray<string>;    // false
@@ -3163,7 +3163,7 @@ type C = EsArray<[1, 2]>;    // true
 ## Ejemplo real
 
 \`\`\`typescript
-type ObtenerValor<T> = T extends Map<any, infer V> ? V : never;
+type ObtenerValor<T> = T extends Map<cualquier, infer V> ? V : never;
 
 type ValorMap = ObtenerValor<Map<string, number>>; // number
 \`\`\``,
@@ -3176,7 +3176,7 @@ type TipoArray<T> =
 type A = TipoArray<number[]>;  // "array"
 type B = TipoArray<string>;    // "otro"
 
-// Crea una funcion que use el tipo
+// Crea una función que use el tipo
 function verificar<T>(valor: T): TipoArray<T> {
   // Implementa
 }
@@ -3184,7 +3184,7 @@ function verificar<T>(valor: T): TipoArray<T> {
 console.log(verificar([1, 2, 3]));
 console.log(verificar("hola"));
 `,
-      codigoSolucion: `type TipoArray<T> = T extends any[] ? "array" : "otro";
+      codigoSolucion: `type TipoArray<T> = T extends cualquier[] ? "array" : "otro";
 
 type A = TipoArray<number[]>;
 type B = TipoArray<string>;
@@ -3237,8 +3237,8 @@ const b: Saludo = "Hola Mundo";  // OK
 ## Combinando con union types
 
 \`\`\`typescript
-type Direccion = "norte" | "sur" | "este" | "oeste";
-type Cuadrante = \`cuadrante-\${Direccion}\`;
+type Dirección = "norte" | "sur" | "este" | "oeste";
+type Cuadrante = \`cuadrante-\${Dirección}\`;
 // "cuadrante-norte" | "cuadrante-sur" | "cuadrante-este" | "cuadrante-oeste"
 \`\`\`
 
@@ -3257,9 +3257,9 @@ type EventHandler = {
 ## Rutas
 
 \`\`\`typescript
-type Metodo = "GET" | "POST" | "PUT" | "DELETE";
+type Método = "GET" | "POST" | "PUT" | "DELETE";
 type Ruta = \`/api/\${string}\`;
-type Endpoint = \`\${Metodo} \${Ruta}\`;
+type Endpoint = \`\${Método} \${Ruta}\`;
 
 const endpoint: Endpoint = "GET /api/usuarios";
 \`\`\`
@@ -3330,7 +3330,7 @@ console.log(handler);`,
 \`infer\` permite extraer un tipo dentro de un tipo condicional.
 
 \`\`\`typescript
-type ExtraerRetorno<T> = T extends (...args: any[]) => infer R ? R : never;
+type ExtraerRetorno<T> = T extends (...args: cualquier[]) => infer R ? R : never;
 
 type Fn = () => string;
 type Retorno = ExtraerRetorno<Fn>; // string
@@ -3359,8 +3359,8 @@ type C = Elemento<(string | number)[]>; // string | number
 ## Extraer tipo de tupla
 
 \`\`\`typescript
-type Primero<T> = T extends [infer First, ...any[]] ? First : never;
-type Resto<T> = T extends [any, ...infer Rest] ? Rest : never;
+type Primero<T> = T extends [infer First, ...cualquier[]] ? First : never;
+type Resto<T> = T extends [cualquier, ...infer Rest] ? Rest : never;
 
 type A = Primero<[1, 2, 3]>;  // 1
 type B = Resto<[1, 2, 3]>;    // [2, 3]
@@ -3394,7 +3394,7 @@ type ConfigParcial = DeepPartial<Config>;
 // { api?: { url?: string; timeout?: number }; debug?: boolean; }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea un type que extraiga el tipo de retorno de una funcion usando infer.",
+      descripcion: "Crea un type que extraiga el tipo de retorno de una función usando infer.",
       codigoInicial: `// Crea el type
 type ObtenerRetorno<T> = 
 
@@ -3408,7 +3408,7 @@ type RetornoSaludar = ObtenerRetorno<typeof saludar>; // string
 
 console.log("OK");
 `,
-      codigoSolucion: `type ObtenerRetorno<T> = T extends (...args: any[]) => infer R ? R : never;
+      codigoSolucion: `type ObtenerRetorno<T> = T extends (...args: cualquier[]) => infer R ? R : never;
 
 function sumar(a: number, b: number): number { return a + b; }
 function saludar(nombre: string): string { return \`Hola \${nombre}\`; }
@@ -3434,17 +3434,17 @@ console.log("OK");`,
 
   // ===== MODULO 5: MODULOS Y NAMESPACES =====
   {
-    id: "modulos-es6",
-    titulo: "Modulos ES6",
+    id: "módulos-es6",
+    titulo: "Módulos ES6",
     descripcion: "Importa y exporta codigo de forma organizada.",
     modulo: 5,
-    moduloNombre: "Modulos y Namespaces",
+    moduloNombre: "Módulos y Namespaces",
     orden: 1,
     duracion: "15 min",
     icono: "Zap",
-    contenido: `## Modulos ES6
+    contenido: `## Módulos ES6
 
-Los modulos permiten dividir el codigo en archivos separados reutilizables.
+Los módulos permiten dividir el codigo en archivos separados reutilizables.
 
 ## Exportaciones
 
@@ -3512,8 +3512,8 @@ import { Usuario } from "./types";
 export async function getUsuario(id: number): Promise<Usuario> { ... }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea un modulo que exporte una funcion para calcular el area de un circulo.",
-      codigoInicial: `// Exporta una funcion que calcule el area de un circulo
+      descripcion: "Crea un módulo que exporte una función para calcular el area de un circulo.",
+      codigoInicial: `// Exporta una función que calcule el area de un circulo
 export 
 
 console.log(area(5));
@@ -3546,7 +3546,7 @@ console.log(area(5));`,
     titulo: "Namespaces",
     descripcion: "Agrupa codigo en un espacio de nombres.",
     modulo: 5,
-    moduloNombre: "Modulos y Namespaces",
+    moduloNombre: "Módulos y Namespaces",
     orden: 2,
     duracion: "15 min",
     icono: "Zap",
@@ -3583,7 +3583,7 @@ namespace App {
 
   export namespace Api {
     export function get(url: string) { ... }
-    export function post(url: string, data: any) { ... }
+    export function post(url: string, data: cualquier) { ... }
   }
 }
 
@@ -3609,9 +3609,9 @@ Config.apiUrl;  // "https://api.example.com"
 Config.timeout; // 5000
 \`\`\`
 
-## Namespaces vs Modulos
+## Namespaces vs Módulos
 
-| Caracteristica | Modulos | Namespaces |
+| Caracteristica | Módulos | Namespaces |
 
 |----------------|---------|------------|
 
@@ -3623,7 +3623,7 @@ Config.timeout; // 5000
 
 | Uso moderno | Si | No |
 
-> **Nota**: En modernos proyectos se usan **modulos**, no namespaces.`,
+> **Nota**: En modernos proyectos se usan **módulos**, no namespaces.`,
     ejercicio: {
       descripcion: "Crea un namespace 'Math' con funciones para sumar y multiplicar.",
       codigoInicial: `// Crea el namespace Math
@@ -3668,7 +3668,7 @@ console.log(Math.multiplicar(4, 5));`,
     titulo: "Declaraciones Ambient (d.ts)",
     descripcion: "Declara tipos para codigo JavaScript externo.",
     modulo: 5,
-    moduloNombre: "Modulos y Namespaces",
+    moduloNombre: "Módulos y Namespaces",
     orden: 3,
     duracion: "15 min",
     icono: "Zap",
@@ -3679,21 +3679,21 @@ Los archivos \`.d.ts\` permiten declarar tipos para codigo que no tiene typings.
 \`\`\`typescript
 // global.d.ts
 declare const API_URL: string;
-declare function gtag(...args: any[]): void;
+declare function gtag(...args: cualquier[]): void;
 declare module "libreria-sin-tipos" {
   export function hacerAlgo(x: number): string;
 }
 \`\`\`
 
-## Declarando modulos
+## Declarando módulos
 
 \`\`\`typescript
 // para una libreria sin tipos
-declare modulo "mi-libreria" {
+declare módulo "mi-libreria" {
   export function init(config: object): void;
   export class Cliente {
     constructor(url: string);
-    get(ruta: string): Promise<any>;
+    get(ruta: string): Promise<cualquier>;
   }
 }
 
@@ -3740,7 +3740,7 @@ declare global {
 window.analytics.track("click");
 \`\`\``,
     ejercicio: {
-      descripcion: "Declara un tipo para la funcion 'fetch' que retorna Promise<any>.",
+      descripcion: "Declara un tipo para la función 'fetch' que retorna Promise<cualquier>.",
       codigoInicial: `// Declara el tipo para fetch
 declare 
 
@@ -3760,7 +3760,7 @@ async function getData() {
 }`,
       tests: [
         {
-          descripcion: "fetch es una funcion",
+          descripcion: "fetch es una función",
           codigo: `typeof fetch === "function"`,
         },
         {
@@ -3775,15 +3775,15 @@ async function getData() {
   {
     id: "dynamic-imports",
     titulo: "Imports Dinamicos",
-    descripcion: "Carga modulos bajo demanda con lazy loading.",
+    descripcion: "Carga módulos bajo demanda con lazy loading.",
     modulo: 5,
-    moduloNombre: "Modulos y Namespaces",
+    moduloNombre: "Módulos y Namespaces",
     orden: 4,
     duracion: "15 min",
     icono: "Zap",
     contenido: `## Imports Dinamicos
 
-Permiten cargar modulos en tiempo de ejecucion, mejorando el rendimiento.
+Permiten cargar módulos en tiempo de ejecución, mejorando el rendimiento.
 
 \`\`\`typescript
 // Import estatico (se carga siempre)
@@ -3842,8 +3842,8 @@ const modulo = await import(
 );
 \`\`\``,
     ejercicio: {
-      descripcion: "Usa import dinamico para cargar un modulo solo cuando se llama la funcion.",
-      codigoInicial: `// Crea una funcion que use import dinamico
+      descripcion: "Usa import dinamico para cargar un módulo solo cuando se llama la función.",
+      codigoInicial: `// Crea una función que use import dinamico
 async function cargarModulo() {
   // Implementa import dinamico
 }
@@ -3875,16 +3875,16 @@ cargarModulo().then(mod => {
   },
   {
     id: "module-resolution",
-    titulo: "Resolucion de Modulos",
-    descripcion: "Entiende como TypeScript resuelve las importaciones.",
+    titulo: "Resolucion de Módulos",
+    descripcion: "Entiende cómo TypeScript resuelve las importaciones.",
     modulo: 5,
-    moduloNombre: "Modulos y Namespaces",
+    moduloNombre: "Módulos y Namespaces",
     orden: 5,
     duracion: "15 min",
     icono: "Zap",
-    contenido: `## Resolucion de Modulos
+    contenido: `## Resolucion de Módulos
 
-TypeScript busca archivos basado en la importacion.
+TypeScript busca archivos basado en la importación.
 
 ## Tipos de resolucion
 
@@ -3995,13 +3995,13 @@ import { Usuario } from "@types/usuario";`,
     titulo: "Promesas",
     descripcion: "Maneja operaciones asincronas con Promises.",
     modulo: 6,
-    moduloNombre: "Asincronia",
+    moduloNombre: "Asincronía",
     orden: 1,
     duracion: "20 min",
     icono: "Zap",
-    contenido: `## Que es una Promise?
+    contenido: `## Qué es una Promise?
 
-Una Promise es un objeto que representa el resultado eventual de una operacion asincrona.
+Una Promise es un objeto que representa el resultado eventual de una operación asíncrona.
 
 \`\`\`typescript
 const miPromesa = new Promise<string>((resolve, reject) => {
@@ -4019,11 +4019,11 @@ miPromesa.then(resultado => console.log(resultado));
 
 |--------|-------------|
 
-| Pending | Operacion en curso |
+| Pending | Operación en curso |
 
-| Fulfilled | Operacion completada |
+| Fulfilled | Operación completada |
 
-| Rejected | Operacion fallida |
+| Rejected | Operación fallida |
 
 ## then, catch, finally
 
@@ -4068,8 +4068,8 @@ resultados.forEach(r => {
 });
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion que retorne una Promise que se resuelve con 'Hola' despues de 1 segundo.",
-      codigoInicial: `// Crea la funcion
+      descripcion: "Crea una función que retorne una Promise que se resuelve con 'Hola' despues de 1 segundo.",
+      codigoInicial: `// Crea la función
 function esperarSaludo(): Promise<string> {
   // Implementa
 }
@@ -4104,15 +4104,15 @@ esperarSaludo().then(mensaje => console.log(mensaje));`,
   {
     id: "async-await",
     titulo: "Async/Await",
-    descripcion: "Escribe codigo asincrono que parece sincrono.",
+    descripcion: "Escribe codigo asíncrono que parece síncrono.",
     modulo: 6,
-    moduloNombre: "Asincronia",
+    moduloNombre: "Asincronía",
     orden: 2,
     duracion: "20 min",
     icono: "Zap",
     contenido: `## Async/Await
 
-\`async/await\` es azucar sintactico sobre Promises.
+\`async/await\` es azucar sintáctico sobre Promises.
 
 \`\`\`typescript
 async function obtenerUsuario(id: number) {
@@ -4176,8 +4176,8 @@ async function obtenerDatos() {
 const datos = await obtenerDatos(); // { nombre: "Ana" }
 \`\`\``,
     ejercicio: {
-      descripcion: "Convierte una funcion con Promises a async/await.",
-      codigoInicial: `// Convierte esta funcion a async/await
+      descripcion: "Convierte una función con Promises a async/await.",
+      codigoInicial: `// Convierte esta función a async/await
 function obtenerUsuario(id: number) {
   return fetch(\`/api/users/\${id}\`)
     .then(res => res.json())
@@ -4199,7 +4199,7 @@ obtenerUsuario(1);
 obtenerUsuario(1);`,
       tests: [
         {
-          descripcion: "es una funcion async",
+          descripcion: "es una función async",
           codigo: `obtenerUsuario.constructor.name === "AsyncFunction"`,
         },
         {
@@ -4218,9 +4218,9 @@ obtenerUsuario(1);`,
   {
     id: "manejo-errores-async",
     titulo: "Manejo de Errores Async",
-    descripcion: "Captura errores en codigo asincrono.",
+    descripcion: "Captura errores en codigo asíncrono.",
     modulo: 6,
-    moduloNombre: "Asincronia",
+    moduloNombre: "Asincronía",
     orden: 3,
     duracion: "15 min",
     icono: "Zap",
@@ -4242,7 +4242,7 @@ try {
 }
 \`\`\`
 
-## Patron try/catch
+## Patrón try/catch
 
 \`\`\`typescript
 async function cargarDatos() {
@@ -4274,7 +4274,7 @@ async function procesar(id: number) {
 }
 \`\`\`
 
-## Funcion helper
+## Función helper
 
 \`\`\`typescript
 async function to<T>(promise: Promise<T>): Promise<[T | null, Error | null]> {
@@ -4293,8 +4293,8 @@ if (error) {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una funcion to() que capture errores y retorne [dato, error].",
-      codigoInicial: `// Crea la funcion to
+      descripcion: "Crea una función to() que capture errores y retorne [dato, error].",
+      codigoInicial: `// Crea la función to
 async function to<T>(promise: Promise<T>): Promise<[T | null, Error | null]> {
   // Implementa
 }
@@ -4335,15 +4335,15 @@ console.log(dato, error);`,
   {
     id: "generators",
     titulo: "Generators",
-    descripcion: "Funciones que pueden pausar y reanudar su ejecucion.",
+    descripcion: "Funciones que pueden pausar y reanudar su ejecución.",
     modulo: 6,
-    moduloNombre: "Asincronia",
+    moduloNombre: "Asincronía",
     orden: 4,
     duracion: "15 min",
     icono: "Zap",
     contenido: `## Generators
 
-Las funciones generadoras usan \`yield\` para pausar la ejecucion.
+Las funciones generadoras usan \`yield\` para pausar la ejecución.
 
 \`\`\`typescript
 function* contador() {
@@ -4458,7 +4458,7 @@ console.log(numeros);`,
     titulo: "Iteradores y Iterables",
     descripcion: "Implementa el protocolo de iteracion en tus objetos.",
     modulo: 6,
-    moduloNombre: "Asincronia",
+    moduloNombre: "Asincronía",
     orden: 5,
     duracion: "15 min",
     icono: "Zap",
@@ -4497,7 +4497,7 @@ for (const num of rango) {
 const numeros = [...new Rango(1, 5)]; // [1, 2, 3, 4, 5]
 \`\`\`
 
-## Generator como iterable
+## Generator cómo iterable
 
 \`\`\`typescript
 function* rango(inicio: number, fin: number) {
@@ -4594,16 +4594,16 @@ console.log(resultado);`,
   // ===== MODULO 7: PATRONES Y BUENAS PRACTICAS =====
   {
     id: "singleton",
-    titulo: "Patron Singleton",
+    titulo: "Patrón Singleton",
     descripcion: "Asegura una unica instancia de una clase.",
     modulo: 7,
-    moduloNombre: "Patrones y Buenas Practicas",
+    moduloNombre: "Patrones y Buenas Prácticas",
     orden: 1,
     duracion: "15 min",
     icono: "Zap",
     contenido: `## Singleton
 
-El patron Singleton asegura que solo exista **una instancia** de una clase.
+El patrón Singleton asegura que solo exista **una instancia** de una clase.
 
 \`\`\`typescript
 class Database {
@@ -4632,7 +4632,7 @@ console.log(db1 === db2); // true
 
 - Conexiones a base de datos
 
-- Configuracion global
+- Configuración global
 
 - Cache compartida
 
@@ -4653,7 +4653,7 @@ import database from "./database";
       codigoInicial: `// Crea el Singleton Config
 class Config {
   private static instance: Config;
-  private config: Record<string, any> = {};
+  private config: Record<string, cualquier> = {};
 
   // Implementa constructor privado y getInstance
 }
@@ -4664,7 +4664,7 @@ console.log(config1 === config2);
 `,
       codigoSolucion: `class Config {
   private static instance: Config;
-  private config: Record<string, any> = {};
+  private config: Record<string, cualquier> = {};
 
   private constructor() {}
 
@@ -4675,7 +4675,7 @@ console.log(config1 === config2);
     return Config.instance;
   }
 
-  set(key: string, value: any) {
+  set(key: string, value: cualquier) {
     this.config[key] = value;
   }
 
@@ -4703,16 +4703,16 @@ console.log(config1 === config2);`,
   },
   {
     id: "factory",
-    titulo: "Patron Factory",
+    titulo: "Patrón Factory",
     descripcion: "Crea objetos sin especificar la clase exacta.",
     modulo: 7,
-    moduloNombre: "Patrones y Buenas Practicas",
+    moduloNombre: "Patrones y Buenas Prácticas",
     orden: 2,
     duracion: "15 min",
     icono: "Zap",
     contenido: `## Factory
 
-El patron Factory crea objetos sin exponer la logica de creacion.
+El patrón Factory crea objetos sin exponer la logica de creación.
 
 \`\`\`typescript
 interface Transporte {
@@ -4820,10 +4820,10 @@ console.log(email.enviar());`,
   },
   {
     id: "observer",
-    titulo: "Patron Observer",
+    titulo: "Patrón Observer",
     descripcion: "Notifica automaticamente cuando cambia el estado.",
     modulo: 7,
-    moduloNombre: "Patrones y Buenas Practicas",
+    moduloNombre: "Patrones y Buenas Prácticas",
     orden: 3,
     duracion: "20 min",
     icono: "Zap",
@@ -4873,7 +4873,7 @@ emitter.on("chat", (data) => {
 emitter.emit("chat", { mensaje: "Hola mundo" });
 \`\`\`
 
-## Patron React - useState + Observer
+## Patrón React - useState + Observer
 
 \`\`\`typescript
 function useObservable<T>(observable: Observable<T>) {
@@ -4887,7 +4887,7 @@ function useObservable<T>(observable: Observable<T>) {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Implementa un EventEmitter basico con on, off y emit.",
+      descripcion: "Implementa un EventEmitter básico con on, off y emit.",
       codigoInicial: `// Implementa EventEmitter
 class EventEmitter {
   // Implementa on, off, emit
@@ -4915,7 +4915,7 @@ emitter.emit("click", "boton1");
     }
   }
 
-  emit(evento: string, ...args: any[]) {
+  emit(evento: string, ...args: cualquier[]) {
     const lista = this.listeners.get(evento);
     if (lista) {
       lista.forEach(listener => listener(...args));
@@ -4947,20 +4947,20 @@ emitter.emit("click", "boton1");`,
   {
     id: "decorators",
     titulo: "Decorators",
-    descripcion: "Modifica clases y metodos de forma declarativa.",
+    descripcion: "Modifica clases y métodos de forma declarativa.",
     modulo: 7,
-    moduloNombre: "Patrones y Buenas Practicas",
+    moduloNombre: "Patrones y Buenas Prácticas",
     orden: 4,
     duracion: "20 min",
     icono: "Zap",
     contenido: `## Decorators
 
-Los decorators son funciones que modifican clases, metodos, propiedades o parametros.
+Los decorators son funciones que modifican clases, métodos, propiedades o parámetros.
 
 \`\`\`typescript
-function log(target: any, key: string, descriptor: PropertyDescriptor) {
+function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
   const original = descriptor.value;
-  descriptor.value = function(...args: any[]) {
+  descriptor.value = function(...args: cualquier[]) {
     console.log(\`Llamando a \${key} con\`, args);
     return original.apply(this, args);
   };
@@ -4998,14 +4998,14 @@ function sealed(constructor: Function) {
 
 // Property decorator
 function minLength(largo: number) {
-  return (target: any, key: string) => {
+  return (target: cualquier, key: string) => {
     // ...
   };
 }
 
 // Method decorator
 function debounce(ms: number) {
-  return (target: any, key: string, descriptor: PropertyDescriptor) => {
+  return (target: cualquier, key: string, descriptor: PropertyDescriptor) => {
     // ...
   };
 }
@@ -5015,9 +5015,9 @@ function debounce(ms: number) {
 
 \`\`\`typescript
 function autorizado(roles: string[]) {
-  return function (target: any, key: string, descriptor: PropertyDescriptor) {
+  return function (target: cualquier, key: string, descriptor: PropertyDescriptor) {
     const original = descriptor.value;
-    descriptor.value = function (...args: any[]) {
+    descriptor.value = function (...args: cualquier[]) {
       const usuario = args[0];
       if (!roles.includes(usuario.rol)) {
         throw new Error("No autorizado");
@@ -5029,7 +5029,7 @@ function autorizado(roles: string[]) {
 
 class Admin {
   @autorizado(["admin"])
-  eliminarUsuario(usuario: any) {
+  eliminarUsuario(usuario: cualquier) {
     return "Usuario eliminado";
   }
 }
@@ -5037,7 +5037,7 @@ class Admin {
     ejercicio: {
       descripcion: "Crea un decorator @log que registre las llamadas a funciones.",
       codigoInicial: `// Crea el decorator
-function log(target: any, key: string, descriptor: PropertyDescriptor) {
+function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
   // Implementa
 }
 
@@ -5050,9 +5050,9 @@ class Servicio {
 
 new Servicio().saludar("Ana");
 `,
-      codigoSolucion: `function log(target: any, key: string, descriptor: PropertyDescriptor) {
+      codigoSolucion: `function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
   const original = descriptor.value;
-  descriptor.value = function(...args: any[]) {
+  descriptor.value = function(...args: cualquier[]) {
     console.log(\`Llamando a \${key} con\`, args);
     return original.apply(this, args);
   };
@@ -5081,11 +5081,11 @@ new Servicio().saludar("Ana");`,
     recompensa: { insignia: "Decorator-designer", puntos: 10 },
   },
   {
-    id: "buenas-practicas",
-    titulo: "Buenas Practicas",
+    id: "buenas-prácticas",
+    titulo: "Buenas Prácticas",
     descripcion: "Convenciones y patrones para codigo TypeScript limpio.",
     modulo: 7,
-    moduloNombre: "Patrones y Buenas Practicas",
+    moduloNombre: "Patrones y Buenas Prácticas",
     orden: 5,
     duracion: "15 min",
     icono: "Zap",
@@ -5144,7 +5144,7 @@ function parsearJSON(json: string) {
 
 ## Naming patterns
 
-| Patron | Ejemplo | Uso |
+| Patrón | Ejemplo | Uso |
 
 |--------|---------|-----|
 
@@ -5176,7 +5176,7 @@ interface Props { ... }
 export function MiComponente() { ... }
 \`\`\``,
     ejercicio: {
-      descripcion: "Aplica las buenas practicas para refactorizar codigo.",
+      descripcion: "Aplica las buenas prácticas para refactorizar codigo.",
       codigoInicial: `// Refactoriza este codigo
 class usuario_data {
   name: string;
@@ -5294,11 +5294,11 @@ class TareaService {
 }
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea un tipo Resultado<T> y una funcion crearTarea que retorne Resultado.",
+      descripcion: "Crea un tipo Resultado<T> y una función crearTarea que retorne Resultado.",
       codigoInicial: `// Crea el tipo Resultado
 type Resultado<T> = 
 
-// Crea la funcion crearTarea
+// Crea la función crearTarea
 function crearTarea(titulo: string): Resultado<{ id: string; titulo: string }> {
   // Implementa
 }
@@ -5339,15 +5339,15 @@ console.log(crearTarea("Aprender TypeScript"));`,
     recompensa: { insignia: "API-designer", puntos: 15 },
   },
   {
-    id: "validacion-runtime",
-    titulo: "Validacion en Runtime",
-    descripcion: "Valida datos en tiempo de ejecucion con tipos.",
+    id: "validación-runtime",
+    titulo: "Validación en Runtime",
+    descripcion: "Valida datos en tiempo de ejecución con tipos.",
     modulo: 8,
     moduloNombre: "Proyecto Final",
     orden: 2,
     duracion: "20 min",
     icono: "Zap",
-    contenido: `## Validacion Runtime vs Compile-time
+    contenido: `## Validación Runtime vs Compile-time
 
 TypeScript valida en compile-time pero no en runtime.
 
@@ -5358,12 +5358,12 @@ interface Usuario {
   edad: number;
 }
 
-// Sin validacion runtime - peligroso
-function procesar(datos: any) {
+// Sin validación runtime - peligroso
+function procesar(datos: cualquier) {
   const usuario: Usuario = datos; // No valida nada
 }
 
-// Con validacion
+// Con validación
 function esUsuario(datos: unknown): datos is Usuario {
   return (
     typeof datos === "object" &&
@@ -5378,7 +5378,7 @@ function procesarSeguro(datos: unknown) {
   if (!esUsuario(datos)) {
     throw new Error("Datos invalidos");
   }
-  // Aqui TypeScript sabe que es Usuario
+  // Aqui TypeScript sabe qué es Usuario
 }
 \`\`\`
 
@@ -5541,7 +5541,7 @@ describe("Usuarios", () => {
 });
 \`\`\``,
     ejercicio: {
-      descripcion: "Escribe tests para una funcion crearUsuario tipada.",
+      descripcion: "Escribe tests para una función crearUsuario tipada.",
       codigoInicial: `// Implementa
 interface Usuario {
   id: string;
@@ -5594,7 +5594,7 @@ console.log(usuario.email === "a@b.com" ? "PASS email" : "FAIL email");`,
   },
   {
     id: "deploy-config",
-    titulo: "Configuracion y Deploy",
+    titulo: "Configuración y Deploy",
     descripcion: "Configura tu proyecto para produccion.",
     modulo: 8,
     moduloNombre: "Proyecto Final",
@@ -5715,7 +5715,7 @@ jobs:
 
 Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido.
 
-## Modulo 1: Fundamentos
+## Módulo 1: Fundamentos
 
 - Tipos basicos, interfaces, clases, enums
 
@@ -5723,23 +5723,23 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Destructuring, spread/rest
 
-## Modulo 2: Funciones
+## Módulo 2: Funciones
 
-- Tipado de parametros y retorno
+- Tipado de parámetros y retorno
 
 - Sobrecarga de funciones
 
-- Funciones como tipos
+- Funciones cómo tipos
 
-## Modulo 3: Interfaces y Clases
+## Módulo 3: Interfaces y Clases
 
 - Diferencia interface vs type
 
-- Herencia, implementacion
+- Herencia, implementación
 
-- Propiedades y metodos abstractos
+- Propiedades y métodos abstractos
 
-## Modulo 4: Tipos Avanzados
+## Módulo 4: Tipos Avanzados
 
 - Generics con constraints
 
@@ -5749,7 +5749,7 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Template literal types, infer
 
-## Modulo 5: Modulos y Namespaces
+## Módulo 5: Módulos y Namespaces
 
 - ES6 modules, imports/exports
 
@@ -5759,7 +5759,7 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Module resolution
 
-## Modulo 6: Asincronia
+## Módulo 6: Asincronía
 
 - Promesas y Promise.all
 
@@ -5767,7 +5767,7 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Generators e iteradores
 
-## Modulo 7: Patrones y Buenas Practicas
+## Módulo 7: Patrones y Buenas Prácticas
 
 - Singleton, Factory, Observer
 
@@ -5775,11 +5775,11 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 - Convenciones de codigo
 
-## Modulo 8: Proyecto Final
+## Módulo 8: Proyecto Final
 
 - Diseno de API tipada
 
-- Validacion runtime
+- Validación runtime
 
 - Testing y deploy
 
@@ -5787,10 +5787,10 @@ Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido
 
 Aplica lo aprendido en proyectos reales. Crea tu propia libreria o contribuye a open source.`,
     ejercicio: {
-      descripcion: "Crea una funcion que retorne un objeto resumen del curso.",
-      codigoInicial: `// Crea la funcion
+      descripcion: "Crea una función que retorne un objeto resumen del curso.",
+      codigoInicial: `// Crea la función
 function resumenCurso() {
-  // Retorna un objeto con modulos, lecciones y total
+  // Retorna un objeto con módulos, lecciones y total
 }
 
 console.log(resumenCurso());
@@ -5798,7 +5798,7 @@ console.log(resumenCurso());
       codigoSolucion: `function resumenCurso() {
   return {
     titulo: "Curso de TypeScript",
-    modulos: 8,
+    módulos: 8,
     lecciones: 40,
     totalHoras: 12,
     completado: true
@@ -5812,7 +5812,7 @@ console.log(resumenCurso());`,
           codigo: `typeof resumenCurso() === "object"`,
         },
         {
-          descripcion: "tiene modulos = 8",
+          descripcion: "tiene módulos = 8",
           codigo: `resumenCurso().modulos === 8`,
         },
         {
