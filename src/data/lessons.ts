@@ -11,7 +11,7 @@ export const lecciones: Lesson[] = [
     orden: 1,
     duracion: "15 min",
     icono: "BookOpen",
-    contenido: `## Introduccion
+    contenido: `## Introducción
 
 TypeScript es un lenguaje de programación de **código abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que cualquier código JavaScript válido es también código TypeScript válido.
 
@@ -20,31 +20,20 @@ TypeScript es un lenguaje de programación de **código abierto** desarrollado p
 ## ¿Por qué TypeScript?
 
 | Ventaja | Descripción |
-
 |---------|-------------|
-
 | **Detección de errores** | Encuentra errores en tiempo de compilación, no en runtime |
-
 | **Mejor IDE** | Autocompletado, navegación, refactoring automático |
-
-| **Documentación** | Los tipos actúan cómo documentación viva |
-
+| **Documentación** | Los tipos actúan como documentación viva |
 | **Escalabilidad** | Mantiene el código limpio en proyectos grandes |
-
 | **Adopción** | Usado por Angular, Vue, Deno, y miles de empresas |
 
 ## Historia
 
 - **2012** — Microsoft internamente (Anders Hejlsberg)
-
 - **2013** — Anuncio público en QCon
-
 - **2014** — Open source en CodePlex
-
 - **2016** — Angular 2 adopta TypeScript
-
 - **2020** — Deno lo usa como lenguaje principal
-
 - **2023** — TypeScript 5.x con mejoras de rendimiento
 
 ## ¿Cómo funciona TypeScript?
@@ -105,21 +94,21 @@ console.log(\`Mi nombre es \${nombre} y tengo \${edad} años\`);`,
     recompensa: { insignia: "Primeros-pasos-ts", puntos: 10 },
   },
   {
-    id: "instalacion-configuración",
-    titulo: "Instalacion y Configuración",
+    id: "instalacion-configuracion",
+    titulo: "Instalación y Configuración",
     descripcion: "Instalar TypeScript, configurar tsconfig.json y tu primer compile.",
     modulo: 1,
     moduloNombre: "Fundamentos",
     orden: 2,
     duracion: "20 min",
     icono: "Code2",
-    contenido: `## Instalacion
+    contenido: `## Instalación
 
 ### Requisitos previos
 
 - Node.js 16+ instalado
 
-- Un editor de codigo (VS Code recomendado)
+- Un editor de código (VS Code recomendado)
 
 ### Instalar globalmente
 
@@ -221,7 +210,7 @@ console.log(saludar("Mundo"));`,
   },
   {
     id: "tipos-basicos",
-    titulo: "Tipos Basicos",
+    titulo: "Tipos Básicos",
     descripcion: "number, string, boolean, null, undefined y void.",
     modulo: 1,
     moduloNombre: "Fundamentos",
