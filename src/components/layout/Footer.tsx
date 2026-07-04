@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-zinc-800 bg-dark-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-4">
@@ -60,6 +60,31 @@ export default function Footer() {
               <li>
                 <a
                   href="https://github.com/microsoft/TypeScript"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                >
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-zinc-100 font-semibold mb-4">Contacto</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="mailto:marcoscalabresibaniez@gmail.com"
+                  className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                >
+                  marcoscalabresibaniez@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/kraso"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
