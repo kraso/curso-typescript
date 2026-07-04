@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu, X, LogOut,
-  BookOpen, ChevronDown, Trophy
+  BookOpen, ChevronDown, Trophy, User
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
@@ -117,6 +117,13 @@ export default function Navbar() {
                           <p className="text-sm font-medium text-zinc-100">{userName}</p>
                           <p className="text-xs text-zinc-500">{user.email}</p>
                         </div>
+                        <Link
+                          href="/perfil"
+                          className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
+                        >
+                          <User size={14} />
+                          Mi Perfil
+                        </Link>
                         <Link
                           href="/progreso"
                           className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
