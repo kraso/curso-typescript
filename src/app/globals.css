@@ -407,3 +407,245 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+
+/* Navbar */
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .glass .text-zinc-100,
+[data-theme="light"] .glass .text-zinc-400 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .glass .text-zinc-400 {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .glass .bg-dark-700\/50 {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .glass .hover\:text-zinc-100:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .glass .hover\:bg-dark-700\/50:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Hero Section */
+[data-theme="light"] .bg-dark-900\/80,
+[data-theme="light"] section.bg-dark-900\/80 {
+  background: var(--bg-elevated);
+}
+
+[data-theme="light"] .text-zinc-100 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .text-zinc-400 {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .text-zinc-500 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .text-zinc-600 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .bg-dark-700\/50 {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .bg-dark-800\/50 {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .bg-dark-900 {
+  background: var(--bg-base);
+}
+
+[data-theme="light"] .bg-dark-800 {
+  background: var(--bg-surface);
+}
+
+[data-theme="light"] .border-zinc-700\/50,
+[data-theme="light"] .border-zinc-700\/30,
+[data-theme="light"] .border-zinc-800 {
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .border-zinc-600 {
+  border-color: var(--border-strong);
+}
+
+[data-theme="light"] .hover\:border-zinc-600:hover {
+  border-color: var(--border-strong);
+}
+
+/* Hero badge */
+[data-theme="light"] .bg-dark-700\/50 {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* Hero stats dividers */
+[data-theme="light"] .bg-zinc-800 {
+  background: var(--border-color);
+}
+
+/* Footer */
+[data-theme="light"] footer {
+  background: var(--bg-surface);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] footer .text-zinc-100 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] footer .text-zinc-500 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] footer .text-zinc-600 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] footer .hover\:text-zinc-300:hover {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] footer .hover\:text-zinc-400:hover {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] footer .border-zinc-800 {
+  border-color: var(--border-color);
+}
+
+/* CTA Section */
+[data-theme="light"] .gradient-bg {
+  background: linear-gradient(-45deg, #f8f9fc, #eef2ff, #e0e7ff, #f8f9fc);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Buttons */
+[data-theme="light"] .bg-primary {
+  background-color: #2563EB;
+}
+
+[data-theme="light"] .bg-primary:hover {
+  background-color: #1d4ed8;
+}
+
+[data-theme="light"] .bg-primary-dark {
+  background-color: #1d4ed8;
+}
+
+[data-theme="light"] .hover\:bg-primary-dark:hover {
+  background-color: #1d4ed8;
+}
+
+/* Scrollbar */
+[data-theme="light"] * {
+  scrollbar-color: #ccc transparent;
+}
+
+/* Selection */
+[data-theme="light"] ::selection {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #0f172a;
+}
+
+/* Focus */
+[data-theme="light"] *:focus-visible {
+  outline-color: #2563EB;
+}
+
+/* Proyectos column images filter */
+[data-theme="light"] img[src*="favicon"] {
+  filter: none;
+}
+
+/* Glass light variant */
+[data-theme="light"] .glass-light {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Features cards */
+[data-theme="light"] .bg-dark-800\/30 {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .hover\:bg-dark-700\/30:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .hover\:border-zinc-600\/50:hover {
+  border-color: var(--border-strong);
+}
+
+/* Resource cards */
+[data-theme="light"] .bg-dark-800\/60 {
+  background: var(--bg-surface);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .hover\:bg-dark-800\/80:hover {
+  background: var(--bg-elevated);
+}
+
+/* Section backgrounds */
+[data-theme="light"] .bg-dark-900\/80 {
+  background: var(--bg-elevated);
+}
+
+[data-theme="light"] .bg-dark-900\/50 {
+  background: var(--bg-surface);
+}
+
+/* Badge backgrounds */
+[data-theme="light"] .bg-primary\/10 {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* Text colors for sections */
+[data-theme="light"] section .text-zinc-100 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] section .text-zinc-400 {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] section .text-zinc-500 {
+  color: var(--text-muted);
+}
+
+/* Resource card hover underline */
+[data-theme="light"] .group-hover\:underline:hover {
+  text-decoration: underline;
+}
+
+/* External link icon color */
+[data-theme="light"] .text-zinc-600 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .group-hover\:text-zinc-400:hover {
+  color: var(--text-secondary);
+}
