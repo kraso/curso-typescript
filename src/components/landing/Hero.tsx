@@ -16,7 +16,7 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-[1.05] tracking-tight animate-slide-up text-balance">
+        <h1 className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-[1.05] tracking-tight animate-slide-up text-balance">
           <span style={{ color: "var(--text-primary)" }}>TypeScript</span>
           <br />
           <span className="text-gradient">domina el tipado</span>
@@ -25,7 +25,7 @@ export default function Hero() {
         {/* Code preview */}
         <div className="max-w-3xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: "0.05s" }}>
           <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/5" style={{ border: "1px solid var(--border-color)" }}>
-            <div className="p-6 text-left" style={{ background: "#0d1117" }}>
+            <div className="p-3 sm:p-6 text-left" style={{ background: "#0d1117" }}>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -81,7 +81,7 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="flex items-center justify-center gap-8 mt-16 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+        <div className="flex items-center justify-center gap-4 sm:gap-8 mt-8 sm:mt-16 animate-slide-up" style={{ animationDelay: "0.3s" }}>
           <div className="text-center">
             <p className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>40+</p>
             <p className="text-sm" style={{ color: "var(--text-muted)" }}>Lecciones</p>

@@ -41,7 +41,7 @@ export default function ProgresoPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-zinc-100 mb-2">Mi Progreso</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-2">Mi Progreso</h1>
             <p className="text-zinc-500">Seguimiento de tu avance en el curso de TypeScript</p>
           </div>
 

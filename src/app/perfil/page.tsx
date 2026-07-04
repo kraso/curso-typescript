@@ -173,7 +173,7 @@ export default function PerfilPage() {
             Volver al curso
           </Link>
 
-          <h1 className="text-3xl font-bold text-zinc-100 mb-8">Mi Perfil</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-8">Mi Perfil</h1>
 
           {/* Avatar */}
           <div className="mb-8 p-6 rounded-2xl border border-zinc-700/30 bg-dark-800/50">

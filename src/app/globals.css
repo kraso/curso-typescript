@@ -35,10 +35,12 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover) !important;
-  border-color: var(--border-strong) !important;
+@media (hover: hover) {
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover) !important;
+    border-color: var(--border-strong) !important;
+  }
 }
 
 [data-theme="light"] .card-hover:hover {

@@ -132,7 +132,7 @@ export default function Navbar() {
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+              className="p-2 min-w-[44px] min-h-[44px] rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
               title={theme === "dark" ? "Modo claro" : "Modo oscuro"}
               aria-label={theme === "dark" ? "Modo claro" : "Modo oscuro"}
             >
@@ -221,7 +221,7 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-zinc-400 hover:text-zinc-100"
+              className="md:hidden p-2 min-w-[44px] min-h-[44px] text-zinc-400 hover:text-zinc-100"
               aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
               aria-expanded={mobileOpen}
             >

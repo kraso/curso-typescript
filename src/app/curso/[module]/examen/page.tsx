@@ -59,7 +59,7 @@ export default function ExamenPage({ params }: { params: Promise<{ module: strin
 
             <div className="mb-8">
               <p className="text-sm text-warning mb-2">Examen del Modulo {modulo.orden}</p>
-              <h1 className="text-3xl font-bold text-zinc-100 mb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-2">
                 {quiz ? quiz.titulo : modulo.titulo}
               </h1>
               <p className="text-zinc-500">

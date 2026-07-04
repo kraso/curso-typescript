@@ -90,7 +90,7 @@ export default function LessonPage({ params }: { params: Promise<{ module: strin
                 <span className="text-zinc-600">·</span>
                 <span className="text-sm text-zinc-500">{leccion.duracion}</span>
               </div>
-              <h1 className="text-3xl font-bold text-zinc-100 mb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-2">
                 {leccion.titulo}
               </h1>
               <p className="text-zinc-500">{leccion.descripcion}</p>

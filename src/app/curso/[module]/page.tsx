@@ -58,7 +58,7 @@ export default function ModulePage({ params }: { params: Promise<{ module: strin
               <p className="text-sm text-primary mb-2">
                 Modulo {modulo.orden}
               </p>
-              <h1 className="text-3xl font-bold text-zinc-100 mb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 mb-2">
                 {modulo.titulo}
               </h1>
               <p className="text-zinc-500">{modulo.descripcion}</p>
