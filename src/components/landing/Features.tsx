@@ -1,4 +1,7 @@
+"use client";
+
 import { Code2, Shield, Zap, BookOpen, Terminal, Puzzle } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const features = [
   {
@@ -35,33 +38,34 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24 bg-dark-900">
+    <section className="py-24 bg-dark-900/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-            Por que aprender TypeScript?
-          </h2>
-          <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
-            El lenguaje que esta transformando la forma en que escribimos JavaScript.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
+              Por que aprender TypeScript?
+            </h2>
+            <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
+              El lenguaje que esta transformando la forma en que escribimos JavaScript.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="p-6 rounded-2xl border border-zinc-700/30 bg-dark-800/30 hover:border-zinc-600/50 hover:bg-dark-700/30 transition-all duration-300"
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <feature.icon size={22} />
+          {features.map((feature, index) => (
+            <ScrollReveal key={feature.title} delay={index * 100}>
+              <div className="p-6 rounded-2xl border border-zinc-700/30 bg-dark-800/30 hover:border-zinc-600/50 hover:bg-dark-700/30 transition-all duration-300 h-full">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+                  <feature.icon size={22} />
+                </div>
+                <h3 className="text-lg font-semibold text-zinc-100 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-zinc-100 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-zinc-500 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

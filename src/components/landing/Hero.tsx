@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -5,9 +7,6 @@ import Button from "@/components/ui/Button";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 gradient-bg dot-pattern" />
-
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
         {/* Badge */}

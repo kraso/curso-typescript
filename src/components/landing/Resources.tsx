@@ -1,4 +1,7 @@
+"use client";
+
 import { ExternalLink, BookOpen, GraduationCap } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const documentos = [
   {
@@ -84,7 +87,7 @@ function ResourceCard({ resource }: { resource: typeof documentos[0] }) {
       href={resource.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative p-5 rounded-xl bg-dark-800/60 border border-zinc-700/30 hover:border-zinc-600/50 transition-all duration-300 hover:bg-dark-800/80 flex flex-col"
+      className="group relative p-5 rounded-xl bg-dark-800/60 border border-zinc-700/30 hover:border-zinc-600/50 transition-all duration-300 hover:bg-dark-800/80 flex flex-col h-full"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className={`text-sm font-semibold ${resource.color} group-hover:underline leading-snug`}>
@@ -101,51 +104,59 @@ function ResourceCard({ resource }: { resource: typeof documentos[0] }) {
 
 export default function Resources() {
   return (
-    <section className="relative py-24 sm:py-32 bg-dark-900">
+    <section className="relative py-24 sm:py-32 bg-dark-900/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Documentacion y Recursos */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-sm font-medium mb-6">
-            <BookOpen size={14} className="text-primary" />
-            Documentacion y recursos
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-sm font-medium mb-6">
+              <BookOpen size={14} className="text-primary" />
+              Documentacion y recursos
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
+              Documentacion oficial
+              <br />
+              <span className="text-gradient">y recursos esenciales</span>
+            </h2>
+            <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
+              Las mejores referencias para consultar, profundizar y resolver dudas
+              mientras aprendes TypeScript.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
-            Documentacion oficial
-            <br />
-            <span className="text-gradient">y recursos esenciales</span>
-          </h2>
-          <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
-            Las mejores referencias para consultar, profundizar y resolver dudas
-            mientras aprendes TypeScript.
-          </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-24">
           {documentos.map((doc, i) => (
-            <ResourceCard key={i} resource={doc} />
+            <ScrollReveal key={i} delay={i * 80}>
+              <ResourceCard resource={doc} />
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Cursos Gratuitos */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-sm font-medium mb-6">
-            <GraduationCap size={14} className="text-primary" />
-            Aprendizaje complementario
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-sm font-medium mb-6">
+              <GraduationCap size={14} className="text-primary" />
+              Aprendizaje complementario
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
+              Cursos gratuitos
+              <br />
+              <span className="text-gradient">recomendados</span>
+            </h2>
+            <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
+              Complementa este curso con otros recursos gratuitos de la comunidad.
+              Todo lo que necesitas para seguir creciendo.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-100 mb-4 tracking-tight">
-            Cursos gratuitos
-            <br />
-            <span className="text-gradient">recomendados</span>
-          </h2>
-          <p className="text-zinc-500 text-lg max-w-2xl mx-auto">
-            Complementa este curso con otros recursos gratuitos de la comunidad.
-            Todo lo que necesitas para seguir creciendo.
-          </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {cursos.map((curso, i) => (
-            <ResourceCard key={i} resource={curso} />
+            <ScrollReveal key={i} delay={i * 80}>
+              <ResourceCard resource={curso} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
