@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-zinc-800 bg-dark-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-4">
@@ -65,6 +65,43 @@ export default function Footer() {
                   className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
                 >
                   GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Proyectos */}
+          <div>
+            <h3 className="text-zinc-100 font-semibold mb-4">Proyectos</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="https://javascript-learning-app.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                >
+                  <img
+                    src="https://javascript-learning-app.dev/favicon.svg"
+                    alt="JavaScript"
+                    className="w-5 h-5 rounded"
+                  />
+                  Curso JavaScript
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://react-learning-app.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+                >
+                  <img
+                    src="https://react-learning-app.dev/favicon.svg"
+                    alt="React"
+                    className="w-5 h-5 rounded"
+                  />
+                  React Learning App
                 </a>
               </li>
             </ul>
