@@ -96,10 +96,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 mt-8 pt-8 text-center">
+        <div className="border-t border-zinc-800 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-zinc-600 text-sm">
             &copy; {new Date().getFullYear()} Curso TypeScript. Aprende programando.
           </p>
+          <div className="flex items-center gap-3 text-xs text-zinc-600">
+            <Link href="/legal/privacidad" className="hover:text-zinc-400 transition-colors">
+              Política de Privacidad
+            </Link>
+            <span>·</span>
+            <Link href="/legal/terminos" className="hover:text-zinc-400 transition-colors">
+              Términos y Condiciones
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
