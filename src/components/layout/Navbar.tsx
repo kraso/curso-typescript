@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu, X, LogOut,
-  BookOpen, ChevronDown, Trophy, User, Sparkles, Library, FileText
+  BookOpen, ChevronDown, Trophy, User, Sparkles, Library, FileText, Sun, Moon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
+import { useTheme } from "@/hooks/useTheme";
 import { sincronizarProgresoASupabase, limpiarProgresoLocal } from "@/lib/progress";
 
 export default function Navbar() {
@@ -19,6 +20,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { user, loading, signOut } = useAuth();
   const { progreso } = useProgress(user?.id);
+  const { theme, toggleTheme } = useTheme();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -126,6 +128,15 @@ export default function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+              title={theme === "dark" ? "Modo claro" : "Modo oscuro"}
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
             {/* Progress badge */}
             {user && (
               <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-dark-700/50 border border-zinc-700/50 text-zinc-400 text-xs">
