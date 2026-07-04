@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { createClient } from "@/lib/supabase/client";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { User, Mail, Lock, Camera, Save, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { User, Mail, Lock, Camera, Save, ArrowLeft, CheckCircle2, Phone, AtSign } from "lucide-react";
 import Link from "next/link";
 
 export default function PerfilPage() {
@@ -21,12 +21,16 @@ export default function PerfilPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [alias, setAlias] = useState("");
+  const [telefono, setTelefono] = useState("");
 
   useEffect(() => {
     if (user) {
       setNombre(user.user_metadata?.nombre || "");
       setEmail(user.email || "");
       setAvatar(user.user_metadata?.avatar_url || null);
+      setAlias(user.user_metadata?.alias || "");
+      setTelefono(user.user_metadata?.phone || "");
     }
   }, [user]);
 
@@ -74,9 +78,9 @@ export default function PerfilPage() {
 
     const supabase = createClient();
 
-    // Update name
+    // Update name and profile fields
     const { error: nameError } = await supabase.auth.updateUser({
-      data: { nombre },
+      data: { nombre, alias, phone: telefono },
     });
 
     if (nameError) {
@@ -250,6 +254,38 @@ export default function PerfilPage() {
                     Se enviara un email de confirmacion al nuevo correo.
                   </p>
                 )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                  Alias
+                </label>
+                <div className="relative">
+                  <AtSign size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+                  <input
+                    type="text"
+                    value={alias}
+                    onChange={(e) => setAlias(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-dark-800 border border-zinc-700 rounded-lg text-zinc-100 text-sm focus:outline-none focus:border-primary transition-colors"
+                    placeholder="Tu alias"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                  Telefono
+                </label>
+                <div className="relative">
+                  <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
+                  <input
+                    type="tel"
+                    value={telefono}
+                    onChange={(e) => setTelefono(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-dark-800 border border-zinc-700 rounded-lg text-zinc-100 text-sm focus:outline-none focus:border-primary transition-colors"
+                    placeholder="Tu telefono"
+                  />
+                </div>
               </div>
             </div>
 
