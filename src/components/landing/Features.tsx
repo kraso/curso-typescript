@@ -43,7 +43,7 @@ export default function Features() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-              Por que aprender TypeScript?
+              ¿Por qué aprender TypeScript?
             </h2>
             <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
               El lenguaje que esta transformando la forma en que escribimos JavaScript.

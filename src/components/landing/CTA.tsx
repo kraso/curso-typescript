@@ -16,7 +16,7 @@ export default function CTA() {
 
             <div className="relative z-10">
               <h2 className="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">
-                listo para empezar?
+                ¿Listo para empezar?
               </h2>
               <p className="text-lg text-zinc-400 mb-8 max-w-xl mx-auto">
                 Unete a miles de desarrolladores que ya estan aprendiendo TypeScript
