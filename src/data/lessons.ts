@@ -20,20 +20,31 @@ TypeScript es un lenguaje de programacion de **codigo abierto** desarrollado por
 ## Por que TypeScript?
 
 | Ventaja | Descripcion |
+
 |---------|-------------|
+
 | **Deteccion de errores** | Encuentra errores en tiempo de compilacion, no en runtime |
+
 | **Mejor IDE** | Autocompletado, navegacion, refactoring automatico |
+
 | **Documentacion** | Los tipos actuan como documentacion viva |
+
 | **Escalabilidad** | Mantiene el codigo limpio en proyectos grandes |
+
 | **Adopcion** | Usado por Angular, Vue, Deno, y miles de empresas |
 
 ## Historia
 
 - **2012** — Microsoft internamente (Anders Hejlsberg)
+
 - **2013** — Anuncio publico en QCon
+
 - **2014** — Open source en CodePlex
+
 - **2016** — Angular 2 adopta TypeScript
+
 - **2020** — Deno lo usa como lenguaje principal
+
 - **2023** — TypeScript 5.x con mejoras de rendimiento
 
 ## Como funciona TypeScript
@@ -105,7 +116,9 @@ console.log(\`Mi nombre es \${nombre} y tengo \${edad} anios\`);`,
     contenido: `## Instalacion
 
 ### Requisitos previos
+
 - Node.js 16+ instalado
+
 - Un editor de codigo (VS Code recomendado)
 
 ### Instalar globalmente
@@ -161,12 +174,19 @@ El archivo de configuracion de TypeScript:
 ### Opciones importantes
 
 | Opcion | Que hace | Recomendado |
+
 |--------|----------|-------------|
+
 | **strict** | Activa todas las verificaciones estrictas | \`true\` |
+
 | **target** | Version de JS que genera | \`ES2022\` |
+
 | **module** | Sistema de modulos | \`ESNext\` |
+
 | **outDir** | Directorio de salida | \`./dist\` |
+
 | **rootDir** | Directorio fuente | \`./src\` |
+
 | **noEmit** | Solo verificar, no generar archivos | \`true\` en libs |`,
     ejercicio: {
       descripcion: "Crea una funcion 'saludar' que reciba un nombre (string) y retorne un string con el saludo.",
@@ -246,6 +266,7 @@ let esAdmin: boolean = false;
 ## null y undefined
 
 - \`undefined\`: Variable sin valor asignado
+
 - \`null\`: Ausencia intencional de valor
 
 \`\`\`typescript
@@ -994,10 +1015,15 @@ const miComparador: Comparador<number> = (a, b) => a - b;
 ## Type vs Interface
 
 | Caracteristica | type | interface |
+
 |---------------|------|-----------|
+
 | Extension | \`&\` (intersection) | \`extends\` |
+
 | Declaracion multiple | No | Si (se mergean) |
+
 | Primitivos | Si | No |
+
 | Tuplas | Si | No |
 
 \`\`\`typescript
@@ -2350,9 +2376,13 @@ const perro = new Perro();
 ## Resumen
 
 | Modificador | Clase | Subclase | Externo |
+
 |-------------|-------|----------|---------|
+
 | public | SI | SI | SI |
+
 | private | SI | NO | NO |
+
 | protected | SI | SI | NO |
 
 ## Parametros de propiedades
@@ -2868,14 +2898,23 @@ type ParamsSumar = Parameters<typeof sumar>; // [number, number]
 ## Resumen rapido
 
 | Utility | Que hace |
+
 |---------|----------|
+
 | Partial | Todas opcionales |
+
 | Required | Todas obligatorias |
+
 | Pick | Selecciona propiedades |
+
 | Omit | Excluye propiedades |
+
 | Record | Objeto tipado |
+
 | Readonly | Todas readonly |
+
 | ReturnType | Tipo de retorno |
+
 | Parameters | Tipos de parametros |`,
     ejercicio: {
       descripcion: "Usa utility types para crear un tipo 'UpdateUser' que solo permita nombre y email opcionales.",
@@ -3573,10 +3612,15 @@ Config.timeout; // 5000
 ## Namespaces vs Modulos
 
 | Caracteristica | Modulos | Namespaces |
+
 |----------------|---------|------------|
+
 | Separacion | Archivos separados | Un archivo |
+
 | Scope | Global | Namespace |
+
 | Bundling | Manual | Automatico |
+
 | Uso moderno | Si | No |
 
 > **Nota**: En modernos proyectos se usan **modulos**, no namespaces.`,
@@ -3972,9 +4016,13 @@ miPromesa.then(resultado => console.log(resultado));
 ## Estados de una Promise
 
 | Estado | Descripcion |
+
 |--------|-------------|
+
 | Pending | Operacion en curso |
+
 | Fulfilled | Operacion completada |
+
 | Rejected | Operacion fallida |
 
 ## then, catch, finally
@@ -4583,8 +4631,11 @@ console.log(db1 === db2); // true
 ## Cuando usarlo
 
 - Conexiones a base de datos
+
 - Configuracion global
+
 - Cache compartida
+
 - Logger
 
 ## Alternativa moderna
@@ -5094,11 +5145,17 @@ function parsearJSON(json: string) {
 ## Naming patterns
 
 | Patron | Ejemplo | Uso |
+
 |--------|---------|-----|
+
 | is/has | isActivo() | Retornan boolean |
+
 | get/set | getUsuario() | Acceso a datos |
+
 | handle | handleclick() | Eventos |
+
 | create | createInstance() | Fabricas |
+
 | use | useAuth() | Hooks |
 
 ## Organizacion
@@ -5659,45 +5716,71 @@ jobs:
 Has completado el curso de TypeScript. Aqui esta un resumen de todo lo aprendido.
 
 ## Modulo 1: Fundamentos
+
 - Tipos basicos, interfaces, clases, enums
+
 - Type assertions, tipos literales
+
 - Destructuring, spread/rest
 
 ## Modulo 2: Funciones
+
 - Tipado de parametros y retorno
+
 - Sobrecarga de funciones
+
 - Funciones como tipos
 
 ## Modulo 3: Interfaces y Clases
+
 - Diferencia interface vs type
+
 - Herencia, implementacion
+
 - Propiedades y metodos abstractos
 
 ## Modulo 4: Tipos Avanzados
+
 - Generics con constraints
+
 - Utility types (Partial, Pick, Omit, Record)
+
 - Mapped types, conditional types
+
 - Template literal types, infer
 
 ## Modulo 5: Modulos y Namespaces
+
 - ES6 modules, imports/exports
+
 - Ambient declarations (.d.ts)
+
 - Imports dinamicos
+
 - Module resolution
 
 ## Modulo 6: Asincronia
+
 - Promesas y Promise.all
+
 - Async/await y manejo de errores
+
 - Generators e iteradores
 
 ## Modulo 7: Patrones y Buenas Practicas
+
 - Singleton, Factory, Observer
+
 - Decorators
+
 - Convenciones de codigo
 
 ## Modulo 8: Proyecto Final
+
 - Diseno de API tipada
+
 - Validacion runtime
+
 - Testing y deploy
 
 ## Proximo paso
