@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from "react";
 import Editor from "@monaco-editor/react";
-import { Play, RotateCcw, CheckCircle2, Copy, Check } from "lucide-react";
+import { Play, RotateCcw, Copy, Check } from "lucide-react";
+import * as ts from "typescript";
 import { cn } from "@/lib/utils";
 import type { Exercise } from "@/types/course";
 
@@ -35,7 +36,15 @@ export default function ExerciseEditor({ exercise, onComplete }: ExerciseEditorP
     };
 
     try {
-      const fn = new Function("__logs", "console", code);
+      // Transpile TypeScript to JavaScript
+      const transpiled = ts.transpileModule(code, {
+        compilerOptions: {
+          target: ts.ScriptTarget.ES2020,
+          module: ts.ModuleKind.None,
+          strict: false,
+        },
+      }).outputText;
+
       const proxyConsole = {
         log: (...args: unknown[]) => {
           logs.push(args.map((a) => (typeof a === "object" ? JSON.stringify(a) : String(a))).join(" "));
@@ -47,15 +56,26 @@ export default function ExerciseEditor({ exercise, onComplete }: ExerciseEditorP
           logs.push("[WARN] " + args.map((a) => String(a)).join(" "));
         },
       };
+
+      const fn = new Function("__logs", "console", transpiled);
       fn(logs, proxyConsole);
 
       let allPassed = true;
       for (const test of exercise.tests) {
         try {
+          // Transpile test code too
+          const transpiledTest = ts.transpileModule(`return (${test.codigo})`, {
+            compilerOptions: {
+              target: ts.ScriptTarget.ES2020,
+              module: ts.ModuleKind.None,
+              strict: false,
+            },
+          }).outputText;
+
           const testFn = new Function(
             "__logs",
             "console",
-            `return (${test.codigo})`
+            transpiledTest
           );
           const result = testFn(logs, proxyConsole);
           if (!result) {
