@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu, X, LogOut,
-  BookOpen, ChevronDown, Trophy, User
+  BookOpen, ChevronDown, Trophy, User, Sparkles, Library, FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
@@ -19,6 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { user, loading, signOut } = useAuth();
   const { progreso } = useProgress(user?.id);
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -45,10 +46,24 @@ export default function Navbar() {
     window.location.href = "/";
   };
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setMobileOpen(false);
+    }
+  };
+
   const userName = user?.user_metadata?.nombre || user?.email?.split("@")[0] || "Usuario";
   const userInitial = userName.charAt(0).toUpperCase();
   const userAvatar = user?.user_metadata?.avatar_url || null;
   const totalLecciones = progreso?.leccionesCompletadas?.length || 0;
+
+  const landingLinks = [
+    { id: "inicio", label: "Inicio", icon: Sparkles },
+    { id: "caracteristicas", label: "Caracteristicas", icon: Library },
+    { id: "recursos", label: "Recursos", icon: FileText },
+  ];
 
   const navLinks = [
     { href: "/curso", label: "Curso", icon: BookOpen },
@@ -70,21 +85,43 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {isHome ? (
+              landingLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+                >
+                  <link.icon size={16} />
+                  {link.label}
+                </button>
+              ))
+            ) : (
+              navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    pathname?.startsWith(link.href)
+                      ? "text-zinc-100 bg-dark-700/50"
+                      : "text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50"
+                  )}
+                >
+                  <link.icon size={16} />
+                  {link.label}
+                </Link>
+              ))
+            )}
+            {isHome && (
               <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                  pathname?.startsWith(link.href)
-                    ? "text-zinc-100 bg-dark-700/50"
-                    : "text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50"
-                )}
+                href="/curso"
+                className="ml-2 flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-primary text-white hover:bg-primary-dark transition-colors"
               >
-                <link.icon size={16} />
-                {link.label}
+                <BookOpen size={16} />
+                Empezar Curso
               </Link>
-            ))}
+            )}
           </div>
 
           {/* Right side */}
@@ -178,21 +215,43 @@ export default function Navbar() {
         {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden border-t border-zinc-800 py-4 animate-fade-in">
-            {navLinks.map((link) => (
+            {isHome ? (
+              landingLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+                >
+                  <link.icon size={16} />
+                  {link.label}
+                </button>
+              ))
+            ) : (
+              navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    pathname?.startsWith(link.href)
+                      ? "text-zinc-100 bg-dark-700/50"
+                      : "text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50"
+                  )}
+                >
+                  <link.icon size={16} />
+                  {link.label}
+                </Link>
+              ))
+            )}
+            {isHome && (
               <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                  pathname?.startsWith(link.href)
-                    ? "text-zinc-100 bg-dark-700/50"
-                    : "text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50"
-                )}
+                href="/curso"
+                className="flex items-center gap-2 mx-3 mt-2 px-4 py-2 rounded-lg text-sm font-medium bg-primary text-white hover:bg-primary-dark transition-colors"
               >
-                <link.icon size={16} />
-                {link.label}
+                <BookOpen size={16} />
+                Empezar Curso
               </Link>
-            ))}
+            )}
           </div>
         )}
       </div>

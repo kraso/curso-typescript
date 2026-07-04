@@ -12,10 +12,18 @@ export default function Home() {
       <AnimatedBackground />
       <Navbar />
       <main className="flex-1 relative z-10">
-        <Hero />
-        <Features />
-        <Resources />
-        <CTA />
+        <section id="inicio">
+          <Hero />
+        </section>
+        <section id="caracteristicas">
+          <Features />
+        </section>
+        <section id="recursos">
+          <Resources />
+        </section>
+        <section id="cta">
+          <CTA />
+        </section>
       </main>
       <Footer />
     </>
