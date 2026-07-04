@@ -7,6 +7,7 @@ import { ArrowLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CourseSidebar from "@/components/course/CourseSidebar";
+import MobileSidebar from "@/components/course/MobileSidebar";
 import LessonContent from "@/components/course/LessonContent";
 import LessonNavigation from "@/components/course/LessonNavigation";
 import ExerciseEditor from "@/components/course/ExerciseEditor";
@@ -46,6 +47,18 @@ export default function LessonPage({ params }: { params: Promise<{ module: strin
       <Navbar />
       <div className="flex">
         <CourseSidebar
+          modulos={modulos.map((m) => ({
+            id: m.id,
+            slug: m.slug,
+            titulo: m.titulo,
+            orden: m.orden,
+            lecciones: m.lecciones.map((l) => ({ id: l, titulo: l })),
+          }))}
+          completedLessons={completedLessons}
+          badges={badges}
+          puntos={puntos}
+        />
+        <MobileSidebar
           modulos={modulos.map((m) => ({
             id: m.id,
             slug: m.slug,
