@@ -42,8 +42,7 @@ export default function PerfilPage() {
 
     // Subir a Supabase Storage
     const fileExt = file.name.split(".").pop();
-    const fileName = `${user.id}.${fileExt}`;
-    const filePath = `avatars/${fileName}`;
+    const filePath = `${user.id}/avatar.${fileExt}`;
 
     const { error } = await supabase.storage
       .from("avatars")
