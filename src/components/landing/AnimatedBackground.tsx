@@ -12,7 +12,16 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const isMobile = window.innerWidth < 768;
     let animationId: number;
+    let isTabActive = true;
+    let lastFrameTime = 0;
+    const targetFPS = isMobile ? 24 : 60;
+    const frameInterval = 1000 / targetFPS;
+
     let particles: Array<{
       x: number;
       y: number;
@@ -28,13 +37,21 @@ export default function AnimatedBackground() {
     let height = 0;
 
     const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.scale(dpr, dpr);
     };
 
     const createParticles = () => {
       particles = [];
-      const count = Math.min(Math.floor((width * height) / 18000), 80);
+      const density = isMobile ? 30000 : 18000;
+      const maxParticles = isMobile ? 30 : 80;
+      const count = Math.min(Math.floor((width * height) / density), maxParticles);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
@@ -99,7 +116,7 @@ export default function AnimatedBackground() {
     };
 
     const drawConnections = () => {
-      const maxDist = 120;
+      const maxDist = isMobile ? 80 : 120;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -120,6 +137,18 @@ export default function AnimatedBackground() {
     };
 
     const animate = (time: number) => {
+      if (!isTabActive) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
+      const elapsed = time - lastFrameTime;
+      if (elapsed < frameInterval) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTime = time - (elapsed % frameInterval);
+
       ctx.clearRect(0, 0, width, height);
       drawGrid(time);
       drawConnections();
@@ -132,20 +161,33 @@ export default function AnimatedBackground() {
       mouseY = e.clientY;
     };
 
+    const handleVisibility = () => {
+      isTabActive = !document.hidden;
+    };
+
     resize();
     createParticles();
     animate(0);
 
-    window.addEventListener("resize", () => {
-      resize();
-      createParticles();
-    });
+    let resizeTimeout: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resize();
+        createParticles();
+      }, 200);
+    };
+
+    window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      clearTimeout(resizeTimeout);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 
@@ -155,8 +197,9 @@ export default function AnimatedBackground() {
         ref={canvasRef}
         className="fixed inset-0 z-0 pointer-events-none"
         style={{ opacity: 0.7 }}
+        aria-hidden="true"
       />
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
         <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/3 blur-[150px]" />

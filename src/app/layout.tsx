@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SkipLink from "@/components/SkipLink";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,15 +13,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   title: "Curso de TypeScript — Aprende desde cero",
   description:
-    "Aprende TypeScript de forma interactiva. Lecciones, ejercicios praticos y proyectos reales. Gratis.",
-  keywords: ["TypeScript", "curso", "aprender", "programacion", "web"],
+    "Aprende TypeScript de forma interactiva. Lecciones, ejercicios practicos y proyectos reales. Gratis.",
+  keywords: ["TypeScript", "curso", "aprender typescript", "programacion", "web", "tutorial typescript", "gratis"],
   openGraph: {
     title: "Curso de TypeScript",
     description: "Aprende TypeScript desde cero de forma interactiva",
     type: "website",
+    locale: "es_ES",
+    siteName: "Curso TypeScript",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Curso de TypeScript",
+    description: "Aprende TypeScript desde cero de forma interactiva",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://typescript.javascript-learning-app.dev",
   },
 };
 
@@ -54,6 +76,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>
+        <SkipLink />
         {children}
       </body>
     </html>

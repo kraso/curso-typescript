@@ -57,7 +57,7 @@ export default function LessonPage({ params }: { params: Promise<{ module: strin
           badges={badges}
           puntos={puntos}
         />
-        <main className="flex-1 pt-20 pb-16 min-h-screen">
+        <main id="main-content" className="flex-1 pt-20 pb-16 min-h-screen">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-zinc-500 mb-6 flex-wrap">

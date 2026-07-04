@@ -72,7 +72,7 @@ export default function PlaygroundPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 pt-20 pb-16">
+      <main id="main-content" className="flex-1 pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="mb-8">

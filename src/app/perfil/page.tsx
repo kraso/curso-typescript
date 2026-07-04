@@ -146,7 +146,7 @@ export default function PerfilPage() {
     return (
       <>
         <Navbar />
-        <main className="flex-1 pt-20 pb-16 min-h-screen flex items-center justify-center">
+        <main id="main-content" className="flex-1 pt-20 pb-16 min-h-screen flex items-center justify-center">
           <div className="text-center">
             <p className="text-zinc-500 mb-4">Debes iniciar sesion para ver tu perfil</p>
             <Link href="/auth/login" className="text-primary hover:text-primary-dark">
@@ -162,7 +162,7 @@ export default function PerfilPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 pt-20 pb-16 min-h-screen">
+      <main id="main-content" className="flex-1 pt-20 pb-16 min-h-screen">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back */}
           <Link

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import Editor from "@monaco-editor/react";
+import { useState, useCallback, lazy, Suspense } from "react";
 import { Play, RotateCcw, Copy, Check } from "lucide-react";
 import * as ts from "typescript";
 import { cn } from "@/lib/utils";
 import type { Exercise } from "@/types/course";
+
+const Editor = lazy(() => import("@monaco-editor/react"));
 
 interface ExerciseEditorProps {
   exercise: Exercise;
