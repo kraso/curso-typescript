@@ -54,7 +54,7 @@ export default function Navbar() {
     }
   };
 
-  const userName = user?.user_metadata?.nombre || user?.email?.split("@")[0] || "Usuario";
+  const userName = user?.user_metadata?.full_name || user?.user_metadata?.nombre || user?.email?.split("@")[0] || "Usuario";
   const userInitial = userName.charAt(0).toUpperCase();
   const userAvatar = user?.user_metadata?.avatar_url || null;
   const totalLecciones = progreso?.leccionesCompletadas?.length || 0;

@@ -40,7 +40,7 @@ export function useAuth() {
     return supabase.auth.signUp({
       email,
       password,
-      options: { data: { nombre } },
+      options: { data: { full_name: nombre } },
     });
   }, []);
 

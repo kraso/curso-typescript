@@ -26,7 +26,7 @@ export default function PerfilPage() {
 
   useEffect(() => {
     if (user) {
-      setNombre(user.user_metadata?.nombre || "");
+      setNombre(user.user_metadata?.full_name || user.user_metadata?.nombre || "");
       setEmail(user.email || "");
       setAvatar(user.user_metadata?.avatar_url || null);
       setAlias(user.user_metadata?.alias || "");
@@ -80,7 +80,7 @@ export default function PerfilPage() {
 
     // Update name and profile fields
     const { error: nameError } = await supabase.auth.updateUser({
-      data: { nombre, alias, phone: telefono },
+      data: { full_name: nombre, alias, phone: telefono },
     });
 
     if (nameError) {
