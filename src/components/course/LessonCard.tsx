@@ -14,10 +14,11 @@ export default function LessonCard({ lesson, completada, moduloSlug }: LessonCar
   return (
     <Link
       href={`/curso/${moduloSlug}/${lesson.id}`}
-      className="group flex items-center gap-4 p-4 rounded-xl border transition-all duration-200"
+      className="group flex items-center gap-4 p-4 rounded-xl border transition-all duration-200 card-hover"
       style={{
         borderColor: completada ? "rgba(16, 185, 129, 0.3)" : "var(--border-color)",
         background: completada ? "rgba(16, 185, 129, 0.03)" : "var(--bg-surface)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       <div

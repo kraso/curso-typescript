@@ -31,12 +31,13 @@ export default function ModuleCard({ modulo, completadas, total, locked = false 
   return (
     <Link
       href={locked ? "#" : `/curso/${modulo.slug}`}
-      className="group block p-6 rounded-2xl border transition-all duration-300"
+      className="group block p-6 rounded-2xl border transition-all duration-300 card-hover"
       style={{
         borderColor: completado ? "rgba(16, 185, 129, 0.3)" : "var(--border-color)",
         background: completado ? "rgba(16, 185, 129, 0.03)" : "var(--bg-surface)",
         opacity: locked ? 0.5 : 1,
         cursor: locked ? "not-allowed" : "pointer",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       <div className="flex items-start justify-between mb-4">
