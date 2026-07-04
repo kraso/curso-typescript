@@ -50,5 +50,12 @@ export function useAuth() {
     await supabase.auth.signOut();
   }, []);
 
-  return { user, loading, signIn, signUp, signOut };
+  const refreshUser = useCallback(async () => {
+    if (!isSupabaseConfigured()) return;
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+  }, []);
+
+  return { user, loading, signIn, signUp, signOut, refreshUser };
 }

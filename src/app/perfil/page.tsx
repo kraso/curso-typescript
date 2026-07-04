@@ -10,7 +10,7 @@ import { User, Mail, Lock, Camera, Save, ArrowLeft, CheckCircle2 } from "lucide-
 import Link from "next/link";
 
 export default function PerfilPage() {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth();
   const router = useRouter();
   const supabase = createClient();
 
@@ -95,6 +95,7 @@ export default function PerfilPage() {
     }
 
     setSuccess("Perfil actualizado correctamente");
+    await refreshUser();
     setLoading(false);
   };
 
