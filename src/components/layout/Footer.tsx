@@ -31,7 +31,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/ejercicios" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
+                <Link href="/curso" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
                   Ejercicios
                 </Link>
               </li>
