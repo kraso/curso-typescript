@@ -75,6 +75,11 @@ export default function ModuleCard({ modulo, completadas, total, locked = false 
               completado ? "bg-success" : "bg-gradient-to-r from-primary to-accent"
             )}
             style={{ width: `${porcentaje}%` }}
+            role="progressbar"
+            aria-valuenow={porcentaje}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Progreso: ${porcentaje}%`}
           />
         </div>
       )}

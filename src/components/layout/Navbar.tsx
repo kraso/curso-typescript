@@ -93,6 +93,7 @@ export default function Navbar() {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+                  aria-label={`Ir a ${link.label}`}
                 >
                   <link.icon size={16} />
                   {link.label}
@@ -133,6 +134,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               className="p-2 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
               title={theme === "dark" ? "Modo claro" : "Modo oscuro"}
+              aria-label={theme === "dark" ? "Modo claro" : "Modo oscuro"}
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -153,6 +155,9 @@ export default function Navbar() {
                     <button
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                       className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-700/50 border border-zinc-700/50 hover:border-zinc-600 transition-colors"
+                      aria-label="Menu de usuario"
+                      aria-expanded={dropdownOpen}
+                      aria-haspopup="true"
                     >
                       <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-xs font-bold overflow-hidden">
                         {userAvatar ? (
@@ -217,6 +222,8 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2 text-zinc-400 hover:text-zinc-100"
+              aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-expanded={mobileOpen}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -232,6 +239,7 @@ export default function Navbar() {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-zinc-100 hover:bg-dark-700/50 transition-colors"
+                  aria-label={`Ir a ${link.label}`}
                 >
                   <link.icon size={16} />
                   {link.label}

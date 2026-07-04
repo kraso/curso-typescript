@@ -205,13 +205,13 @@ export default function PerfilPage() {
 
           {/* Messages */}
           {success && (
-            <div className="mb-6 p-3 rounded-lg bg-success/10 border border-success/20 text-success text-sm flex items-center gap-2">
+            <div role="status" aria-live="polite" className="mb-6 p-3 rounded-lg bg-success/10 border border-success/20 text-success text-sm flex items-center gap-2">
               <CheckCircle2 size={16} />
               {success}
             </div>
           )}
           {error && (
-            <div className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+            <div role="alert" className="mb-6 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
               {error}
             </div>
           )}
@@ -222,12 +222,13 @@ export default function PerfilPage() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                <label htmlFor="nombre" className="block text-sm font-medium text-zinc-300 mb-1.5">
                   Nombre
                 </label>
                 <div className="relative">
                   <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
                   <input
+                    id="nombre"
                     type="text"
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
@@ -237,12 +238,13 @@ export default function PerfilPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                <label htmlFor="email" className="block text-sm font-medium text-zinc-300 mb-1.5">
                   Email
                 </label>
                 <div className="relative">
                   <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
                   <input
+                    id="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -305,12 +307,13 @@ export default function PerfilPage() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                <label htmlFor="newPassword" className="block text-sm font-medium text-zinc-300 mb-1.5">
                   Nueva contrasena
                 </label>
                 <div className="relative">
                   <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
                   <input
+                    id="newPassword"
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
@@ -322,12 +325,13 @@ export default function PerfilPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-1.5">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-zinc-300 mb-1.5">
                   Confirmar contrasena
                 </label>
                 <div className="relative">
                   <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" />
                   <input
+                    id="confirmPassword"
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
