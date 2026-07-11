@@ -32,8 +32,8 @@ export default function LessonContent({ content }: LessonContentProps) {
       header.className = "code-block-header";
       header.innerHTML = `
         <span class="code-block-lang">${lang}</span>
-        <button class="copy-btn text-zinc-500 hover:text-zinc-300 text-xs transition-colors">
-          Copiar
+        <button class="copy-btn" aria-label="Copiar codigo" title="Copiar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
         </button>
       `;
 
@@ -45,18 +45,38 @@ export default function LessonContent({ content }: LessonContentProps) {
       copyBtn?.addEventListener("click", () => {
         navigator.clipboard.writeText(block.textContent || "");
         if (copyBtn) {
-          copyBtn.textContent = "Copiado!";
+          copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
           setTimeout(() => {
-            copyBtn.textContent = "Copiar";
+            copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
           }, 2000);
         }
       });
     });
 
-    // Style inline code
+    // Style inline code + add copy button on hover
     const inlineCode = containerRef.current.querySelectorAll("code:not(pre code)");
     inlineCode.forEach((code) => {
-      code.className = "code-inline";
+      const text = code.textContent || "";
+      const wrapper = document.createElement("span");
+      wrapper.className = "code-inline-wrapper";
+      wrapper.innerHTML = `
+        <span class="code-inline">${text}</span>
+        <button class="copy-inline-btn" aria-label="Copiar" title="Copiar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        </button>
+      `;
+      code.replaceWith(wrapper);
+
+      const copyBtn = wrapper.querySelector(".copy-inline-btn");
+      copyBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(text);
+        const btn = copyBtn as HTMLElement;
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        setTimeout(() => {
+          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+        }, 2000);
+      });
     });
   }, [content]);
 
