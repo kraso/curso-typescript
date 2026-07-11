@@ -137,7 +137,7 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
 
     const { error: insertErr } = await supabase
       .from("progreso_usuario")
-      .upsert(rows, { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows as never, { onConflict: "user_id,app_id,leccion_id" });
 
     if (insertErr) throw insertErr;
 
