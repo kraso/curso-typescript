@@ -9,7 +9,8 @@ const COURSES = [
   {
     id: "js",
     name: "JavaScript",
-    url: "https://javascript-learning-app.dev/curso",
+    landingUrl: "https://javascript-learning-app.dev",
+    courseUrl: "https://javascript-learning-app.dev/curso",
     image: "https://javascript-learning-app.dev/og-image.png",
     color: "from-amber-500 to-yellow-400",
     borderColor: "border-amber-500/30",
@@ -18,7 +19,8 @@ const COURSES = [
   {
     id: "react",
     name: "React",
-    url: "https://react-learning-app.dev",
+    landingUrl: "https://react-learning-app.dev",
+    courseUrl: "https://react-learning-app.dev",
     image: "https://react-learning-app.dev/og-image.png",
     color: "from-indigo-500 to-violet-400",
     borderColor: "border-indigo-500/30",
@@ -27,7 +29,8 @@ const COURSES = [
   {
     id: "ts",
     name: "TypeScript",
-    url: "https://typescript.javascript-learning-app.dev/curso",
+    landingUrl: "https://typescript.javascript-learning-app.dev",
+    courseUrl: "https://typescript.javascript-learning-app.dev/curso",
     image: "https://typescript.javascript-learning-app.dev/og-image.png",
     color: "from-sky-500 to-cyan-400",
     borderColor: "border-sky-500/30",
@@ -35,11 +38,24 @@ const COURSES = [
   },
 ];
 
+interface Course {
+  id: string;
+  name: string;
+  landingUrl: string;
+  courseUrl: string;
+  image: string;
+  color: string;
+  borderColor: string;
+  glowColor: string;
+}
+
 export default function CourseBundleBanner({ currentCourse = "ts" }) {
   const [hovered, setHovered] = useState<string | null>(null);
 
-  const handleNavigate = useCallback(async (url: string) => {
-    const redirectUrl = await getAuthRedirectUrl(supabase, url);
+  const handleNavigate = useCallback(async (course: Course) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    const targetUrl = session ? course.courseUrl : course.landingUrl;
+    const redirectUrl = await getAuthRedirectUrl(supabase, targetUrl);
     window.location.href = redirectUrl;
   }, []);
 
@@ -65,7 +81,7 @@ export default function CourseBundleBanner({ currentCourse = "ts" }) {
             return (
               <button
                 key={course.id}
-                onClick={() => !isActive && handleNavigate(course.url)}
+                onClick={() => !isActive && handleNavigate(course)}
                 onMouseEnter={() => setHovered(course.id)}
                 onMouseLeave={() => setHovered(null)}
                 disabled={isActive}
