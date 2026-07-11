@@ -2,6 +2,15 @@ import { createClient, isSupabaseConfigured } from "./supabase/client";
 import { APP_ID, LOCAL_STORAGE_KEY, POINTS_PER_LESSON } from "./constants";
 import type { UserProgress } from "@/types/course";
 
+interface ProgresoRow {
+  user_id: string;
+  app_id: string;
+  leccion_id: string;
+  insignias: string[] | null;
+  puntos: number | null;
+  tiempo_total: number | null;
+}
+
 const defaultProgress: UserProgress = {
   leccionesCompletadas: [],
   insignias: [],
@@ -52,12 +61,7 @@ export async function syncProgresoFromSupabase(userId: string): Promise<UserProg
     if (error) throw error;
     if (!data) return null;
 
-    const rows = data as Array<{
-      leccion_id: string;
-      insignias: string[] | null;
-      puntos: number | null;
-      tiempo_total: number | null;
-    }>;
+    const rows = data as unknown as ProgresoRow[];
 
     const leccionesCompletadas = rows.map((r) => r.leccion_id);
     const insignias = [...new Set(rows.flatMap((r) => r.insignias || []))];
@@ -90,7 +94,7 @@ export async function syncLeccionToSupabase(
           leccion_id: leccionId,
           insignias: insignia ? [insignia] : [],
           puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
-        } as Record<string, unknown>,
+        } satisfies ProgresoRow,
       ],
       { onConflict: "user_id,app_id,leccion_id" }
     );
@@ -135,7 +139,7 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
 
     const { error: insertErr } = await supabase
       .from("progreso_usuario")
-      .upsert(rows as Record<string, unknown>[], { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows as unknown as ProgresoRow[], { onConflict: "user_id,app_id,leccion_id" });
 
     if (insertErr) throw insertErr;
 
