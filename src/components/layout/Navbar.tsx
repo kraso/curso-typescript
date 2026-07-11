@@ -194,7 +194,7 @@ export default function Navbar() {
                             Mis Cursos
                           </p>
                           <a
-                            href="https://javascript-learning-app.dev"
+                            href="https://javascript-learning-app.dev/curso"
                             className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -212,7 +212,7 @@ export default function Navbar() {
                             React
                           </a>
                           <a
-                            href="https://typescript.javascript-learning-app.dev"
+                            href="https://typescript.javascript-learning-app.dev/curso"
                             className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
                           >
                             <ExternalLink size={14} />
