@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import {
   Menu, X, LogOut,
-  BookOpen, ChevronDown, Trophy, User, Sparkles, Library, FileText, Sun, Moon
+  BookOpen, ChevronDown, Trophy, User, Sparkles, Library, FileText, Sun, Moon, ExternalLink
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
@@ -189,6 +189,36 @@ export default function Navbar() {
                           <Trophy size={14} />
                           Mi Progreso
                         </Link>
+                        <div className="border-t border-zinc-700/60 my-1">
+                          <p className="px-4 py-1.5 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+                            Mis Cursos
+                          </p>
+                          <a
+                            href="https://javascript-learning-app.dev"
+                            className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink size={14} />
+                            JavaScript
+                          </a>
+                          <a
+                            href="https://react-learning-app.dev"
+                            className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink size={14} />
+                            React
+                          </a>
+                          <a
+                            href="https://typescript.javascript-learning-app.dev"
+                            className="flex items-center gap-2 px-4 py-2 text-sm text-zinc-300 hover:text-zinc-100 hover:bg-dark-700/60 transition-colors"
+                          >
+                            <ExternalLink size={14} />
+                            TypeScript
+                          </a>
+                        </div>
                         <button
                           onClick={handleLogout}
                           className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-dark-700/60 transition-colors"
