@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ModuleCard from "@/components/course/ModuleCard";
+import ModuleCardProgress from "@/components/course/ModuleCardProgress";
 import { modulos } from "@/data/modules";
 import { lecciones } from "@/data/lessons";
 
@@ -28,19 +28,9 @@ export default function CursoPage() {
 
           {/* Modules grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modulos.map((modulo) => {
-              const leccionesModulo = lecciones.filter(
-                (l) => l.modulo === modulo.id
-              );
-              return (
-                <ModuleCard
-                  key={modulo.id}
-                  modulo={modulo}
-                  completadas={0}
-                  total={leccionesModulo.length || modulo.lecciones.length}
-                />
-              );
-            })}
+            {modulos.map((modulo) => (
+              <ModuleCardProgress key={modulo.id} modulo={modulo} />
+            ))}
           </div>
         </div>
       </main>
