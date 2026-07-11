@@ -5,12 +5,14 @@ import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import Resources from "@/components/landing/Resources";
 import CTA from "@/components/landing/CTA";
+import CourseBundleBanner from "@/components/landing/CourseBundleBanner";
 
 export default function Home() {
   return (
     <>
       <AnimatedBackground />
       <Navbar />
+      <CourseBundleBanner currentCourse="ts" />
       <main id="main-content" className="flex-1 relative z-10">
         <section id="inicio">
           <Hero />
