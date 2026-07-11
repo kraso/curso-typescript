@@ -50,11 +50,19 @@ export async function syncProgresoFromSupabase(userId: string): Promise<UserProg
       .eq("app_id", APP_ID);
 
     if (error) throw error;
+    if (!data) return null;
 
-    const leccionesCompletadas = data.map((r) => r.leccion_id);
-    const insignias = [...new Set(data.flatMap((r) => r.insignias || []))];
-    const puntos = data.reduce((sum, r) => sum + (r.puntos || 0), 0);
-    const tiempoTotal = data.reduce((sum, r) => sum + (r.tiempo_total || 0), 0);
+    const rows = data as Array<{
+      leccion_id: string;
+      insignias: string[] | null;
+      puntos: number | null;
+      tiempo_total: number | null;
+    }>;
+
+    const leccionesCompletadas = rows.map((r) => r.leccion_id);
+    const insignias = [...new Set(rows.flatMap((r) => r.insignias || []))];
+    const puntos = rows.reduce((sum, r) => sum + (r.puntos || 0), 0);
+    const tiempoTotal = rows.reduce((sum, r) => sum + (r.tiempo_total || 0), 0);
 
     const progreso: UserProgress = { leccionesCompletadas, insignias, puntos, tiempoTotal };
     saveProgresoLocal(progreso);
