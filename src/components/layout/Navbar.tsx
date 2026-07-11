@@ -13,7 +13,7 @@ import { useProgress } from "@/hooks/useProgress";
 import { useTheme } from "@/hooks/useTheme";
 import { sincronizarProgresoASupabase, limpiarProgresoLocal } from "@/lib/progress";
 import { getAuthRedirectUrl } from "@/lib/auth-bridge";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase/client";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
