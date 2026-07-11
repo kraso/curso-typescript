@@ -11,6 +11,7 @@ export function createClient() {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
+        detectSessionInUrl: false,
         storage: typeof window !== "undefined" ? localStorage : undefined,
       },
     });

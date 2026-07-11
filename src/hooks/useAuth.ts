@@ -15,24 +15,42 @@ export function useAuth() {
     }
 
     const supabase = createClient();
+    let cancelled = false;
 
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user);
-      setLoading(false);
-    });
+    const tryGetUser = async () => {
+      for (let i = 0; i < 10; i++) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          if (!cancelled) {
+            setUser(user);
+            setLoading(false);
+          }
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 100));
+      }
+      if (!cancelled) setLoading(false);
+    };
+
+    tryGetUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
+      if (!cancelled) {
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
     });
 
     const handleSessionSet = (e: CustomEvent) => {
-      setUser(e.detail?.user ?? null);
-      setLoading(false);
+      if (!cancelled) {
+        setUser(e.detail?.user ?? null);
+        setLoading(false);
+      }
     };
     window.addEventListener('supabase:session-set' as any, handleSessionSet);
 
     return () => {
+      cancelled = true;
       subscription.unsubscribe();
       window.removeEventListener('supabase:session-set' as any, handleSessionSet);
     };
