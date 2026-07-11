@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -105,6 +106,17 @@ export default function LoginPage() {
           >
             {loading ? "Ingresando..." : "Iniciar sesion"}
           </button>
+
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-zinc-700"></div>
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-2 bg-dark-900 text-zinc-500">o</span>
+            </div>
+          </div>
+
+          <GoogleAuthButton mode="login" />
         </form>
 
         <p className="text-center text-zinc-500 text-sm mt-6">

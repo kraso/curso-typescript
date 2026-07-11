@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Mail, Lock, User, Eye, EyeOff } from "lucide-react";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 
 export default function RegisterPage() {
   const [nombre, setNombre] = useState("");
@@ -150,6 +151,17 @@ export default function RegisterPage() {
           >
             {loading ? "Creando cuenta..." : "Crear cuenta"}
           </button>
+
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-zinc-700"></div>
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-2 bg-dark-900 text-zinc-500">o</span>
+            </div>
+          </div>
+
+          <GoogleAuthButton mode="register" />
         </form>
 
         <p className="text-center text-zinc-500 text-sm mt-6">
