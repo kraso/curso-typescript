@@ -8,6 +8,7 @@ import CTA from "@/components/landing/CTA";
 import CourseBundleBanner from "@/components/landing/CourseBundleBanner";
 
 export default function Home() {
+  // Landing page with course bundle banner
   return (
     <>
       <AnimatedBackground />
