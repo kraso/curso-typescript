@@ -41,18 +41,19 @@ export function useAuth() {
       }
     });
 
-    const handleSessionSet = (e: CustomEvent) => {
+    const handleSessionSet = (e: Event) => {
       if (!cancelled) {
-        setUser(e.detail?.user ?? null);
+        const detail = (e as CustomEvent).detail;
+        setUser(detail?.user ?? null);
         setLoading(false);
       }
     };
-    window.addEventListener('supabase:session-set' as any, handleSessionSet);
+    window.addEventListener('supabase:session-set', handleSessionSet);
 
     return () => {
       cancelled = true;
       subscription.unsubscribe();
-      window.removeEventListener('supabase:session-set' as any, handleSessionSet);
+      window.removeEventListener('supabase:session-set', handleSessionSet);
     };
   }, []);
 
