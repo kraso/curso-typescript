@@ -83,13 +83,15 @@ export async function syncLeccionToSupabase(
   try {
     const supabase = createClient();
     const { error } = await supabase.from("progreso_usuario").upsert(
-      {
-        user_id: userId,
-        app_id: APP_ID,
-        leccion_id: leccionId,
-        insignias: insignia ? [insignia] : [],
-        puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
-      },
+      [
+        {
+          user_id: userId,
+          app_id: APP_ID,
+          leccion_id: leccionId,
+          insignias: insignia ? [insignia] : [],
+          puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
+        } as any,
+      ],
       { onConflict: "user_id,app_id,leccion_id" }
     );
 
@@ -133,7 +135,7 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
 
     const { error: insertErr } = await supabase
       .from("progreso_usuario")
-      .upsert(rows, { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows as any[], { onConflict: "user_id,app_id,leccion_id" });
 
     if (insertErr) throw insertErr;
 
