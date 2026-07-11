@@ -45,7 +45,7 @@ export default function CourseBundleBanner({ currentCourse = "ts" }) {
 
   return (
     <section
-      className="w-full border-y py-10 sm:py-12"
+      className="w-full border-y pt-16 pb-10 sm:pt-20 sm:pb-12"
       style={{
         borderColor: "var(--border-color)",
         background: "var(--bg-elevated)",
