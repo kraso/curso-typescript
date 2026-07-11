@@ -59,22 +59,32 @@ export default function LessonContent({ content }: LessonContentProps) {
       const text = code.textContent || "";
       const wrapper = document.createElement("span");
       wrapper.className = "code-inline-wrapper";
-      wrapper.innerHTML = `
-        <span class="code-inline">${text}</span>
-        <button class="copy-inline-btn" aria-label="Copiar" title="Copiar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-        </button>
-      `;
-      code.replaceWith(wrapper);
+      
+      const codeSpan = document.createElement("span");
+      codeSpan.className = "code-inline";
+      codeSpan.textContent = text;
+      
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "copy-inline-btn";
+      copyBtn.setAttribute("aria-label", "Copiar");
+      copyBtn.setAttribute("title", "Copiar");
+      copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+      
+      wrapper.appendChild(codeSpan);
+      wrapper.appendChild(copyBtn);
+      
+      // Safe replace
+      if (code.parentNode) {
+        code.parentNode.insertBefore(wrapper, code);
+        code.parentNode.removeChild(code);
+      }
 
-      const copyBtn = wrapper.querySelector(".copy-inline-btn");
-      copyBtn?.addEventListener("click", (e) => {
+      copyBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         navigator.clipboard.writeText(text);
-        const btn = copyBtn as HTMLElement;
-        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
         setTimeout(() => {
-          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+          copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
         }, 2000);
       });
     });
