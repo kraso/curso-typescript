@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { marked } from "marked";
 
 interface LessonContentProps {
@@ -10,95 +10,80 @@ interface LessonContentProps {
 export default function LessonContent({ content }: LessonContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleCopyBlock = useCallback((btn: HTMLElement) => {
+    const wrapper = btn.closest(".code-block");
+    const codeEl = wrapper?.querySelector("pre code");
+    const text = codeEl?.textContent || "";
+    navigator.clipboard.writeText(text).then(() => {
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+      setTimeout(() => {
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+      }, 2000);
+    });
+  }, []);
+
+  const handleCopyInline = useCallback((btn: HTMLElement) => {
+    const wrapper = btn.closest(".code-inline-wrapper");
+    const codeEl = wrapper?.querySelector(".code-inline");
+    const text = codeEl?.textContent || "";
+    navigator.clipboard.writeText(text).then(() => {
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+      setTimeout(() => {
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+      }, 2000);
+    });
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) {
-      console.log("[LessonContent] No container ref");
-      return;
-    }
+    if (!container) return;
 
-    console.log("[LessonContent] Processing content, HTML length:", container.innerHTML.length);
-
-    // Process code blocks: add copy button header
-    const codeBlocks = container.querySelectorAll("pre");
-    console.log(`[LessonContent] Found ${codeBlocks.length} code blocks (pre)`);
-    codeBlocks.forEach((pre) => {
-      // Skip if already processed
-      if (pre.parentElement?.classList.contains("code-block")) return;
-
-      const codeEl = pre.querySelector("code");
-      const codeText = codeEl?.textContent || "";
-      const langClass = codeEl ? Array.from(codeEl.classList).find((c) => c.startsWith("language-")) : "";
-      const lang = langClass ? langClass.replace("language-", "") : "typescript";
-
-      const wrapper = document.createElement("div");
-      wrapper.className = "code-block";
-
-      const header = document.createElement("div");
-      header.className = "code-block-header";
-      header.innerHTML = `
-        <span class="code-block-lang">${lang}</span>
-        <button class="copy-btn" aria-label="Copiar codigo" title="Copiar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-        </button>
-      `;
-
-      pre.parentNode?.insertBefore(wrapper, pre);
-      wrapper.appendChild(header);
-      wrapper.appendChild(pre);
-
-      const copyBtn = header.querySelector(".copy-btn");
-      copyBtn?.addEventListener("click", () => {
-        navigator.clipboard.writeText(codeText);
-        (copyBtn as HTMLElement).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-        setTimeout(() => {
-          (copyBtn as HTMLElement).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
-        }, 2000);
-      });
-    });
-
-    // Process inline code: add copy button on hover
-    const inlineCode = container.querySelectorAll("code:not(pre code)");
-    console.log(`[LessonContent] Found ${inlineCode.length} inline code elements`);
-    inlineCode.forEach((code) => {
-      console.log("[LessonContent] Processing inline code:", code.textContent?.substring(0, 30));
-      // Skip if already processed
-      if ((code as HTMLElement).closest(".code-inline-wrapper")) return;
-
-      const text = code.textContent || "";
-      const wrapper = document.createElement("span");
-      wrapper.className = "code-inline-wrapper";
+    // Delegate events for copy buttons
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const blockBtn = target.closest(".copy-btn") as HTMLElement | null;
+      const inlineBtn = target.closest(".copy-inline-btn") as HTMLElement | null;
       
-      const codeSpan = document.createElement("code");
-      codeSpan.className = "code-inline";
-      codeSpan.textContent = text;
-      
-      const copyBtn = document.createElement("button");
-      copyBtn.className = "copy-inline-btn";
-      copyBtn.setAttribute("aria-label", "Copiar");
-      copyBtn.setAttribute("title", "Copiar");
-      copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
-      copyBtn.addEventListener("click", (e) => {
+      if (blockBtn) {
         e.stopPropagation();
-        navigator.clipboard.writeText(text);
-        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-        setTimeout(() => {
-          copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
-        }, 2000);
-      });
-      
-      wrapper.appendChild(codeSpan);
-      wrapper.appendChild(copyBtn);
-      
-      code.parentNode?.replaceChild(wrapper, code);
-    });
-  }, [content]);
+        handleCopyBlock(blockBtn);
+      } else if (inlineBtn) {
+        e.stopPropagation();
+        handleCopyInline(inlineBtn);
+      }
+    };
 
-  // Parse markdown with marked
-  const htmlContent = marked.parse(content, {
-    gfm: true,
-    breaks: false,
-  }) as string;
+    container.addEventListener("click", handleClick);
+    return () => container.removeEventListener("click", handleClick);
+  }, [handleCopyBlock, handleCopyInline]);
+
+  // Parse markdown and inject copy buttons directly into HTML
+  const htmlContent = (() => {
+    // First pass: marked generates basic HTML
+    let html = marked.parse(content, { gfm: true, breaks: false }) as string;
+    
+    // Second pass: inject copy buttons into code blocks
+    // Replace <pre><code class="language-...">...</code></pre> with wrapped version
+    html = html.replace(
+      /<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g,
+      (_, lang, code) => {
+        const escapedCode = code.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        return `<div class="code-block"><div class="code-block-header"><span class="code-block-lang">${lang}</span><button class="copy-btn" aria-label="Copiar codigo" title="Copiar"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div><pre><code class="language-${lang}">${escapedCode}</code></pre></div>`;
+      }
+    );
+    
+    // Third pass: inject copy buttons into inline code
+    // Replace <code>...</code> (not inside pre) with wrapped version
+    // We need to be careful not to match code inside pre blocks
+    html = html.replace(
+      /(<\/pre>|^)([\s\S]*?)<code>([^<]+)<\/code>([\s\S]*?)(?=<pre>|$)/g,
+      (_, beforePre, before, code, after) => {
+        return `${beforePre}${before}<span class="code-inline-wrapper"><code class="code-inline">${code}</code><button class="copy-inline-btn" aria-label="Copiar" title="Copiar"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></span>${after}`;
+      }
+    );
+    
+    return html;
+  })();
 
   return (
     <div
