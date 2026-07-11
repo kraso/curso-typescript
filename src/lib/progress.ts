@@ -119,7 +119,9 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
 
     if (checkErr) throw checkErr;
 
-    const existingIds = new Set(existing.map((r) => r.leccion_id));
+    const existingIds = new Set(
+      (existing as unknown as { leccion_id: string }[]).map((r) => r.leccion_id)
+    );
     const toMigrate = local.leccionesCompletadas.filter((id) => !existingIds.has(id));
 
     if (!toMigrate.length) return false;
