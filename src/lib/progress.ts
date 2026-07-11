@@ -91,9 +91,8 @@ export async function syncLeccionToSupabase(
       insignias: insignia ? [insignia] : [],
       puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error } = await supabase.from("progreso_usuario").upsert(
-      [row] as any[],
+      [row] as unknown[],
       { onConflict: "user_id,app_id,leccion_id" }
     );
 
@@ -219,10 +218,9 @@ export async function sincronizarProgresoASupabase(userId: string): Promise<bool
       tiempo_total: Math.floor(local.tiempoTotal / local.leccionesCompletadas.length),
     }));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { error } = await supabase
       .from("progreso_usuario")
-      .upsert(rows as any[], { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows as unknown[], { onConflict: "user_id,app_id,leccion_id" });
 
     if (error) throw error;
     return true;
