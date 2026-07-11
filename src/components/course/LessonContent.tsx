@@ -12,10 +12,16 @@ export default function LessonContent({ content }: LessonContentProps) {
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container) {
+      console.log("[LessonContent] No container ref");
+      return;
+    }
+
+    console.log("[LessonContent] Processing content, HTML length:", container.innerHTML.length);
 
     // Process code blocks: add copy button header
     const codeBlocks = container.querySelectorAll("pre");
+    console.log(`[LessonContent] Found ${codeBlocks.length} code blocks (pre)`);
     codeBlocks.forEach((pre) => {
       // Skip if already processed
       if (pre.parentElement?.classList.contains("code-block")) return;
@@ -53,7 +59,9 @@ export default function LessonContent({ content }: LessonContentProps) {
 
     // Process inline code: add copy button on hover
     const inlineCode = container.querySelectorAll("code:not(pre code)");
+    console.log(`[LessonContent] Found ${inlineCode.length} inline code elements`);
     inlineCode.forEach((code) => {
+      console.log("[LessonContent] Processing inline code:", code.textContent?.substring(0, 30));
       // Skip if already processed
       if ((code as HTMLElement).closest(".code-inline-wrapper")) return;
 
