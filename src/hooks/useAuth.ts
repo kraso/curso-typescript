@@ -23,9 +23,19 @@ export function useAuth() {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    const handleSessionSet = (e: CustomEvent) => {
+      setUser(e.detail?.user ?? null);
+      setLoading(false);
+    };
+    window.addEventListener('supabase:session-set' as any, handleSessionSet);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener('supabase:session-set' as any, handleSessionSet);
+    };
   }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
