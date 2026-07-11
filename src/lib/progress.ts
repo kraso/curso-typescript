@@ -92,7 +92,7 @@ export async function syncLeccionToSupabase(
       puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
     };
     const { error } = await supabase.from("progreso_usuario").upsert(
-      [row] as unknown[],
+      [row] as never,
       { onConflict: "user_id,app_id,leccion_id" }
     );
 
@@ -220,7 +220,7 @@ export async function sincronizarProgresoASupabase(userId: string): Promise<bool
 
     const { error } = await supabase
       .from("progreso_usuario")
-      .upsert(rows as unknown[], { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows as never, { onConflict: "user_id,app_id,leccion_id" });
 
     if (error) throw error;
     return true;
