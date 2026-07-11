@@ -1,4 +1,4 @@
-import { createClient, isSupabaseConfigured } from "./supabase/client";
+import { supabase, isSupabaseConfigured } from "./supabase/client";
 import { APP_ID, LOCAL_STORAGE_KEY, POINTS_PER_LESSON } from "./constants";
 import type { UserProgress } from "@/types/course";
 
@@ -51,7 +51,6 @@ export async function syncProgresoFromSupabase(userId: string): Promise<UserProg
   if (!isSupabaseConfigured() || !userId) return null;
 
   try {
-    const supabase = createClient();
     const { data, error } = await supabase
       .from("progreso_usuario")
       .select("leccion_id, insignias, puntos, tiempo_total")
@@ -85,7 +84,6 @@ export async function syncLeccionToSupabase(
   if (!isSupabaseConfigured() || !userId) return;
 
   try {
-    const supabase = createClient();
     const { error } = await supabase.from("progreso_usuario").upsert(
       [
         {
@@ -114,7 +112,6 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
     const local = getProgresoLocal();
     if (!local.leccionesCompletadas.length) return false;
 
-    const supabase = createClient();
     const { data: existing, error: checkErr } = await supabase
       .from("progreso_usuario")
       .select("leccion_id")
@@ -213,7 +210,6 @@ export async function sincronizarProgresoASupabase(userId: string): Promise<bool
     const local = getProgresoLocal();
     if (!local.leccionesCompletadas.length) return true;
 
-    const supabase = createClient();
     const rows = local.leccionesCompletadas.map((leccionId) => ({
       user_id: userId,
       app_id: APP_ID,
