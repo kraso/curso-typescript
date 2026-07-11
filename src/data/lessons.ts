@@ -135,7 +135,7 @@ Compílalo:
 
 \`\`\`bash
 tsc hola.ts
-\`\executa
+\`\`\`
 
 Esto genera \`hola.js\` que puedes ejecutar:
 
