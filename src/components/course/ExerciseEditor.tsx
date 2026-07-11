@@ -20,7 +20,7 @@ export default function ExerciseEditor({ exercise, onComplete }: ExerciseEditorP
   const [copied, setCopied] = useState(false);
   const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
-  const handleRun = useCallback(() => {
+  const handleRun = useCallback(async () => {
     setIsRunning(true);
     setOutput([]);
     setTestsPassed(null);
@@ -72,7 +72,16 @@ export default function ExerciseEditor({ exercise, onComplete }: ExerciseEditorP
             `return (${test.codigo})`
           );
           const result = testFn(logs, proxyConsole, code);
-          if (!result) {
+          // Handle async tests (Promise results)
+          if (result && typeof result.then === "function") {
+            const asyncResult = await Promise.resolve(result);
+            if (!asyncResult) {
+              allPassed = false;
+              logs.push(`FAIL: ${test.descripcion}`);
+            } else {
+              logs.push(`PASS: ${test.descripcion}`);
+            }
+          } else if (!result) {
             allPassed = false;
             logs.push(`FAIL: ${test.descripcion}`);
           } else {

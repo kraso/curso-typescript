@@ -1,4 +1,4 @@
-﻿import { Lesson } from "@/types/course";
+import { Lesson } from "@/types/course";
 
 export const lecciones: Lesson[] = [
   // ===== MODULO 1: FUNDAMENTOS =====
@@ -13,7 +13,7 @@ export const lecciones: Lesson[] = [
     icono: "BookOpen",
     contenido: `## Introducción
 
-TypeScript es un lenguaje de programación de **código abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que cualquier código JavaScript válido es también código TypeScript válido.
+TypeScript es un lenguaje de programación de **código abierto** desarrollado por Microsoft. Es un **superconjunto tipado** de JavaScript, lo que significa que any código JavaScript válido es también código TypeScript válido.
 
 > **Dato clave:** TypeScript no reemplaza a JavaScript, lo potencia. Se convierte en JavaScript antes de ejecutarse.
 
@@ -45,7 +45,7 @@ TypeScript (.ts) --> Compilador (tsc) --> JavaScript (.js) --> Ejecución
 1. Escribes código con tipos
 2. El compilador verifica los tipos
 3. Genera JavaScript limpio
-4. Se ejecuta en cualquier navegador/Node
+4. Se ejecuta en any navegador/Node
 
 ## Ejemplo: JavaScript vs TypeScript
 
@@ -163,19 +163,12 @@ El archivo de configuración de TypeScript:
 ### Opciones importantes
 
 | Opción | Qué hace | Recomendado |
-
 |--------|----------|-------------|
-
 | **strict** | Activa todas las verificaciones estrictas | \`true\` |
-
 | **target** | Version de JS que genera | \`ES2022\` |
-
 | **module** | Sistema de módulos | \`ESNext\` |
-
 | **outDir** | Directorio de salida | \`./dist\` |
-
 | **rootDir** | Directorio fuente | \`./src\` |
-
 | **noEmit** | Solo verificar, no generar archivos | \`true\` en libs |`,
     ejercicio: {
       descripcion: "Crea una función 'saludar' que reciba un nombre (string) y retorne un string con el saludo.",
@@ -857,7 +850,7 @@ let datos: (string | number)[] = [1, "dos", 3, "cuatro"];
 
 \`\`\`typescript
 function formatId(id: string | number): string {
-  if (__code.includes("id") && __code.includes(": string")) {
+  if (typeof id === "string") {
     return id.toUpperCase();
   }
   return id.toString();
@@ -873,7 +866,7 @@ TypeScript automáticamente sabe que tipo es después de una condición.
 
 \`\`\`typescript
 function procesar(valor: string | number) {
-  if (__code.includes("valor") && __code.includes(": string")) {
+  if (typeof valor === "string") {
     // Aquí TypeScript sabe que valor es string
     valor.toUpperCase();
   } else {
@@ -905,7 +898,7 @@ console.log(formatear("hola"));
 console.log(formatear(3.14159));
 `,
       codigoSolucion: `function formatear(valor: string | number): string {
-  if (__code.includes("valor") && __code.includes(": string")) {
+  if (typeof valor === "string") {
     return valor.toUpperCase();
   }
   return valor.toFixed(2);
@@ -1004,15 +997,10 @@ const miComparador: Comparador<number> = (a, b) => a - b;
 ## Type vs Interface
 
 | Característica | type | interface |
-
 |---------------|------|-----------|
-
 | Extensión | \`&\` (intersection) | \`extends\` |
-
 | Declaración múltiple | No | Si (se mergean) |
-
 | Primitivos | Si | No |
-
 | Tuplas | Si | No |
 
 \`\`\`typescript
@@ -1116,7 +1104,7 @@ function sumar(a: number, b: number) {
 
 // TypeScript infiere parámetros
 function saludar(nombre) {
-  // Error: Parameter 'nombre' implicitly has an 'cualquier' type
+  // Error: Parameter 'nombre' implicitly has an 'any' type
 }
 \`\`\`
 
@@ -1201,15 +1189,15 @@ console.log(Array.isArray(numeros));  // true`,
       tests: [
         {
           descripcion: "nombre es inferido cómo string",
-          codigo: `__code.includes("nombre") && __code.includes(": string") && nombre === "Ana"`,
+          codigo: `typeof nombre === "string" && nombre === "Ana"`,
         },
         {
           descripcion: "edad es inferido cómo number",
-          codigo: `__code.includes("edad") && __code.includes(": number") && edad === 25`,
+          codigo: `typeof edad === "number" && edad === 25`,
         },
         {
           descripcion: "activo es inferido cómo boolean",
-          codigo: `__code.includes("activo") && __code.includes(": boolean") && activo === true`,
+          codigo: `typeof activo === "boolean" && activo === true`,
         },
         {
           descripcion: "numeros es inferido cómo array",
@@ -1240,7 +1228,7 @@ console.log(Array.isArray(numeros));  // true`,
 En TypeScript, todos los parámetros de una función deben estar tipados (con \`strict: true\`).
 
 \`\`\`typescript
-// Error: Parameter 'nombre' implicitly has an 'cualquier' type
+// Error: Parameter 'nombre' implicitly has an 'any' type
 function saludar(nombre) {
   return \`Hola \${nombre}\`;
 }
@@ -1283,18 +1271,18 @@ distancia({ x: 0, y: 0 }, { x: 3, y: 4 }); // 5
 
 \`\`\`typescript
 function formatearId(id: string | number): string {
-  if (__code.includes("id") && __code.includes(": string")) {
+  if (typeof id === "string") {
     return id.toUpperCase();
   }
   return \`ID-\${id}\`;
 }
 \`\`\`
 
-## Parámetros con tipo cualquier (evitar)
+## Parámetros con tipo any (evitar)
 
 \`\`\`typescript
 // MAL: pierde la ventaja de TypeScript
-function procesar(dato: cualquier): cualquier {
+function procesar(dato: any): any {
   return dato;
 }
 
@@ -1640,7 +1628,7 @@ log("Inicio", 1, "Medio", 2, "Fin");
 // "Inicio | 1 | Medio | 2 | Fin"
 \`\`\``,
     ejercicio: {
-      descripcion: "Crea una función 'promedio' que reciba cualquier cantidad de numeros y retorne el promedio.",
+      descripcion: "Crea una función 'promedio' que reciba any cantidad de numeros y retorne el promedio.",
       codigoInicial: `// Crea la función con rest parameters
 function promedio(...numeros: 
 
@@ -1696,7 +1684,7 @@ Permite definir múltiples firmas para una función, con diferentes tipos de par
 function format(valor: string): string;
 function format(valor: number): string;
 function format(valor: string | number): string {
-  if (__code.includes("valor") && __code.includes(": string")) {
+  if (typeof valor === "string") {
     return valor.toUpperCase();
   }
   return valor.toFixed(2);
@@ -1714,7 +1702,7 @@ format(3.14);      // "3.14" (retorna string)
 function buscar(id: number): Usuario;
 function buscar(nombre: string): Usuario[];
 function buscar(param: number | string): Usuario | Usuario[] {
-  if (__code.includes("param") && __code.includes(": number")) {
+  if (typeof param === "number") {
     return { id: param, nombre: "Ana" };
   }
   return [{ id: 1, nombre: param }];
@@ -1773,7 +1761,7 @@ console.log(obtener("Ana"));
       codigoSolucion: `function obtener(id: number): string;
 function obtener(nombre: string): string;
 function obtener(param: number | string): string {
-  if (__code.includes("param") && __code.includes(": number")) {
+  if (typeof param === "number") {
     return \`Usuario ID: \${param}\`;
   }
   return \`Usuario: \${param}\`;
@@ -1989,7 +1977,7 @@ const miPerro: Perro = {
   raza: "Labrador",
   ladra: true,
 };
-\`\multiples extends
+### Múltiples extends
 
 \`\`\`typescript
 interface Volador {
@@ -2305,7 +2293,7 @@ console.log(cuenta.obtenerSaldo());`,
     icono: "Layers",
     contenido: `## public (por defecto)
 
-Accesible desde cualquier lugar.
+Accesible desde any lugar.
 
 \`\`\`typescript
 class Animal {
@@ -2365,13 +2353,9 @@ const perro = new Perro();
 ## Resumen
 
 | Modificador | Clase | Subclase | Externo |
-
 |-------------|-------|----------|---------|
-
 | public | SI | SI | SI |
-
 | private | SI | NO | NO |
-
 | protected | SI | SI | NO |
 
 ## Parámetros de propiedades
@@ -2479,7 +2463,7 @@ abstract class Forma {
 
 // const f = new Forma(); // Error: Cannot create instance of abstract class
 
- Circulo extends Forma {
+class Circulo extends Forma {
   constructor(private radio: number) {
     super();
   }
@@ -2657,11 +2641,11 @@ console.log(triangulo.describir());`,
     icono: "Zap",
     contenido: `## Qué son los Generics?
 
-Los generics permiten crear funciones, clases e interfaces que funcionan con **cualquier tipo** sin perder la seguridad de tipos.
+Los generics permiten crear funciones, clases e interfaces que funcionan con **any tipo** sin perder la seguridad de tipos.
 
 \`\`\`typescript
 // Sin generics: perdes tipo
-function primerElemento(arr: cualquier[]): cualquier {
+function primerElemento(arr: any[]): any {
   return arr[0];
 }
 
@@ -2887,23 +2871,14 @@ type ParamsSumar = Parameters<typeof sumar>; // [number, number]
 ## Resumen rápido
 
 | Utility | Qué hace |
-
 |---------|----------|
-
 | Partial | Todas opcionales |
-
 | Required | Todas obligatorias |
-
 | Pick | Selecciona propiedades |
-
 | Omit | Excluye propiedades |
-
 | Record | Objeto tipado |
-
 | Readonly | Todas readonly |
-
 | ReturnType | Tipo de retorno |
-
 | Parameters | Tipos de parámetros |`,
     ejercicio: {
       descripcion: "Usa utility types para crear un tipo 'UpdateUser' que solo permita nombre y email opcionales.",
@@ -3142,7 +3117,7 @@ type Mixed = FiltrarStrings<string | number | boolean>;
 
 \`\`\`typescript
 // Se aplica a cada miembro de la union
-type EsArray<T> = T extends cualquier[] ? true : false;
+type EsArray<T> = T extends any[] ? true : false;
 
 type A = EsArray<number[]>;  // true
 type B = EsArray<string>;    // false
@@ -3152,7 +3127,7 @@ type C = EsArray<[1, 2]>;    // true
 ## Ejemplo real
 
 \`\`\`typescript
-type ObtenerValor<T> = T extends Map<cualquier, infer V> ? V : never;
+type ObtenerValor<T> = T extends Map<any, infer V> ? V : never;
 
 type ValorMap = ObtenerValor<Map<string, number>>; // number
 \`\`\``,
@@ -3173,7 +3148,7 @@ function verificar<T>(valor: T): TipoArray<T> {
 console.log(verificar([1, 2, 3]));
 console.log(verificar("hola"));
 `,
-      codigoSolucion: `type TipoArray<T> = T extends cualquier[] ? "array" : "otro";
+      codigoSolucion: `type TipoArray<T> = T extends any[] ? "array" : "otro";
 
 type A = TipoArray<number[]>;
 type B = TipoArray<string>;
@@ -3319,7 +3294,7 @@ console.log(handler);`,
 \`infer\` permite extraer un tipo dentro de un tipo condicional.
 
 \`\`\`typescript
-type ExtraerRetorno<T> = T extends (...args: cualquier[]) => infer R ? R : never;
+type ExtraerRetorno<T> = T extends (...args: any[]) => infer R ? R : never;
 
 type Fn = () => string;
 type Retorno = ExtraerRetorno<Fn>; // string
@@ -3348,8 +3323,8 @@ type C = Elemento<(string | number)[]>; // string | number
 ## Extraer tipo de tupla
 
 \`\`\`typescript
-type Primero<T> = T extends [infer First, ...cualquier[]] ? First : never;
-type Resto<T> = T extends [cualquier, ...infer Rest] ? Rest : never;
+type Primero<T> = T extends [infer First, ...any[]] ? First : never;
+type Resto<T> = T extends [any, ...infer Rest] ? Rest : never;
 
 type A = Primero<[1, 2, 3]>;  // 1
 type B = Resto<[1, 2, 3]>;    // [2, 3]
@@ -3397,7 +3372,7 @@ type RetornoSaludar = ObtenerRetorno<typeof saludar>; // string
 
 console.log("OK");
 `,
-      codigoSolucion: `type ObtenerRetorno<T> = T extends (...args: cualquier[]) => infer R ? R : never;
+      codigoSolucion: `type ObtenerRetorno<T> = T extends (...args: any[]) => infer R ? R : never;
 
 function sumar(a: number, b: number): number { return a + b; }
 function saludar(nombre: string): string { return \`Hola \${nombre}\`; }
@@ -3451,7 +3426,7 @@ export interface Usuario {
 }
 
 // Default export
- default class Animal {
+export default class Animal {
   nombre: string;
   constructor(nombre: string) {
     this.nombre = nombre;
@@ -3572,7 +3547,7 @@ namespace App {
 
   export namespace Api {
     export function get(url: string) { ... }
-    export function post(url: string, data: cualquier) { ... }
+    export function post(url: string, data: any) { ... }
   }
 }
 
@@ -3601,15 +3576,10 @@ Config.timeout; // 5000
 ## Namespaces vs Módulos
 
 | Característica | Módulos | Namespaces |
-
 |----------------|---------|------------|
-
 | Separación | Archivos separados | Un archivo |
-
 | Scope | Global | Namespace |
-
 | Bundling | Manual | Automático |
-
 | Uso moderno | Si | No |
 
 > **Nota**: En modernos proyectos se usan **módulos**, no namespaces.`,
@@ -3668,7 +3638,7 @@ Los archivos \`.d.ts\` permiten declarar tipos para codigo que no tiene typings.
 \`\`\`typescript
 // global.d.ts
 declare const API_URL: string;
-declare function gtag(...args: cualquier[]): void;
+declare function gtag(...args: any[]): void;
 declare module "libreria-sin-tipos" {
   export function hacerAlgo(x: number): string;
 }
@@ -3678,11 +3648,11 @@ declare module "libreria-sin-tipos" {
 
 \`\`\`typescript
 // para una libreria sin tipos
-declare módulo "mi-libreria" {
+declare module "mi-libreria" {
   export function init(config: object): void;
   export class Cliente {
     constructor(url: string);
-    get(ruta: string): Promise<cualquier>;
+    get(ruta: string): Promise<any>;
   }
 }
 
@@ -3729,7 +3699,7 @@ declare global {
 window.analytics.track("click");
 \`\`\``,
     ejercicio: {
-      descripcion: "Declara un tipo para la función 'fetch' que retorna Promise<cualquier>.",
+      descripcion: "Declara un tipo para la función 'fetch' que retorna Promise<any>.",
       codigoInicial: `// Declara el tipo para fetch
 declare 
 
@@ -4005,13 +3975,9 @@ miPromesa.then(resultado => console.log(resultado));
 ## Estados de una Promise
 
 | Estado | Descripcion |
-
 |--------|-------------|
-
 | Pending | Operación en curso |
-
 | Fulfilled | Operación completada |
-
 | Rejected | Operación fallida |
 
 ## then, catch, finally
@@ -4453,7 +4419,7 @@ console.log(numeros);`,
     icono: "Zap",
     contenido: `## Protocolo de Iteración
 
-Cualquier objeto con \`[Symbol.iterator]\` es iterable.
+any objeto con \`[Symbol.iterator]\` es iterable.
 
 \`\`\`typescript
 class Rango {
@@ -4642,7 +4608,7 @@ import database from "./database";
       codigoInicial: `// Crea el Singleton Config
 class Config {
   private static instance: Config;
-  private config: Record<string, cualquier> = {};
+  private config: Record<string, any> = {};
 
   // Implementa constructor privado y getInstance
 }
@@ -4653,7 +4619,7 @@ console.log(config1 === config2);
 `,
       codigoSolucion: `class Config {
   private static instance: Config;
-  private config: Record<string, cualquier> = {};
+  private config: Record<string, any> = {};
 
   private constructor() {}
 
@@ -4664,7 +4630,7 @@ console.log(config1 === config2);
     return Config.instance;
   }
 
-  set(key: string, value: cualquier) {
+  set(key: string, value: any) {
     this.config[key] = value;
   }
 
@@ -4904,7 +4870,7 @@ emitter.emit("click", "boton1");
     }
   }
 
-  emit(evento: string, ...args: cualquier[]) {
+  emit(evento: string, ...args: any[]) {
     const lista = this.listeners.get(evento);
     if (lista) {
       lista.forEach(listener => listener(...args));
@@ -4947,9 +4913,9 @@ emitter.emit("click", "boton1");`,
 Los decorators son funciones que modifican clases, métodos, propiedades o parámetros.
 
 \`\`\`typescript
-function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
+function log(target: any, key: string, descriptor: PropertyDescriptor) {
   const original = descriptor.value;
-  descriptor.value = function(...args: cualquier[]) {
+  descriptor.value = function(...args: any[]) {
     console.log(\`Llamando a \${key} con\`, args);
     return original.apply(this, args);
   };
@@ -4987,14 +4953,14 @@ function sealed(constructor: Function) {
 
 // Property decorator
 function minLength(largo: number) {
-  return (target: cualquier, key: string) => {
+  return (target: any, key: string) => {
     // ...
   };
 }
 
 // Method decorator
 function debounce(ms: number) {
-  return (target: cualquier, key: string, descriptor: PropertyDescriptor) => {
+  return (target: any, key: string, descriptor: PropertyDescriptor) => {
     // ...
   };
 }
@@ -5004,9 +4970,9 @@ function debounce(ms: number) {
 
 \`\`\`typescript
 function autorizado(roles: string[]) {
-  return function (target: cualquier, key: string, descriptor: PropertyDescriptor) {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
     const original = descriptor.value;
-    descriptor.value = function (...args: cualquier[]) {
+    descriptor.value = function (...args: any[]) {
       const usuario = args[0];
       if (!roles.includes(usuario.rol)) {
         throw new Error("No autorizado");
@@ -5018,7 +4984,7 @@ function autorizado(roles: string[]) {
 
 class Admin {
   @autorizado(["admin"])
-  eliminarUsuario(usuario: cualquier) {
+  eliminarUsuario(usuario: any) {
     return "Usuario eliminado";
   }
 }
@@ -5026,7 +4992,7 @@ class Admin {
     ejercicio: {
       descripcion: "Crea un decorator @log que registre las llamadas a funciones.",
       codigoInicial: `// Crea el decorator
-function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
+function log(target: any, key: string, descriptor: PropertyDescriptor) {
   // Implementa
 }
 
@@ -5039,9 +5005,9 @@ class Servicio {
 
 new Servicio().saludar("Ana");
 `,
-      codigoSolucion: `function log(target: cualquier, key: string, descriptor: PropertyDescriptor) {
+      codigoSolucion: `function log(target: any, key: string, descriptor: PropertyDescriptor) {
   const original = descriptor.value;
-  descriptor.value = function(...args: cualquier[]) {
+  descriptor.value = function(...args: any[]) {
     console.log(\`Llamando a \${key} con\`, args);
     return original.apply(this, args);
   };
@@ -5134,17 +5100,11 @@ function parsearJSON(json: string) {
 ## Naming patterns
 
 | Patrón | Ejemplo | Uso |
-
 |--------|---------|-----|
-
 | is/has | isActivo() | Retornan boolean |
-
 | get/set | getUsuario() | Acceso a datos |
-
 | handle | handleclick() | Eventos |
-
 | create | createInstance() | Fabricas |
-
 | use | useAuth() | Hooks |
 
 ## Organización
@@ -5348,7 +5308,7 @@ interface Usuario {
 }
 
 // Sin validación runtime - peligroso
-function procesar(datos: cualquier) {
+function procesar(datos: any) {
   const usuario: Usuario = datos; // No valida nada
 }
 
@@ -5375,7 +5335,7 @@ function procesarSeguro(datos: unknown) {
 
 \`\`\`typescript
 function esString(valor: unknown): valor is string {
-  return __code.includes("valor") && __code.includes(": string");
+  return typeof valor === "string";
 }
 
 function esArray(valor: unknown): valor is unknown[] {
@@ -5829,4 +5789,5 @@ export function getProgresoTotal(completadas: string[]) {
   if (lecciones.length === 0) return 0;
   return Math.round((completadas.length / lecciones.length) * 100);
 }
+
 
