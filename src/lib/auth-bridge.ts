@@ -1,6 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
-
-export async function getAuthRedirectUrl(supabase: ReturnType<typeof createClient> | null, baseUrl: string) {
+export async function getAuthRedirectUrl(supabase: { auth: { getSession: () => Promise<{ data: { session: { access_token: string; refresh_token: string } | null } }> } } | null, baseUrl: string) {
   if (!supabase) return baseUrl;
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return baseUrl;
