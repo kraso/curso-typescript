@@ -86,6 +86,7 @@ export async function syncLeccionToSupabase(
 
   try {
     const supabase = createClient();
+    // @ts-expect-error — Supabase schema types not generated
     const { error } = await supabase.from("progreso_usuario").upsert(
       [
         {
@@ -94,7 +95,7 @@ export async function syncLeccionToSupabase(
           leccion_id: leccionId,
           insignias: insignia ? [insignia] : [],
           puntos: insignia ? POINTS_PER_LESSON : POINTS_PER_LESSON / 2,
-        } satisfies ProgresoRow,
+        },
       ],
       { onConflict: "user_id,app_id,leccion_id" }
     );
@@ -137,9 +138,10 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
       tiempo_total: Math.floor(local.tiempoTotal / local.leccionesCompletadas.length),
     }));
 
+    // @ts-expect-error — Supabase schema types not generated
     const { error: insertErr } = await supabase
       .from("progreso_usuario")
-      .upsert(rows as unknown as ProgresoRow[], { onConflict: "user_id,app_id,leccion_id" });
+      .upsert(rows, { onConflict: "user_id,app_id,leccion_id" });
 
     if (insertErr) throw insertErr;
 
