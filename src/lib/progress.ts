@@ -86,7 +86,6 @@ export async function syncLeccionToSupabase(
 
   try {
     const supabase = createClient();
-    // @ts-ignore — Supabase schema types not generated
     const { error } = await supabase.from("progreso_usuario").upsert(
       [
         {
@@ -138,7 +137,6 @@ export async function migrarProgresoLocalASupabase(userId: string): Promise<bool
       tiempo_total: Math.floor(local.tiempoTotal / local.leccionesCompletadas.length),
     }));
 
-    // @ts-ignore — Supabase schema types not generated
     const { error: insertErr } = await supabase
       .from("progreso_usuario")
       .upsert(rows, { onConflict: "user_id,app_id,leccion_id" });
